@@ -2,9 +2,10 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render, redirect
 from onoff.models import Luz, Puerta, Habitacion, Sanitario, Alarma
+import time
 # Create your views here.
 
-def index(request):
+def onoff(request):
     context = RequestContext(request)
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
@@ -12,7 +13,7 @@ def index(request):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
 def luz(request, id_luz):
     context = RequestContext(request)
@@ -29,16 +30,29 @@ def luz(request, id_luz):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
 def puerta(request, id_puerta):
     context = RequestContext(request)
-    ## Codigo para que cierra y abra la puerta
-    ##
     puerta = Puerta.objects.get(id = id_puerta)
     if puerta.status:
+        ## Codigo para que cierra la puerta
+        ##
         puerta.status = False
     else:
+        ## Codigo para que abra la puerta
+        ##
+        puerta.status = True
+    puerta.save()
+    time.sleep(10)
+    puerta = Puerta.objects.get(id = id_puerta)
+    if puerta.status:
+        ## Codigo para que cierra la puerta
+        ##
+        puerta.status = False
+    else:
+        ## Codigo para que abra la puerta
+        ##
         puerta.status = True
     puerta.save()
     luces = Luz.objects.all()
@@ -46,7 +60,7 @@ def puerta(request, id_puerta):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
@@ -61,7 +75,7 @@ def sanitario(request, id_sanitario):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
 
 def habitacion(request, id_habitacion):
@@ -86,7 +100,7 @@ def habitacion(request, id_habitacion):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
 
 def alarma(request, id_alarma):
@@ -101,4 +115,4 @@ def alarma(request, id_alarma):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
