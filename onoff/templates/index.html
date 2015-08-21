@@ -1,0 +1,20 @@
+Luces:<br>
+{% for luz in luces %}
+	<a href="{% url 'onoff:luz' luz.id %}">{{luz.nombre}}            {{luz.status}}</a><br>
+{% endfor %}
+<br>Puertas<br>
+{% for puerta in puertas %}
+	<a href="{% url 'onoff:puerta' puerta.id %}">{{puerta.nombre}}          {{puerta.status}}</a><br>
+{% endfor %}
+<br>Habitaciones<br>
+{% for habitacion in habitaciones %}
+	<a href="{% url 'onoff:habitacion' habitacion.id %}">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
+{% endfor %}
+<br>Baños<br>
+{% for sanitario in sanitarios %}
+	<a href="{% url 'onoff:sanitario' sanitario.id %}">{{sanitario.nombre}}         Ocupado :   {{sanitario.ocupado}}<br></a>
+{% endfor %}
+<br>Alarmas<br>
+{% for alarma in alarmas %}
+	<a href="{% url 'onoff:alarma' alarma.id %}">{{alarma.nombre}}        {{alarma.status}}<br></a>
+{% endfor %}
