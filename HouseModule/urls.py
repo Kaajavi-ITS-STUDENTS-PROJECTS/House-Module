@@ -17,5 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+	url(r'^onoff/', include('onoff.urls', namespace = "onoff")),
     url(r'^admin/', include(admin.site.urls)),
 ]
