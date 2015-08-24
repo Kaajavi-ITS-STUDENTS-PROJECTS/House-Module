@@ -13,9 +13,9 @@ SleepTimeL = 2
     # main loop
 try:
     GPIO.output(22, GPIO.LOW)
-    GPIO.cleanup()
     print "ONE"
     time.sleep(SleepTimeL);
+    GPIO.cleanup()
     GPIO.output(15, GPIO.LOW)
     print "TWO"
     time.sleep(SleepTimeL);
