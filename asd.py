@@ -3,19 +3,20 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BCM)
 # init list with pin numbers
-pinList = [12, 11, 13, 16]
+pinList = [22, 15, 13, 16]
 # loop through pins and set mode and state to 'low'
 for i in pinList:
     GPIO.setup(i, GPIO.OUT)
     GPIO.output(i, GPIO.HIGH)
+    print i
     # time to sleep between operations in the main loop
 SleepTimeL = 2
     # main loop
 try:
-    GPIO.output(12, GPIO.LOW)
+    GPIO.output(22, GPIO.LOW)
     print "ONE"
     time.sleep(SleepTimeL);
-    GPIO.output(11, GPIO.LOW)
+    GPIO.output(15, GPIO.LOW)
     print "TWO"
     time.sleep(SleepTimeL);
     GPIO.output(13, GPIO.LOW)
