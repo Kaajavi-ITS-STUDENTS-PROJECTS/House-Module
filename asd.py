@@ -8,6 +8,10 @@ pinList = [22, 15, 13, 16]
 for i in pinList:
     GPIO.setup(i, GPIO.OUT)
     GPIO.output(i, GPIO.HIGH)
+    if i<2:
+        GPIO.output(22, GPIO.LOW)
+    else:
+        GPIO.output(22, GPIO.HIGH)
     # time to sleep between operations in the main loop
 SleepTimeL = 2
     # main loop
