@@ -15,9 +15,6 @@ try:
     GPIO.output(22, GPIO.LOW)
     print "ONE"
     time.sleep(SleepTimeL);
-    GPIO.cleanup()
-    GPIO.setmode(GPIO.BCM)
-    pinList = [22, 15, 13, 16]
     GPIO.output(15, GPIO.LOW)
     print "TWO"
     time.sleep(SleepTimeL);
