@@ -26,3 +26,5 @@ La idea es usarla para administrar los usuarios de la casa, las tareas, la lista
 entonces gracias a este maravilloso e inovador sistema puedes añadirlo a la lista de compras familiar.
 
 **Prendido y apagado de luces**: Estas sentado viendo televison y notas que hay mucha luz solar, ya no mas levantarse a apagar la luz! con este maralloso e inovador sistema puedes apagar  prender la luz desde tu aplicacion android o web. Pero espera, hay mas! el sistema tambien tendra apagado/encendido automatico de luces
+
+
