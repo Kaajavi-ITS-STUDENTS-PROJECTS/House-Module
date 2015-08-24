@@ -11,7 +11,7 @@ for i in pinList:
     if i<2:
         GPIO.output(22, GPIO.LOW)
     else:
-        GPIO.output(22, GPIO.HIGH)
+        GPIO.cleanup()
     # time to sleep between operations in the main loop
 SleepTimeL = 2
     # main loop
