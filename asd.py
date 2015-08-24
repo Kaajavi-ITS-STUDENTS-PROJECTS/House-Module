@@ -12,10 +12,10 @@ for i in pinList:
 SleepTimeL = 2
     # main loop
 try:
-    GPIO.output(12, GPIO.LOW)
+    GPIO.output(22, GPIO.LOW)
     print "ONE"
     time.sleep(SleepTimeL);
-    GPIO.output(11, GPIO.LOW)
+    GPIO.output(15, GPIO.LOW)
     print "TWO"
     time.sleep(SleepTimeL);
     GPIO.output(13, GPIO.LOW)
