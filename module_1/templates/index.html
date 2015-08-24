@@ -7,10 +7,16 @@
     <div class="col s10 m5 offset-s1 offset-m1">
         <div class="card brown lighten-2">
             <div class="card-content white-text">
-                <span class="card-title">Título</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam est nisi, pretium a ullamcorper quis, laoreet eu elit. Morbi magna sem, semper in fermentum ac, rutrum a lorem. Curabitur commodo, est et feugiat bibendum, ex enim auctor odio, vitae rhoncus nibh elit in nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec laoreet mollis interdum. Maecenas fringilla ex pharetra egestas fringilla. Fusce venenatis sem id porttitor eleifend. Curabitur non faucibus libero, malesuada eleifend risus. Aliquam lacinia eget purus ut blandit. Quisque pharetra, sem ac tempor maximus, diam turpis varius nibh, sed aliquam lorem odio at orci. 
-                </p>
+                <span class="card-title">Abrir y cerrar puerta</span>
+                <!-- Switch -->
+                <div class="switch" id="puerta_switch">
+                    <label>
+                        Off
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        On
+                    </label>
+                </div>
             </div>
         </div>
     </div>
@@ -27,4 +33,9 @@
 </div>
 {% endblock %}
 {% block scripts %}
+<script>
+    puerta_switch.on('click', function() {
+
+    });
+</script>
 {% endblock %}
