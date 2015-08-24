@@ -6,28 +6,28 @@ GPIO.setmode(GPIO.BCM)
 pinList = [12, 11, 13, 16]
 # loop through pins and set mode and state to 'low'
 for i in pinList:
-GPIO.setup(i, GPIO.OUT)
-GPIO.output(i, GPIO.HIGH)
-# time to sleep between operations in the main loop
+    GPIO.setup(i, GPIO.OUT)
+    GPIO.output(i, GPIO.HIGH)
+    # time to sleep between operations in the main loop
 SleepTimeL = 2
-# main loop
+    # main loop
 try:
-GPIO.output(12, GPIO.LOW)
-print "ONE"
-time.sleep(SleepTimeL);
-GPIO.output(11, GPIO.LOW)
-print "TWO"
-time.sleep(SleepTimeL);
-GPIO.output(13, GPIO.LOW)
-print "THREE"
-time.sleep(SleepTimeL);
-GPIO.output(16, GPIO.LOW)
-print "FOUR"
-time.sleep(SleepTimeL);
-GPIO.cleanup()
-print "Good bye!"
-# End program cleanly with keyboard
+    GPIO.output(12, GPIO.LOW)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(11, GPIO.LOW)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(13, GPIO.LOW)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(16, GPIO.LOW)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.cleanup()
+    print "Good bye!"
+    # End program cleanly with keyboard
 except KeyboardInterrupt:
-print " Quit"
-# Reset GPIO settings
-GPIO.cleanup()
+    print " Quit"
+    # Reset GPIO settings
+    GPIO.cleanup()
