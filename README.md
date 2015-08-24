@@ -25,11 +25,14 @@ La idea es usarla para administrar los usuarios de la casa, las tareas, la lista
 **Lista de compras**: Abres la alacena y descubres para tu sorpresa que ya no hay Toddys, 
 entonces gracias a este maravilloso e inovador sistema puedes añadirlo a la lista de compras familiar.
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 **Prendido y apagado de luces**: Estas sentado viendo televison y notas que hay mucha luz solar, ya no mas levantarse a apagar la luz! con este maralloso e inovador sistema puedes apagar  prender la luz desde tu aplicacion android o web. Pero espera, hay mas! el sistema tambien tendra apagado/encendido automatico de luces
 
 
 =======
+=======
+>>>>>>> origin/master
  Pasos
  1: Inciar app desde el celular.
  2: Seleccionar entre los items el elemento que falte. ( Se puede agregar o quitar items si se tiene permisos )
@@ -42,4 +45,7 @@ entonces gracias a este maravilloso e inovador sistema puedes añadirlo a la lis
  En caso de encendido/apagado automatico:
  1: Iniciar app desde el celular o la app web desde la pc.
  2: Ingresar el rango horario en el que debe estar encendido o apagado.
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
