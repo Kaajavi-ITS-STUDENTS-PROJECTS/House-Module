@@ -20,11 +20,26 @@ La idea es usarla para administrar los usuarios de la casa, las tareas, la lista
 #**House Module**
 
 ##5)Casos de uso:
- **Abrir puerta**: Pasar la tarjeta
+ **Abrir puerta**: 1: Pasar la tarjeta.
 
 **Lista de compras**: Abres la alacena y descubres para tu sorpresa que ya no hay Toddys, 
 entonces gracias a este maravilloso e inovador sistema puedes añadirlo a la lista de compras familiar.
+<<<<<<< HEAD
 
 **Prendido y apagado de luces**: Estas sentado viendo televison y notas que hay mucha luz solar, ya no mas levantarse a apagar la luz! con este maralloso e inovador sistema puedes apagar  prender la luz desde tu aplicacion android o web. Pero espera, hay mas! el sistema tambien tendra apagado/encendido automatico de luces
 
 
+=======
+ Pasos
+ 1: Inciar app desde el celular.
+ 2: Seleccionar entre los items el elemento que falte. ( Se puede agregar o quitar items si se tiene permisos )
+
+**Prendido y apagado de luces**: Estas sentado viendo televison y notas que hay mucha luz solar, ya no mas levantarse a apagar la luz! con este maravilloso e inovador sistema puedes apagar y prender la luz desde tu aplicacion android o web. Pero espera, hay mas! el sistema tambien tendra apagado/encendido automatico de luces.
+ Pasos
+ 1: Iniciar app desde el celular o la app web desde la pc.
+ 2: Seleccionar la habitacon correspondiente de la lista de habitaciones.
+ 3: Tildar en apagado/encendido la luz que corresponda.
+ En caso de encendido/apagado automatico:
+ 1: Iniciar app desde el celular o la app web desde la pc.
+ 2: Ingresar el rango horario en el que debe estar encendido o apagado.
+>>>>>>> origin/master
