@@ -20,7 +20,7 @@ def puerta(do):
     else:
         GPIO.output(15, OFF)
 
-def luz(do, pin):pass
+def luz(do, pin):
     if do=="open":
         GPIO.output(pin, ON)
     else:

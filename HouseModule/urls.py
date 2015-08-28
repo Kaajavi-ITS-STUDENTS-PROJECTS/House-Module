@@ -21,9 +21,9 @@ from django.conf import settings
 
 
 urlpatterns = [
-	url(r'^onoff/', include('onoff.urls', namespace = "onoff")),
+    url(r'^onoff/', include('onoff.urls', namespace = "onoff")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('module_1.urls', namespace = "module_1")),
 ]
 if settings.DEBUG:
-	urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
