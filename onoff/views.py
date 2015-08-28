@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, render, redirect
 from onoff.models import Luz, Puerta, Habitacion, Sanitario, Alarma
 import time
+import relay_functions
 # Create your views here.
 
 def onoff(request):
@@ -13,6 +14,26 @@ def onoff(request):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
+    for luz in luces:
+        luz_aux= Luz.objects.get(id = luz.id)
+        luz_aux.status = relay_functions.getStatus(luz.pin)
+        luz_aux.save()
+    for puerta in puertas:
+        puerta_aux= Puerta.objects.get(id = puerta.id)
+        puerta_aux.status = relay_functions.getStatus(puerta.pin)
+        puerta_aux.save()
+    for alarma in luces:
+        alarma_aux= Luz.objects.get(id = alarma.id)
+        alarma_aux.status = relay_functions.getStatus(alarma.pin)
+        alarma_aux.save()
+
+    luces = Luz.objects.all()
+    puertas = Puerta.objects.all()
+    habitaciones = Habitacion.objects.all()
+    habitaciones = Habitacion.objects.all()
+    sanitarios = Sanitario.objects.all()
+    alarmas = Alarma.objects.all()
+
     return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
 def luz(request, id_luz):

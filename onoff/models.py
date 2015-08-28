@@ -23,6 +23,7 @@ class Luz(models.Model):
     
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
+    pin = models.IntegerField(u'Pin', default=1)
     lugar = models.ForeignKey(Habitacion)
     
     def __str__(self):
@@ -35,6 +36,7 @@ class Puerta(models.Model):
     
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
+    pin = models.IntegerField(u'Pin', default=1)
     lugar = models.ForeignKey(Habitacion)
     
     def __str__(self):
@@ -57,6 +59,7 @@ class Alarma(models.Model):
     
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
+    pin = models.IntegerField(u'Pin', default=1)
     
     def __str__(self):
         return self.nombre
