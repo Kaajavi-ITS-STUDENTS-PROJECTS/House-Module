@@ -14,13 +14,13 @@ for i in pinList:
     GPIO.output(i, OFF)
 
 # do abre o cierra dependiendo
-def puerta(do):
+def puerta(do, pin):
     if do=="open":
-        GPIO.output(15, ON)
+        GPIO.output(pin, ON)
     else:
-        GPIO.output(15, OFF)
+        GPIO.output(pin, OFF)
 
-def luz(do, pin):pass
+def luz(do, pin):
     if do=="open":
         GPIO.output(pin, ON)
     else:

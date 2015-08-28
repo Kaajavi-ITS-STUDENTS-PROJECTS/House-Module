@@ -42,8 +42,10 @@ def luz(request, id_luz):
 ##
     luz = Luz.objects.get(id = id_luz)
     if luz.status:
+        relay_functions.luz("open",luz.pin)
         luz.status = False
     else:
+        relay_functions.luz("close",luz.pin)
         luz.status = True
     luz.save()
     luces = Luz.objects.all()
@@ -57,12 +59,10 @@ def puerta(request, id_puerta):
     context = RequestContext(request)
     puerta = Puerta.objects.get(id = id_puerta)
     if puerta.status:
-        ## Codigo para que cierra la puerta
-        ##
+        relay_functions.puerta("close",puerta.pin)
         puerta.status = False
     else:
-        ## Codigo para que abra la puerta
-        ##
+        relay_functions.puerta("close",puerta.pin)
         puerta.status = True
     puerta.save()
     time.sleep(10)
