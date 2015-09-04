@@ -42,10 +42,10 @@ def luz(request, id_luz):
 ##
     luz = Luz.objects.get(id = id_luz)
     if luz.status:
-        relay_functions.luz("open",luz.pin)
+        relay_functions.luz("close",luz.pin)
         luz.status = False
     else:
-        relay_functions.luz("close",luz.pin)
+        relay_functions.luz("open",luz.pin)
         luz.status = True
     luz.save()
     luces = Luz.objects.all()
