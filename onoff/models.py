@@ -20,6 +20,9 @@ class Luz(models.Model):
     class Meta:
         verbose_name = "Luz"
         verbose_name_plural = "Luces"
+        permissions = (
+            ("prender_luz", "Puede prender luz"),
+        )
     
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)

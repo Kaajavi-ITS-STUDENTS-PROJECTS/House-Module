@@ -3,6 +3,12 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, render, redirect
 from onoff.models import Luz, Puerta, Habitacion, Sanitario, Alarma
 import time
+from django.contrib.auth import authenticate
+from django.views.decorators.csrf import requires_csrf_token
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
 import relay_functions
 # Create your views here.
 
@@ -40,14 +46,16 @@ def luz(request, id_luz):
     context = RequestContext(request)
 ## Codigo para que prenda y apage la luz
 ##
-    luz = Luz.objects.get(id = id_luz)
-    if luz.status:
-        relay_functions.luz("close",luz.pin)
-        luz.status = False
-    else:
-        relay_functions.luz("open",luz.pin)
-        luz.status = True
-    luz.save()
+    if request.user.has_perm('onoff.prender_luz'):
+        print "TRUEEE"
+        luz = Luz.objects.get(id = id_luz)
+        if luz.status:
+            relay_functions.luz("close",luz.pin)
+            luz.status = False
+        else:
+            relay_functions.luz("open",luz.pin)
+            luz.status = True
+        luz.save()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
