@@ -150,10 +150,6 @@ def alarma(request, id_alarma):
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
-
-def index(request):
-
-
 @requires_csrf_token
 def login_user(request):
     
