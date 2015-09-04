@@ -62,7 +62,7 @@ def puerta(request, id_puerta):
         relay_functions.puerta("close",puerta.pin)
         puerta.status = False
     else:
-        relay_functions.puerta("close",puerta.pin)
+        relay_functions.puerta("open",puerta.pin)
         puerta.status = True
     puerta.save()
     time.sleep(10)
