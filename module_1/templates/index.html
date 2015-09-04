@@ -34,8 +34,11 @@
 {% endblock %}
 {% block scripts %}
 <script>
-    puerta_switch.on('click', function() {
-
+    $('#puerta_switch').on('click', function() {
+        $.ajax({
+                type: "POST",
+                url: "{% url 'module_1:abrir' %}"
+        });
     });
 </script>
 {% endblock %}

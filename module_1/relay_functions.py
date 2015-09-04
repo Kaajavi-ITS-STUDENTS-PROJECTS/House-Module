@@ -55,4 +55,20 @@ def luz(do, pin):
 def getStatus(pin):
     #Devolver el estatus del pin pedido
     return False
+<<<<<<< HEAD
 '''
+=======
+
+#def luz_2(do):
+#    if do=="open":
+#        GPIO.output(9, ON)
+#    else:
+#        GPIO.output(9, OFF)
+#
+#def luz_3(do):
+#    if do=="open":
+#        GPIO.output(10, ON)
+#    else:
+#        GPIO.output(10, OFF)
+#
+>>>>>>> d0dff5b4999592ce2a0fc37e3b0b58dc759f78f1

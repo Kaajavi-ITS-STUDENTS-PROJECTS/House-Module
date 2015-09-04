@@ -34,7 +34,6 @@ def login_user(request):
                 context = RequestContext(request)
                 return render_to_response('index.html',
                               context)
-
             else:
                 context = RequestContext(request)
                 return render_to_response('login.html',
@@ -49,6 +48,9 @@ def login_user(request):
                               context)
 
 a=False
+=======
+a=True
+>>>>>>> d0dff5b4999592ce2a0fc37e3b0b58dc759f78f1
 def abrirPuerta(request):
     if a:
         relay_functions.puerta("open")
