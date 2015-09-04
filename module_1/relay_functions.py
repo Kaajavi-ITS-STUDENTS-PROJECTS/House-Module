@@ -14,13 +14,8 @@ for i in pinList:
     GPIO.output(i, OFF)
 
 # do abre o cierra dependiendo
-def puerta(do):
-    if do=="open":
-        GPIO.output(15, ON)
-    else:
-        GPIO.output(15, OFF)
 
-def luz(do, pin):
+def relay(do, pin):
     if do=="open":
         GPIO.output(pin, ON)
     else:
@@ -30,15 +25,22 @@ def getStatus(pin):
     #Devolver el estatus del pin pedido
     return False
 
-#def luz_2(do):
-#    if do=="open":
-#        GPIO.output(9, ON)
-#    else:
-#        GPIO.output(9, OFF)
-#
-#def luz_3(do):
-#    if do=="open":
-#        GPIO.output(10, ON)
-#    else:
-#        GPIO.output(10, OFF)
-#
+"""
+def puerta(do):
+    if do=="open":
+        GPIO.output(15, ON)
+    else:
+        GPIO.output(15, OFF)
+
+def luz_2(do):
+    if do=="open":
+        GPIO.output(9, ON)
+    else:
+        GPIO.output(9, OFF)
+
+def luz_3(do):
+    if do=="open":
+        GPIO.output(10, ON)
+    else:
+       GPIO.output(10, OFF)
+"""
