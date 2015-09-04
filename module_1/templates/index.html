@@ -10,7 +10,7 @@
                 <span class="card-title">Abrir y cerrar puerta</span>
                 <!-- Switch -->
                 {% for puerta in puertas %}
-                <a href="{% url 'onoff:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
+                <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
                 {% endfor %}
             </div>
         </div>
