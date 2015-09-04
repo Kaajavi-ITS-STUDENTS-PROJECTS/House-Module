@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
                        url(r'^$', 'module_1.views.index', name='index'),
-<<<<<<< HEAD
-                       url(r'^$', 'module_1.views.abrirPuerta', name='index'),
-                       url(r'login/', 'module_1.views.login_user', name='login'),
-=======
                        url(r'^$', 'module_1.views.abrirPuerta', name='abrir'),
->>>>>>> d0dff5b4999592ce2a0fc37e3b0b58dc759f78f1
-                       )
+                       url(r'login/', 'module_1.views.login_user', name='login'),
+                       url(r'^luz/(?P<id_luz>[0-9]+)/$', views.luz, name='luz'),
+                       url(r'^puerta/(?P<id_puerta>[0-9]+)/$', views.puerta, name='puerta'),
+                       url(r'^habitacion/(?P<id_habitacion>[0-9]+)/$', views.habitacion, name='habitacion'),
+                       url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', views.sanitario, name='sanitario'),
+                       url(r'^alarma/(?P<id_alarma>[0-9]+)/$', views.alarma, name='alarma'),
+                      )
