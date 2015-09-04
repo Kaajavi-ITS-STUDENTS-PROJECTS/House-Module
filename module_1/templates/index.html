@@ -9,14 +9,9 @@
             <div class="card-content white-text">
                 <span class="card-title">Abrir y cerrar puerta</span>
                 <!-- Switch -->
-                <div class="switch" id="puerta_switch">
-                    <label>
-                        Off
-                        <input type="checkbox">
-                        <span class="lever"></span>
-                        On
-                    </label>
-                </div>
+                {% for puerta in puertas %}
+                <a href="{% url 'onoff:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
+                {% endfor %}
             </div>
         </div>
     </div>
