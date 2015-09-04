@@ -6,7 +6,7 @@ def index(request):
     context = RequestContext(request)
     return render_to_response('index.html',
                               context)
-a=False
+a=True
 def abrirPuerta(request):
     if a:
         relay_functions.puerta("open")
