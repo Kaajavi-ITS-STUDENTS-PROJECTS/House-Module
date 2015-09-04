@@ -47,7 +47,10 @@ def login_user(request):
         return render_to_response('login.html',
                               context)
 
+
+
 a=True
+
 def abrirPuerta(request):
     if a:
         relay_functions.relay("open",15)
