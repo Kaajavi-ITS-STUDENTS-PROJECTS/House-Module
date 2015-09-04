@@ -20,8 +20,10 @@ def relay(do, pin):
         GPIO.output(pin, OFF)
 
 def getStatus(pin):
-    #Devolver el estatus del pin pedido
-    return False
+    if GPIO.input(pin)
+        return True
+    else:
+        return False
 
 #def luz_2(do):
 #    if do=="open":
