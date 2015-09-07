@@ -46,18 +46,19 @@ def luz(request, id_luz):
     context = RequestContext(request)
 ## Codigo para que prenda y apage la luz
 ##  
-    print "ahi viene"  
-    
-    if Usuario.objects.filter(id=request.user.id,permisos_luces=id_luz).__str__() != "[]":
-        print "TRUEEE"
-        luz = Luz.objects.get(id = id_luz)
-        if luz.status:
-            #relay_functions.luz("close",luz.pin)
-            luz.status = False
-        else:
-            #relay_functions.luz("open",luz.pin)
-            luz.status = True
-        luz.save()
+    print "ahi viene" 
+    lista_permitidos = Usuario.objects.filter(permisos_luces=id_luz)
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                luz = Luz.objects.get(id = id_luz)
+                if luz.status:
+                    #relay_functions.luz("close",luz.pin)
+                    luz.status = False
+                else:
+                    #relay_functions.luz("open",luz.pin)
+                    luz.status = True
+                luz.save()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
@@ -68,16 +69,19 @@ def luz(request, id_luz):
 def puerta(request, id_puerta):
     context = RequestContext(request)
     puerta = Puerta.objects.get(id = id_puerta)
-    if Usuario.objects.filter(id=request.user.id,permisos_puertas=id_puerta).__str__() != "[]":
-        print "TRUEEE"
-        if puerta.status:
-            relay_functions.puerta("close",puerta.pin)
-            puerta.status = False
-        else:
-            relay_functions.puerta("open",puerta.pin)
-            puerta.status = True
-        puerta.save()
-        time.sleep(10)
+    lista_permitidos = Usuario.objects.filter(permisos_puertas=id_puerta)
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                print "TRUEEE"
+                if puerta.status:
+                    relay_functions.puerta("close",puerta.pin)
+                    puerta.status = False
+                else:
+                    relay_functions.puerta("open",puerta.pin)
+                    puerta.status = True
+                puerta.save()
+                time.sleep(10)
     puerta = Puerta.objects.get(id = id_puerta)
     if puerta.status:
         ## Codigo para que cierra la puerta
@@ -115,18 +119,21 @@ def habitacion(request, id_habitacion):
     context = RequestContext(request)
     ##
     habitacion = Habitacion.objects.get(id = id_habitacion)
-    if Usuario.objects.filter(id=request.user.id,permisos_habitaciones=id_habitacion).__str__() != "[]":
-        print "TRUEEE"
-        if habitacion.status:
-            habitacion.status = False
-        else:
-            habitacion.status = True
-        luces = Luz.objects.filter(lugar_id = id_habitacion)
-        for luz in luces:
-            ##Codigo para que apage cada una de las luces del for 
-            luz.status = habitacion.status
-            luz.save()
-        habitacion.save()
+    lista_permitidos = Usuario.objects.filter(permisos_habitaciones=id_habitacion)
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                print "TRUEEE"
+                if habitacion.status:
+                    habitacion.status = False
+                else:
+                    habitacion.status = True
+                luces = Luz.objects.filter(lugar_id = id_habitacion)
+                for luz in luces:
+                    ##Codigo para que apage cada una de las luces del for 
+                    luz.status = habitacion.status
+                    luz.save()
+                habitacion.save()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()

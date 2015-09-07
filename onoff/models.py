@@ -75,3 +75,5 @@ class Usuario(models.Model):
     permisos_luces = models.ManyToManyField(Luz)
     permisos_puertas = models.ManyToManyField(Puerta)
     permisos_habitaciones = models.ManyToManyField(Habitacion)
+    def __str__(self):
+        return self.user.username
