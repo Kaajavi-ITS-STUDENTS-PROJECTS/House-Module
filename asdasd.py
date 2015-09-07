@@ -31,7 +31,6 @@ try:
     time.sleep(4);
     GPIO.output(10, ON)
     print "FOUR"
-    time.sleep(1);
     GPIO.cleanup()
     print "Good bye!"
     # End program cleanly with keyboard
