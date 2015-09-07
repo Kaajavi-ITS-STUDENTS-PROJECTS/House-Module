@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
+import relay_status
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma
 import time
-import relay_functions
 # Create your views here.
 
 def index(request):
@@ -23,15 +23,15 @@ def index(request):
         alarmas = Alarma.objects.all()
         for luz in luces:
             luz_aux= Luz.objects.get(id = luz.id)
-            luz_aux.status = relay_functions.getStatus(luz.pin)
+            luz_aux.status = relay_status.getStatus(luz.pin)
             luz_aux.save()
         for puerta in puertas:
             puerta_aux= Puerta.objects.get(id = puerta.id)
-            puerta_aux.status = relay_functions.getStatus(puerta.pin)
+            puerta_aux.status = relay_status.getStatus(puerta.pin)
             puerta_aux.save()
         for alarma in luces:
             alarma_aux= Luz.objects.get(id = alarma.id)
-            alarma_aux.status = relay_functions.getStatus(alarma.pin)
+            alarma_aux.status = relay_status.getStatus(alarma.pin)
             alarma_aux.save()
 
         luces = Luz.objects.all()
