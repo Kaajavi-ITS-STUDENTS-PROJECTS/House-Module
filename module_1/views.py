@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 import relay_functions
 from onoff.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
 from django.contrib.auth import authenticate
-#from django.contrib.auth.models import Userimport time
+import time
 # Create your views here.
 
 def index(request):
