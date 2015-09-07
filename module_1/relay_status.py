@@ -9,3 +9,4 @@ def getStatus(pin):
         return True
     else:
         return False
+    GPIO.cleanup()
