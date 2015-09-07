@@ -46,7 +46,7 @@ def luz(request, id_luz):
     context = RequestContext(request)
 ## Codigo para que prenda y apage la luz
 ##
-    if request.user.has_perm('onoff.prender_luz'):
+    if request.user.permisos_luces('onoff.prender_luz'):
         print "TRUEEE"
         luz = Luz.objects.get(id = id_luz)
         if luz.status:
