@@ -71,7 +71,7 @@ class Alarma(models.Model):
 
 
 class Usuario(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name="permisos")
     permisos_luces = models.ManyToManyField(Luz)
     permisos_puertas = models.ManyToManyField(Puerta)
     permisos_habitaciones = models.ManyToManyField(Habitacion)
