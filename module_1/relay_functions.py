@@ -14,7 +14,12 @@ for i in pinList:
     GPIO.output(i, OFF)
 
 def relay(do, pin):
+    GPIO.setmode(GPIO.BCM)
+    pinList = [15, 22, 9, 10]
     if do=="open":
+        GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, ON)
     else:
+        GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, OFF)
+    GPIO.cleanup()
