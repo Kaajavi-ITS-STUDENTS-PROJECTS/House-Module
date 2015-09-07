@@ -7,40 +7,46 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
+import relay_status
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma
 import time
 import relay_functions
 # Create your views here.
 
-def onoff(request):
-    context = RequestContext(request)
-    luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-    habitaciones = Habitacion.objects.all()
-    habitaciones = Habitacion.objects.all()
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
-    for luz in luces:
-        luz_aux= Luz.objects.get(id = luz.id)
-        luz_aux.status = relay_functions.getStatus(luz.pin)
-        luz_aux.save()
-    for puerta in puertas:
-        puerta_aux= Puerta.objects.get(id = puerta.id)
-        puerta_aux.status = relay_functions.getStatus(puerta.pin)
-        puerta_aux.save()
-    for alarma in luces:
-        alarma_aux= Luz.objects.get(id = alarma.id)
-        alarma_aux.status = relay_functions.getStatus(alarma.pin)
-        alarma_aux.save()
+def index(request):
+    if request.user.is_authenticated():
+        context = RequestContext(request)
+        luces = Luz.objects.all()
+        puertas = Puerta.objects.all()
+        habitaciones = Habitacion.objects.all()
+        habitaciones = Habitacion.objects.all()
+        sanitarios = Sanitario.objects.all()
+        alarmas = Alarma.objects.all()
+        for luz in luces:
+            luz_aux= Luz.objects.get(id = luz.id)
+            luz_aux.status = relay_status.getStatus(luz.pin)
+            luz_aux.save()
+        for puerta in puertas:
+            puerta_aux= Puerta.objects.get(id = puerta.id)
+            puerta_aux.status = relay_status.getStatus(puerta.pin)
+            puerta_aux.save()
+        for alarma in luces:
+            alarma_aux= Luz.objects.get(id = alarma.id)
+            alarma_aux.status = relay_status.getStatus(alarma.pin)
+            alarma_aux.save()
 
-    luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-    habitaciones = Habitacion.objects.all()
-    habitaciones = Habitacion.objects.all()
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
+        luces = Luz.objects.all()
+        puertas = Puerta.objects.all()
+        habitaciones = Habitacion.objects.all()
+        habitaciones = Habitacion.objects.all()
+        sanitarios = Sanitario.objects.all()
+        alarmas = Alarma.objects.all()
 
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+        return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    else:
+        context = RequestContext(request)
+        return render_to_response('login.html',
+                              context)
 
 def luz(request, id_luz):
     context = RequestContext(request)
@@ -143,18 +149,6 @@ def alarma(request, id_alarma):
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
-
-
-def index(request):
-    if request.user.is_authenticated():
-        context = RequestContext(request)
-        return render_to_response('index.html',
-                              context)
-
-    else:
-        context = RequestContext(request)
-        return render_to_response('login.html',
-                              context)
 
 @requires_csrf_token
 def login_user(request):
