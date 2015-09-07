@@ -42,6 +42,25 @@ def onoff(request):
 
     return render_to_response('onoff.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
 
+
+
+
+def lista_compras(request):
+    context = RequestContext(request)
+    return render_to_response('lista_compras.html',{},context)
+
+
+
+
+
+
+
+
+
+
+
+
+
 def luz(request, id_luz):
     context = RequestContext(request)
 ## Codigo para que prenda y apage la luz

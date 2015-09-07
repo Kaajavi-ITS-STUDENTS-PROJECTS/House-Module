@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^habitacion/(?P<id_habitacion>[0-9]+)/$', views.habitacion, name='habitacion'),
     url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', views.sanitario, name='sanitario'),
     url(r'^alarma/(?P<id_alarma>[0-9]+)/$', views.alarma, name='alarma'),
+    url(r'^listacompras/$', views.lista_compras, name='listacompras'),
 ]
