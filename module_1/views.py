@@ -91,7 +91,8 @@ def puerta(request, id_puerta):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    """return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return redirect("/")
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
