@@ -56,10 +56,8 @@ def luz(request, id_luz):
                 luz = Luz.objects.get(id = id_luz)
                 if luz.status:
                     relay_functions.relay("close",luz.pin)
-                    luz.status = False
                 else:
                     relay_functions.relay("open",luz.pin)
-                    luz.status = True
                 luz.save()
     """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
@@ -79,10 +77,8 @@ def puerta(request, id_puerta):
                 print "TRUEEE"
                 if puerta.status:
                     relay_functions.relay("close",puerta.pin)
-                    puerta.status = False
                 else:
                     relay_functions.relay("open",puerta.pin)
-                    puerta.status = True
                 puerta.save()
                 time.sleep(10)
     puerta = Puerta.objects.get(id = id_puerta)
