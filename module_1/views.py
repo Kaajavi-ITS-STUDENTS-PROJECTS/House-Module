@@ -18,7 +18,6 @@ def index(request):
         luces = Luz.objects.all()
         puertas = Puerta.objects.all()
         habitaciones = Habitacion.objects.all()
-        habitaciones = Habitacion.objects.all()
         sanitarios = Sanitario.objects.all()
         alarmas = Alarma.objects.all()
         for luz in luces:
@@ -36,7 +35,6 @@ def index(request):
 
         luces = Luz.objects.all()
         puertas = Puerta.objects.all()
-        habitaciones = Habitacion.objects.all()
         habitaciones = Habitacion.objects.all()
         sanitarios = Sanitario.objects.all()
         alarmas = Alarma.objects.all()
@@ -63,12 +61,13 @@ def luz(request, id_luz):
                     relay_functions.relay("open",luz.pin)
                     luz.status = True
                 luz.save()
-    luces = Luz.objects.all()
+    """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return redirect("/")
 
 def puerta(request, id_puerta):
     context = RequestContext(request)
@@ -96,12 +95,12 @@ def puerta(request, id_puerta):
         ##
         puerta.status = True
     puerta.save()
-    luces = Luz.objects.all()
+    """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    """return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
     return redirect("/")
 
 def sanitario(request, id_sanitario):
@@ -112,12 +111,13 @@ def sanitario(request, id_sanitario):
     else:
         sanitario.ocupado = True
     sanitario.save()
-    luces = Luz.objects.all()
+    """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return redirect("/")
 
 
 def habitacion(request, id_habitacion):
@@ -140,12 +140,13 @@ def habitacion(request, id_habitacion):
         luz.save()
 
     habitacion.save()
-    luces = Luz.objects.all()
+    """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return redirect("/")
 
 
 def alarma(request, id_alarma):
@@ -155,12 +156,13 @@ def alarma(request, id_alarma):
     alarma = Alarma.objects.get(id = id_alarma)
     ##Todo para que suene y etc
     alarma.save()
-    luces = Luz.objects.all()
+    """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return redirect("/")
 
 @requires_csrf_token
 def login_user(request):
