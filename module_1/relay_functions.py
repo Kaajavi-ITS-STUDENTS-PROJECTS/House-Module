@@ -15,7 +15,9 @@ for i in pinList:
 
 def relay(do, pin):
     if do=="open":
+        GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, ON)
     else:
+        GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, OFF)
     GPIO.cleanup()
