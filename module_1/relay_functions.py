@@ -11,8 +11,8 @@ GPIO.setmode(GPIO.BCM)
 pinList = [15, 22, 9, 10]
 for i in pinList:
     GPIO.setup(i, GPIO.OUT)
-    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.output(i, OFF)
+    GPIO.setup(i, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def relay(do, pin):
     if do=="open":
