@@ -9,6 +9,7 @@
             <div class="card-content white-text">
                 <span class="card-title">Abrir y cerrar puerta</span>
                 <!-- Switch -->
+                <br>
                 Luces:<br>
                 {% for luz in luces %}
                 <a href="{% url 'onoff:luz' luz.id %}">{{luz.nombre}}            {{luz.status}}</a><br>
