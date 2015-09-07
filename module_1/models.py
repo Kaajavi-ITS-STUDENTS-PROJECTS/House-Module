@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Habitacion(models.Model):
@@ -15,30 +17,33 @@ class Habitacion(models.Model):
         return self.nombre
 
 
-
+            
 class Luz(models.Model):
     class Meta:
         verbose_name = "Luz"
         verbose_name_plural = "Luces"
-
+        permissions = (
+            ("prender_luz", "Puede prender luz"),
+        )
+    
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
     pin = models.IntegerField(u'Pin', default=1)
     lugar = models.ForeignKey(Habitacion)
-
+    
     def __str__(self):
         return self.nombre
 
 class Puerta(models.Model):
     class Meta:
         verbose_name = "Puerta"
-        verbose_name_plural = "Puertas	"
-
+        verbose_name_plural = "Puertas  "
+    
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
     pin = models.IntegerField(u'Pin', default=1)
     lugar = models.ForeignKey(Habitacion)
-
+    
     def __str__(self):
         return self.nombre
 
@@ -46,9 +51,9 @@ class Sanitario(Habitacion):
     class Meta:
         verbose_name = "Sanitario"
         verbose_name_plural = "Sanitarios"
-
+    
     ocupado = models.BooleanField(u'Ocupado', default=False)
-
+    
     def __str__(self):
         return self.nombre
 
@@ -56,10 +61,19 @@ class Alarma(models.Model):
     class Meta:
         verbose_name = "Alarma"
         verbose_name_plural = "Alarmas"
-
+    
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
     pin = models.IntegerField(u'Pin', default=1)
-
+    
     def __str__(self):
         return self.nombre
+
+
+class Usuario(models.Model):
+    user = models.OneToOneField(User)
+    permisos_luces = models.ManyToManyField(Luz)
+    permisos_puertas = models.ManyToManyField(Puerta)
+    permisos_habitaciones = models.ManyToManyField(Habitacion)
+    def __str__(self):
+        return self.user.username

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Habitacion(models.Model):
@@ -20,6 +22,9 @@ class Luz(models.Model):
     class Meta:
         verbose_name = "Luz"
         verbose_name_plural = "Luces"
+        permissions = (
+            ("prender_luz", "Puede prender luz"),
+        )
     
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
@@ -64,3 +69,11 @@ class Alarma(models.Model):
     def __str__(self):
         return self.nombre
 
+
+class Usuario(models.Model):
+    user = models.OneToOneField(User)
+    permisos_luces = models.ManyToManyField(Luz)
+    permisos_puertas = models.ManyToManyField(Puerta)
+    permisos_habitaciones = models.ManyToManyField(Habitacion)
+    def __str__(self):
+        return self.user.username
