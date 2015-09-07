@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from onoff.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
+from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
 from django.contrib.auth import authenticate
 import time
 # Create your views here.
