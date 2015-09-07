@@ -8,7 +8,6 @@
         <div class="card brown lighten-2">
             <div class="card-content white-text">
                 <span class="card-title">Abrir y cerrar puerta</span>
-                <!-- Switch -->
                 <br>
                 <!--Luces:<br>
                 {% for luz in luces %}
@@ -20,10 +19,6 @@
                 <!--<br>Habitaciones<br>
                 {% for habitacion in habitaciones %}
                 <a href="{% url 'onoff:habitacion' habitacion.id %}">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
-                {% endfor %}
-                <br>Baños<br>
-                {% for sanitario in sanitarios %}
-                <a href="{% url 'onoff:sanitario' sanitario.id %}">{{sanitario.nombre}}         Ocupado :   {{sanitario.ocupado}}<br></a>
                 {% endfor %}
                 <br>Alarmas<br>
                 {% for alarma in alarmas %}

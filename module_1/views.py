@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, redirect
 from django.template import RequestContext
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import requires_csrf_token
@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from onoff.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
+from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import Userimport time
+import time
 # Create your views here.
 
 def index(request):
@@ -101,7 +101,8 @@ def puerta(request, id_puerta):
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+    """return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
+    return redirect("/")
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
