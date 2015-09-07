@@ -5,7 +5,7 @@ def getStatus(pin):
     pinList = [15, 22, 9, 10]
     GPIO.setup(pin, GPIO.IN)
     if GPIO.input(pin):
-        return True
-    else:
         return False
+    else:
+        return True
     GPIO.cleanup()
