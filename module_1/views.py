@@ -56,10 +56,8 @@ def luz(request, id_luz):
                 luz = Luz.objects.get(id = id_luz)
                 if luz.status:
                     relay_functions.relay("close",luz.pin)
-                    luz.status = False
                 else:
                     relay_functions.relay("open",luz.pin)
-                    luz.status = True
                 luz.save()
     """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
@@ -67,7 +65,7 @@ def luz(request, id_luz):
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return redirect("/")
+    return redirect('/')
 
 def puerta(request, id_puerta):
     context = RequestContext(request)
@@ -79,10 +77,8 @@ def puerta(request, id_puerta):
                 print "TRUEEE"
                 if puerta.status:
                     relay_functions.relay("close",puerta.pin)
-                    puerta.status = False
                 else:
                     relay_functions.relay("open",puerta.pin)
-                    puerta.status = True
                 puerta.save()
                 time.sleep(10)
     puerta = Puerta.objects.get(id = id_puerta)
@@ -101,7 +97,7 @@ def puerta(request, id_puerta):
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return redirect("/")
+    return redirect('/')
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
@@ -117,7 +113,7 @@ def sanitario(request, id_sanitario):
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return redirect("/")
+    return redirect('/')
 
 
 def habitacion(request, id_habitacion):
@@ -146,7 +142,7 @@ def habitacion(request, id_habitacion):
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return redirect("/")
+    return redirect('/')
 
 
 def alarma(request, id_alarma):
