@@ -8,9 +8,22 @@
         <div class="card brown lighten-2">
             <div class="card-content white-text">
                 <span class="card-title">Abrir y cerrar puerta</span>
+                <br>
+                <!--Luces:<br>
+                {% for luz in luces %}
+                <a href="{% url 'onoff:luz' luz.id %}">{{luz.nombre}}            {{luz.status}}</a><br>
+                {% endfor %}-->
                 {% for puerta in puertas %}
                 <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
                 {% endfor %}
+                <!--<br>Habitaciones<br>
+                {% for habitacion in habitaciones %}
+                <a href="{% url 'onoff:habitacion' habitacion.id %}">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
+                {% endfor %}
+                <br>Alarmas<br>
+                {% for alarma in alarmas %}
+                <a href="{% url 'onoff:alarma' alarma.id %}">{{alarma.nombre}}        {{alarma.status}}<br></a>
+                {% endfor %}-->
             </div>
         </div>
     </div>
