@@ -4,36 +4,55 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col s10 m5 offset-s1 offset-m1">
+    <div class="col s10 m3">
         <div class="card brown lighten-2">
             <div class="card-content white-text">
-                <span class="card-title">Abrir y cerrar puerta</span>
+                <span class="card-title">Habitaciones</span>
                 <br>
-                <!--Luces:<br>
-                {% for luz in luces %}
-                <a href="{% url 'onoff:luz' luz.id %}">{{luz.nombre}}            {{luz.status}}</a><br>
-                {% endfor %}-->
-                {% for puerta in puertas %}
-                <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
-                {% endfor %}
-                <!--<br>Habitaciones<br>
+
                 {% for habitacion in habitaciones %}
-                <a href="{% url 'onoff:habitacion' habitacion.id %}">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
+                <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
                 {% endfor %}
-                <br>Alarmas<br>
-                {% for alarma in alarmas %}
-                <a href="{% url 'onoff:alarma' alarma.id %}">{{alarma.nombre}}        {{alarma.status}}<br></a>
-                {% endfor %}-->
+
             </div>
         </div>
     </div>
-    <div class="col s10 m5 offset-s1">
+    <div class="col s10 m3">
         <div class="card brown lighten-2">
             <div class="card-content white-text">
-                <span class="card-title">Título</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam est nisi, pretium a ullamcorper quis, laoreet eu elit. Morbi magna sem, semper in fermentum ac, rutrum a lorem. Curabitur commodo, est et feugiat bibendum, ex enim auctor odio, vitae rhoncus nibh elit in nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec laoreet mollis interdum. Maecenas fringilla ex pharetra egestas fringilla. Fusce venenatis sem id porttitor eleifend. Curabitur non faucibus libero, malesuada eleifend risus. Aliquam lacinia eget purus ut blandit. Quisque pharetra, sem ac tempor maximus, diam turpis varius nibh, sed aliquam lorem odio at orci. 
-                </p>
+                <span class="card-title">Puertas</span>
+                <br>
+
+                {% for puerta in puertas %}
+                <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="col s10 m3">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text">
+                <span class="card-title">Luces</span>
+                <br>
+
+                {% for luz in luces %}
+                <a href="{% url 'module_1:luz' luz.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{luz.nombre}}          {{luz.status}}</a><br>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="col s10 m3">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text">
+                <span class="card-title">Alarmas</span>
+                <br>
+
+                {% for alarma in alarmas %}
+                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{alarma.nombre}}        {{alarma.status}}<br></a>
+                {% endfor %}
+
             </div>
         </div>
     </div>

@@ -1,9 +1,14 @@
-  body {
+.input-field input[type=text]:focus, .input-field textarea.materialize-textarea:focus, .input-field input[type=password]:focus, .input-field input[type=email]:focus {
+    border-bottom: 1px solid #EF5350;
+    box-shadow: 0 1px 0 0 #EF5350;
+}
+
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
+}
 
-  main {
+main {
     flex: 1 0 auto;
-  }
+}

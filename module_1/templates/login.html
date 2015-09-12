@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block titulo %}
-<title>Inicio</title>
+<title>Log-In</title>
 {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="card brown lighten-2">
+    <div class="card brown lighten-2 col l4 m6 s8 offset-l4 offset-m3 offset-s2">
         <form action="{% url 'module_1:login' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="container">
                 <div class="input-field">
-                    <input placeholder="Nombre de usuario" maxlength="30" name="username" id="id_username" type="text" value="">
+                    <input class="white-text" placeholder="Nombre de usuario" maxlength="30" name="username" id="id_username" type="text" value="">
                 </div>
                 <div class="input-field">
-                    <input placeholder="Contraseña" name="password" id="id_password1" type="password" class="validate" value="">
+                    <input class="white-text" placeholder="Contraseña" name="password" id="id_password1" type="password" class="validate" value="">
                 </div>
                 <div class="right-align">
                     <button class="card-panel red lighten-1 waves-effect waves-orange btn-large" id="log-in" type="submit">
