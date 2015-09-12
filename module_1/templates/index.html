@@ -7,39 +7,30 @@
     <div class="col s10 m3">
         <div class="card brown lighten-2">
             <div class="card-content white-text">
-                <span class="card-title">Habitaciones</span>
+                <span id="habitaciones" class="card-title">Habitaciones</span>
                 <br>
-
-                {% for habitacion in habitaciones %}
-                <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
-                {% endfor %}
-
+                {% include "habitaciones.html" %}
+                
             </div>
         </div>
     </div>
     <div class="col s10 m3">
         <div class="card brown lighten-2">
             <div class="card-content white-text">
-                <span class="card-title">Puertas</span>
+                <span id="puertas" class="card-title">Puertas</span>
                 <br>
 
-                {% for puerta in puertas %}
-                <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
-                {% endfor %}
-
+                {% include "puertas.html" %}
             </div>
         </div>
     </div>
     <div class="col s10 m3">
         <div class="card brown lighten-2">
             <div class="card-content white-text">
-                <span class="card-title">Luces</span>
+                <span id="luces" class="card-title">Luces</span>
                 <br>
 
-                {% for luz in luces %}
-                <a href="{% url 'module_1:luz' luz.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{luz.nombre}}          {{luz.status}}</a><br>
-                {% endfor %}
-
+                {% include "luces.html" %}
             </div>
         </div>
     </div>
@@ -60,5 +51,56 @@
 {% endblock %}
 {% block scripts %}
 <script>
+    function habitacion(habitacion_id){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:habitacion_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:habitacion' %}",
+            data: data,
+            success:function(result){
+                $("#habitaciones").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
+    function luz(luz_id){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:luz_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:luz' %}",
+            data: data,
+            success:function(result){
+                $("#luces").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
+    function puerta(puerta_id){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:puerta_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:puerta' %}",
+            data: data,
+            success:function(result){
+                $("#puertas").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
 </script>
 {% endblock %}

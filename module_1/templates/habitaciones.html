@@ -1,0 +1,4 @@
+{% load staticfiles %}
+{% for habitacion in habitaciones %}
+                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
+{% endfor %}
