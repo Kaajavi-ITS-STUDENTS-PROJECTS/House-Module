@@ -8,9 +8,13 @@
                 <div name="puerta">
                     {% include "puertas.html" %}
                 </div>
-                <div name="luz">
+                {% for luz in luces %}
+                {% if luz.lugar == habitacion %}
+                <div id="luz {{luz.id}}">
                     {% include "luces.html" %}
                 </div>
+                {% endif %}
+                {% endfor %}
                 {% if habitacion.status %}
                 <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
                 {% else %}

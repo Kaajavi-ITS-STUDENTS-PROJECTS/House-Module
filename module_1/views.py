@@ -65,14 +65,13 @@ def luz(request):
             luz_aux= Luz.objects.get(id = luz.id)
             luz_aux.status = relay_functions.getStatus(luz.pin)
             luz_aux.save()
-    luces = Luz.objects.all()
     """
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return render_to_response('luces.html',{'luces':luces}, context)
+    return render_to_response('luces.html',{'luz':luz}, context)
 
 
 def puerta(request):
