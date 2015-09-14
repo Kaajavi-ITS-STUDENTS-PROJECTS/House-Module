@@ -4,58 +4,103 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-    {% for habitacion in habitaciones %}
-    <div class="card brown col s10 m10 l4">
-        <div class="card-content white-text center ">
-            <h4 class="card-title ">{{habitacion.nombre}}</h4>
-            <br>
-            {% for puerta in puertas %}
-            {% if puerta.releted_model==habitacion.id %}
-            {% if puerta.status %}
-            <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large  col s12">cerrar {{puerta.nombre}}<br></a>
-            {% else %}
-            <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">abrir {{puerta.nombre}}<br></a>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            <br>
+    <div class="col s10 m3">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text">
+                <span id="habitaciones" class="card-title">Habitaciones</span>
+                <br>
+                {% include "habitaciones.html" %}
 
-            {% for luz in luces %}
-            {% if luz.lugar==habitacion.id %}
-            {% if luz.status %}
-            <a href="{% url 'module_1:luz' luz.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">apagar {{luz.nombre}}<br></a>
-            {% else %}
-            <a href="{% url 'module_1:luz' luz.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">prender {{luz.nombre}}<br></a>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            <br>
-
-
-            {% for alarma in alarmas %}
-            {% if alarma.lugar==habitacion.id %}
-            {% if alarma.status %}
-            <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">apagar {{alarma.nombre}}<br></a>
-            {% else %}
-            <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">prender {{alarma.nombre}}<br></a>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            <br>
-
-            {% if habitacion.status %}
-            <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">Todo {{habitacion.nombre}}<br></a>
-            {% else %}
-            <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">Todo {{habitacion.nombre}}<br></a>
-            {% endif %}
-
-
+            </div>
         </div>
     </div>
-    {% endfor %}
+    <div class="col s10 m3">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text">
+                <span id="puertas" class="card-title">Puertas</span>
+                <br>
+
+                {% include "puertas.html" %}
+            </div>
+        </div>
+    </div>
+    <div class="col s10 m3">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text">
+                <span id="luces" class="card-title">Luces</span>
+                <br>
+
+                {% include "luces.html" %}
+            </div>
+        </div>
+    </div   >
+    <div class="col s10 m3">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text">
+                <span class="card-title">Alarmas</span>
+                <br>
+
+                {% for alarma in alarmas %}
+                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{alarma.nombre}}        {{alarma.status}}<br></a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 {% block scripts %}
 <script>
+    function habitacion(habitacion_id){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:habitacion_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:habitacion' %}",
+            data: data,
+            success:function(result){
+                $("#habitaciones").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
+    function luz(luz_id){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:luz_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:luz' %}",
+            data: data,
+            success:function(result){
+                $("#luces").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
+    function puerta(puerta_id){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:puerta_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:puerta' %}",
+            data: data,
+            success:function(result){
+                $("#puertas").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
 </script>
 {% endblock %}

@@ -1,0 +1,4 @@
+{% load staticfiles %}
+{% for luz in luces %}
+                <a onclick="luz(this.id)" id="{{luz.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{luz.nombre}}          {{luz.status}}</a><br>
+{% endfor %}
