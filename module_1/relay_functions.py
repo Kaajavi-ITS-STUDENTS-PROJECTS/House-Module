@@ -13,6 +13,7 @@ GPIO.setup(pinList, GPIO.IN)
 
 def relay(do, pin):
     GPIO.setup(pin, GPIO.OUT)
+    print(do)
     if do=="open":
         GPIO.output(pin, ON)
     else:
