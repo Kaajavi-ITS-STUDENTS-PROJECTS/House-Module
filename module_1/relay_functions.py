@@ -7,6 +7,7 @@ ON = GPIO.LOW
 OFF = GPIO.HIGH
 
 # init de los pins
+GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 pinList = [15, 22, 9, 10]
 for i in pinList:
