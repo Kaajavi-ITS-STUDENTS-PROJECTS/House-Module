@@ -4,58 +4,55 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col s10 m3">
-        <div class="card brown lighten-2">
-            <div class="card-content white-text">
-                <span class="card-title">Habitaciones</span>
-                <br>
+    {% for habitacion in habitaciones %}
+    <div class="card brown col s10 m10 l4">
+        <div class="card-content white-text center ">
+            <h4 class="card-title ">{{habitacion.nombre}}</h4>
+            <br>
+            {% for puerta in puertas %}
+            {% if puerta.releted_model==habitacion.id %}
+            {% if puerta.status %}
+            <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large  col s12">cerrar {{puerta.nombre}}<br></a>
+            {% else %}
+            <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">abrir {{puerta.nombre}}<br></a>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <br>
 
-                {% for habitacion in habitaciones %}
-                <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
-                {% endfor %}
+            {% for luz in luces %}
+            {% if luz.lugar==habitacion.id %}
+            {% if luz.status %}
+            <a href="{% url 'module_1:luz' luz.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">apagar {{luz.nombre}}<br></a>
+            {% else %}
+            <a href="{% url 'module_1:luz' luz.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">prender {{luz.nombre}}<br></a>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <br>
 
-            </div>
+
+            {% for alarma in alarmas %}
+            {% if alarma.lugar==habitacion.id %}
+            {% if alarma.status %}
+            <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">apagar {{alarma.nombre}}<br></a>
+            {% else %}
+            <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">prender {{alarma.nombre}}<br></a>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <br>
+
+            {% if habitacion.status %}
+            <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">Todo {{habitacion.nombre}}<br></a>
+            {% else %}
+            <a href="{% url 'module_1:habitacion' habitacion.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">Todo {{habitacion.nombre}}<br></a>
+            {% endif %}
+
+
         </div>
     </div>
-    <div class="col s10 m3">
-        <div class="card brown lighten-2">
-            <div class="card-content white-text">
-                <span class="card-title">Puertas</span>
-                <br>
-
-                {% for puerta in puertas %}
-                <a href="{% url 'module_1:puerta' puerta.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
-    <div class="col s10 m3">
-        <div class="card brown lighten-2">
-            <div class="card-content white-text">
-                <span class="card-title">Luces</span>
-                <br>
-
-                {% for luz in luces %}
-                <a href="{% url 'module_1:luz' luz.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{luz.nombre}}          {{luz.status}}</a><br>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
-    <div class="col s10 m3">
-        <div class="card brown lighten-2">
-            <div class="card-content white-text">
-                <span class="card-title">Alarmas</span>
-                <br>
-
-                {% for alarma in alarmas %}
-                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{alarma.nombre}}        {{alarma.status}}<br></a>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}
 {% block scripts %}
