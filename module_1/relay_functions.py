@@ -21,6 +21,7 @@ def relay(do, pin):
         GPIO.output(pin, OFF)
 
 def getStatus(pin):
+    GPIO.setup(i, GPIO.IN)
     if GPIO.input(pin):
         return True
     else:
