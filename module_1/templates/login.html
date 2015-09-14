@@ -6,7 +6,6 @@
 <div class="row">
     <div class="card brown lighten-2 col l4 m6 s8 offset-l4 offset-m3 offset-s2">
         <form action="{% url 'module_1:login' %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
             <div class="container">
                 <div class="input-field">
                     <input class="white-text" placeholder="Nombre de usuario" maxlength="30" name="username" id="id_username" type="text" value="">

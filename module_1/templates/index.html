@@ -54,7 +54,7 @@
             url: "{% url 'module_1:luz' %}",
             data: data,
             success:function(result){
-                $('div[name=habitacion]').html(result);
+                $('div[name=luz]').html(result);
             },
             error: function(e){
                 console.log(e.responseText);
@@ -71,7 +71,7 @@
             url: "{% url 'module_1:puerta' %}",
             data: data,
             success:function(result){
-                $('div[name=habitacion]').html(result);
+                $('div[name=puerta]').html(result);
             },
             error: function(e){
                 console.log(e.responseText);
