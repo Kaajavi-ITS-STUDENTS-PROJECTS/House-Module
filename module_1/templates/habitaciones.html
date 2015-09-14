@@ -1,4 +1,23 @@
 {% load staticfiles %}
-{% for habitacion in habitaciones %}
-                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{habitacion.nombre}}          {{habitacion.status}}<br></a>
-{% endfor %}
+<div name="habitacion">
+    {% for habitacion in habitaciones %}
+    <div class="col s10 m4">
+        <div class="card brown lighten-2">
+            <div class="card-content white-text center">
+                <h4 class="card-title">{{habitacion.nombre}}</h4>
+                <div name="puerta">
+                    {% include "puertas.html" %}
+                </div>
+                <div name="luz">
+                    {% include "luces.html" %}
+                </div>
+                {% if habitacion.status %}
+                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
+                {% else %}
+                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

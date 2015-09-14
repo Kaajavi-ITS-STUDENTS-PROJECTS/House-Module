@@ -1,4 +1,10 @@
 {% load staticfiles %}
 {% for puerta in puertas %}
-                <a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{puerta.nombre}}          {{puerta.status}}</a><br>
+    {% if puerta.lugar == habitacion %}
+            {% if puerta.status %}
+                <a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">Cerrar {{puerta.nombre}} </a><br>
+            {% else %}
+                <a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">Abrir {{puerta.nombre}} </a><br>
+            {% endif %}
+    {% endif %}
 {% endfor %}

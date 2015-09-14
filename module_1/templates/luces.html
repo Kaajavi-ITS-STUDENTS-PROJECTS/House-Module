@@ -1,4 +1,10 @@
 {% load staticfiles %}
 {% for luz in luces %}
-                <a onclick="luz(this.id)" id="{{luz.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large">{{luz.nombre}}          {{luz.status}}</a><br>
+    {% if luz.lugar == habitacion %}
+        {% if luz.status %}
+            <a onclick="luz(this.id)" id="{{luz.id}}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">Apagar    {{luz.nombre}}</a><br>
+        {% else %}
+            <a onclick="luz(this.id)" id="{{luz.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">Prender {{luz.nombre}}</a><br>
+        {% endif %}
+    {% endif %}
 {% endfor %}

@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-import relay_functions
+#import relay_functions
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
 from django.contrib.auth import authenticate
 import time
@@ -54,8 +54,10 @@ def luz(request):
             if permitido.user.id == request.user.id:
                 luz = Luz.objects.get(id = id)
                 if luz.status:
+                    luz.status=False
                     relay_functions.relay("close",luz.pin)
                 else:
+                    luz.status=True
                     relay_functions.relay("open",luz.pin)
                 luz.save()
     luces = Luz.objects.all()
@@ -83,8 +85,10 @@ def puerta(request):
             if permitido.user.id == request.user.id:
                 print "TRUEEE"
                 if puerta.status:
+                    puerta.status = False
                     relay_functions.relay("close",puerta.pin)
                 else:
+                    puerta.status = True
                     relay_functions.relay("open",puerta.pin)
                 puerta.save()
     puertas = Puerta.objects.all()
@@ -139,13 +143,15 @@ def habitacion(request):
 
     habitacion.save()
     habitaciones = Habitacion.objects.all()
+    luces = Luz.objects.all()
+    puertas = Puerta.objects.all()
     """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
 
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return render_to_response('habitaciones.html',{'habitaciones':habitaciones}, context)
+    return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones}, context)
 
 
 def alarma(request, id_alarma):
