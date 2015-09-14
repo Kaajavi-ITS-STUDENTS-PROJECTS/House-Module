@@ -19,11 +19,9 @@ def relay(do, pin):
         GPIO.output(pin, ON)
     else:
         GPIO.output(pin, OFF)
-    GPIO.cleanup()
 
 def getStatus(pin):
     if GPIO.input(pin):
         return True
     else:
         return False
-    GPIO.cleanup()
