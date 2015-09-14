@@ -12,14 +12,14 @@ GPIO.setup(pinList, GPIO.OUT, initial=OFF)
 GPIO.setup(pinList, GPIO.IN)
 
 def relay(do, pin):
-    GPIO.setup(pinList, GPIO.OUT, initial=OFF)
+    GPIO.setup(pin, GPIO.OUT)
     if do=="open":
         GPIO.output(pin, ON)
     else:
         GPIO.output(pin, OFF)
 
 def getStatus(pin):
-    GPIO.setup(pinList, GPIO.IN)
+    GPIO.setup(pin, GPIO.IN)
     if GPIO.input(pin):
         return True
     else:
