@@ -87,17 +87,6 @@ def puerta(request):
                 else:
                     relay_functions.relay("open",puerta.pin)
                 puerta.save()
-                time.sleep(10)
-    puerta = Puerta.objects.get(id = id)
-    if puerta.status:
-        ## Codigo para que cierra la puerta
-        ##
-        puerta.status = False
-    else:
-        ## Codigo para que abra la puerta
-        ##
-        puerta.status = True
-    puerta.save()
     puertas = Puerta.objects.all()
     for puerta in puertas:
             puerta_aux= Puerta.objects.get(id = puerta.id)
