@@ -91,10 +91,12 @@ def puerta(request):
                     puerta.status = True
                     relay_functions.relay("open",puerta.pin)
                 puerta.save()
+                print puerta.status
     puertas = Puerta.objects.all()
     for puerta in puertas:
             puerta_aux= Puerta.objects.get(id = puerta.id)
             puerta_aux.status = relay_functions.getStatus(puerta.pin)
+            print puerta_aux.status
             puerta_aux.save()
     puertas = Puerta.objects.all()
     """luces = Luz.objects.all()
