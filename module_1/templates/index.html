@@ -74,7 +74,7 @@
             data: data,
             success:function(result){
                 console.log(result);
-                $("#puerta-"puerta_id).html(result);
+                $("#puerta-"+puerta_id).html(result);
             },
             error: function(e){
                 console.log(e.responseText);
