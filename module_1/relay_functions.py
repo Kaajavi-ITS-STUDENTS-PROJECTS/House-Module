@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 
 def setting_pines():
-    print "Settings pinout"
+    print("Settings pinout")
     # reinvertir la programacion
     ON = GPIO.LOW
     OFF = GPIO.HIGH
