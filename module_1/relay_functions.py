@@ -1,15 +1,17 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
 
-# reinvertir la programacion
-ON = GPIO.LOW
-OFF = GPIO.HIGH
+def setting_pines():
+    print "Settings pinout"
+    # reinvertir la programacion
+    ON = GPIO.LOW
+    OFF = GPIO.HIGH
 
-# init de los pins
-GPIO.setmode(GPIO.BCM)
-pinList = [15, 22, 9, 10]
-GPIO.setup(pinList, GPIO.OUT, initial=OFF)
-GPIO.setup(pinList, GPIO.IN)
+    # init de los pins
+    GPIO.setmode(GPIO.BCM)
+    pinList = [15, 22, 9, 10]
+    GPIO.setup(pinList, GPIO.OUT, initial=OFF)
+    GPIO.setup(pinList, GPIO.IN)
 
 def relay(do, pin):
     GPIO.setup(pin, GPIO.OUT)

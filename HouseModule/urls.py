@@ -19,6 +19,7 @@ from HouseModule import settings
 from django.conf.urls.static import static
 from django.conf import settings
 
+from relay_functions import setting_pines
 
 urlpatterns = [
     url(r'^onoff/', include('onoff.urls', namespace = "onoff")),
@@ -27,3 +28,6 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+
+
+setting_pines()
