@@ -20,9 +20,9 @@
                 {% endif %}
                 {% endfor %}
                 {% if habitacion.status %}
-                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green lighten-1 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
+                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
                 {% else %}
-                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red lighten-1 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
+                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
                 {% endif %}
             </div>
         </div>
