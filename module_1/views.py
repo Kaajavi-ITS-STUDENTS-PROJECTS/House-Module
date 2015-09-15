@@ -86,7 +86,7 @@ def puerta(request):
                 if puerta.status:
                     puerta.status = False
                     print puerta.status
-                    relay_functions.relay("open",puerta.pin)
+                    relay_functions.relay("close",puerta.pin)
                 else:
                     puerta.status = True
                     relay_functions.relay("open",puerta.pin)
@@ -105,7 +105,7 @@ def puerta(request):
     sanitarios = Sanitario.objects.all()
     alarmas = Alarma.objects.all()
     return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
-    return render_to_response('puertas.html',{'puertas':puertas}, context)
+    return render_to_response('puertas.html',{'puerta':puerta}, context)
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
