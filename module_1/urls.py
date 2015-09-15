@@ -6,5 +6,6 @@ urlpatterns = patterns('',
                        url(r'^puerta/$', 'module_1.views.puerta', name='puerta'),
                        url(r'^habitacion/$', 'module_1.views.habitacion', name='habitacion'),
                        url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', 'module_1.views.sanitario', name='sanitario'),
+                       url(r'logout/', 'module_1.views.logout_user', name='logout'),
                        url(r'^alarma/(?P<id_alarma>[0-9]+)/$', 'module_1.views.alarma', name='alarma'),
                       )

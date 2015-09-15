@@ -204,3 +204,8 @@ def login_user(request):
         return render_to_response('login.html',
                               context)
 
+def logout_user(request):
+    logout(request)
+    context = RequestContext(request)
+    return redirect('/login')
+
