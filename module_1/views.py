@@ -86,7 +86,7 @@ def puerta(request):
                 if puerta.status:
                     puerta.status = False
                     print puerta.status
-                    relay_functions.relay("close",puerta.pin)
+                    relay_functions.relay("open",puerta.pin)
                 else:
                     puerta.status = True
                     relay_functions.relay("open",puerta.pin)
