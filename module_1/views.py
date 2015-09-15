@@ -164,7 +164,12 @@ def alarma(request, id_alarma):
     ## Codigo para que suene la chichasha
     ##
     alarma = Alarma.objects.get(id = id_alarma)
-    ##Todo para que suene y etc
+    if alarma.status:
+        relay_functions.relay("close",alarma.pin)
+        alarma.status=False
+    else:
+        relay_functions.relay("open",alarma.pin)
+        alarma.status=True
     alarma.save()
     """luces = Luz.objects.all()
     puertas = Puerta.objects.all()
