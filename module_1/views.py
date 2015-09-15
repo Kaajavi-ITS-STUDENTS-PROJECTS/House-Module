@@ -136,13 +136,13 @@ def habitacion(request):
                 if habitacion.status:
                     habitacion.status = False
                     for luz in luces:
-                        relay_functions.relay("close",puerta.pin)
+                        relay_functions.relay("close",luz.pin)
                         luz.status = habitacion.status
                         luz.save()
                 else:
                     habitacion.status = True
                     for luz in luces:
-                        relay_functions.relay("open",puerta.pin)
+                        relay_functions.relay("open",luz.pin)
                         luz.status = habitacion.status
                         luz.save()
     habitacion.save()
