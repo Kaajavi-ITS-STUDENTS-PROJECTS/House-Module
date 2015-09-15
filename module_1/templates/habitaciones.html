@@ -10,7 +10,7 @@
                 </div>
                 {% for luz in luces %}
                 {% if luz.lugar == habitacion %}
-                <div id="luz {{luz.id}}">
+                <div id="luz-{{luz.id}}">
                     {% include "luces.html" %}
                 </div>
                 {% endif %}
