@@ -82,7 +82,6 @@ def puerta(request):
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                print "TRUEEE"
                 if puerta.status:
                     puerta.status = False
                     print puerta.status
