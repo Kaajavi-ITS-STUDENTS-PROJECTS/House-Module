@@ -133,16 +133,19 @@ def habitacion(request):
             if permitido.user.id == request.user.id:
                 print "TRUEEE"
                 habitacion = Habitacion.objects.get(id = id)
+                luces = Luz.objects.filter(lugar_id = id)
                 if habitacion.status:
                     habitacion.status = False
+                    for luz in luces:
+                        relay_functions.relay("close",puerta.pin)
+                        luz.status = habitacion.status
+                        luz.save()
                 else:
                     habitacion.status = True
-    luces = Luz.objects.filter(lugar_id = id)
-    for luz in luces:
-        ##Codigo para que apage cada una de las luces del for
-        luz.status = habitacion.status
-        luz.save()
-
+                    for luz in luces:
+                        relay_functions.relay("open",puerta.pin)
+                        luz.status = habitacion.status
+                        luz.save()
     habitacion.save()
     habitaciones = Habitacion.objects.all()
     luces = Luz.objects.all()
