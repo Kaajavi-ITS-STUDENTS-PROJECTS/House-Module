@@ -5,9 +5,13 @@
         <div class="card brown lighten-2">
             <div class="card-content white-text center">
                 <h4 class="card-title">{{habitacion.nombre}}</h4>
-                <div name="puerta">
+                {% for puerta in puertas %}
+                {% if puerta.lugar == habitacion %}
+                <div id="puerta-{{puerta.id}}">
                     {% include "puertas.html" %}
                 </div>
+                {% endif %}
+                {% endfor %}
                 {% for luz in luces %}
                 {% if luz.lugar == habitacion %}
                 <div id="luz-{{luz.id}}">

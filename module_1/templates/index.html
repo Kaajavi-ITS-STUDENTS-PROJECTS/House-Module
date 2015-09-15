@@ -73,7 +73,8 @@
             url: "{% url 'module_1:puerta' %}",
             data: data,
             success:function(result){
-                $('div[name=puerta]').html(result);
+                console.log(result);
+                $("#puerta-"puerta_id).html(result);
             },
             error: function(e){
                 console.log(e.responseText);
