@@ -61,11 +61,11 @@ def luz(request):
                     relay_functions.relay("open",luz.pin)
                 luz.save()
     luces = Luz.objects.all()
-    for luz in luces:
+    """for luz in luces:
             luz_aux= Luz.objects.get(id = luz.id)
             luz_aux.status = relay_functions.getStatus(luz.pin)
             luz_aux.save()
-    """
+
     puertas = Puerta.objects.all()
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
@@ -93,13 +93,13 @@ def puerta(request):
                 puerta.save()
                 print puerta.status
     puertas = Puerta.objects.all()
-    for puerta in puertas:
+    """for puerta in puertas:
             puerta_aux= Puerta.objects.get(id = puerta.id)
             puerta_aux.status = relay_functions.getStatus(puerta.pin)
             print puerta_aux.status
             puerta_aux.save()
     puertas = Puerta.objects.all()
-    """luces = Luz.objects.all()
+    luces = Luz.objects.all()
 
     habitaciones = Habitacion.objects.all()
     sanitarios = Sanitario.objects.all()
