@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
-from django.conf.urls import url
-from .import views
-
-urlpatterns = [
-    url(r'^$', views.onoff, name='onoff'),
-    url(r'^luz/(?P<id_luz>[0-9]+)/$', views.luz, name='luz'),
-    url(r'^puerta/(?P<id_puerta>[0-9]+)/$', views.puerta, name='puerta'),
-    url(r'^habitacion/(?P<id_habitacion>[0-9]+)/$', views.habitacion, name='habitacion'),
-    url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', views.sanitario, name='sanitario'),
-    url(r'^alarma/(?P<id_alarma>[0-9]+)/$', views.alarma, name='alarma'),
-    url(r'^listacompras/$', views.lista_compras, name='listacompras'),
-]
+from django.conf.urls import patterns, include, url
+urlpatterns = patterns('',
+                       url(r'^$', 'module_1.views.index', name='index'),
+                       url(r'login/', 'module_1.views.login_user', name='login'),
+                       url(r'^luz/$', 'module_1.views.luz', name='luz'),
+                       url(r'^puerta/$', 'module_1.views.puerta', name='puerta'),
+                       url(r'^habitacion/$', 'module_1.views.habitacion', name='habitacion'),
+                       url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', 'module_1.views.sanitario', name='sanitario'),
+                       url(r'logout/', 'module_1.views.logout_user', name='logout'),
+                       url(r'^alarma/(?P<id_alarma>[0-9]+)/$', 'module_1.views.alarma', name='alarma'),
+                      )
