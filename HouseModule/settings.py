@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'onoff',
     'module_1',
+    'ws4redis',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,3 +106,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
+
+WEBSOCKET_URL = '/ws/'
+
+WS4REDIS_CONNECTION = {
+    'host': '0.0.0.0:8000',
+    'port': 8080,
+    'db': 17,
+    'password': 'verysecret',
+}
+
+WS4REDIS_EXPIRE = 5
+
