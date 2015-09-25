@@ -8,17 +8,23 @@
     <div class="col s10 m3 offset-m1">
         <div class="card blue-grey darken-1">
             <div class="card-content white-text center">
-                <span class="card-title">Alarmas</span>
+                <span class="card-title">Mas</span>
                 <br>
 
                 {% for alarma in alarmas %}
                 {% if alarma.status %}
-                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">Desactivar {{alarma.nombre}} <br></a>
+                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">Desactivar {{alarma.nombre}} </a>
                 {% else %}
-                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red  darken-4 waves-effect waves-orange btn-large col s12">Activar {{alarma.nombre}} <br></a>
+                <a href="{% url 'module_1:alarma' alarma.id %}" class="card-panel red  darken-4 waves-effect waves-orange btn-large col s12">Activar {{alarma.nombre}} </a>
 
                 {% endif %}
                 {% endfor %}
+                <br>
+
+                <a href="" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">Mapa</a>
+
+
+
 
             </div>
         </div>
