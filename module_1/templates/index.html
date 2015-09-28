@@ -38,7 +38,7 @@
         var transport = WebSocket; // SockJS can be used alternatively
 
         // Receive the path for the connection from the django template context:
-        var endpoint = 'http://localhost:8000';
+        var endpoint = 'http://localhost:8080';
 
         // Define connection options:
         var options = {
@@ -52,8 +52,8 @@
 
 
         var channel = connection.openChannel('ping-channel');
-        channel.send('ping-event');
-        channel.on('ping-event', function(event) {
+        channel.send('bar');
+        channel.on('bar', function(event) {
             console.log('Hola Mundooo!!!!!')
         });
     }
