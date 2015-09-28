@@ -10,6 +10,7 @@ import relay_functions
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
 from django.contrib.auth import authenticate
 import time
+from omnibus.api import publish
 # Create your views here.
 
 def index(request):
@@ -208,8 +209,6 @@ def logout_user(request):
     logout(request)
     context = RequestContext(request)
     return redirect('/login')
-
-from omnibus.api import publish
 
 def send_hello_world():
     publish(
