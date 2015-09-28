@@ -222,4 +222,3 @@ def send_hello_world():
     print publish
     print publish
     print publish
-    return False
