@@ -11,6 +11,24 @@
     background-color:#B71C1C;
 }
 
+input[type="range"]::-moz-range-thumb {
+    background: none repeat scroll 0 0 black;
+    border: medium none;
+    border-radius: 50%;
+    height: 14px;
+    margin-top: -5px;
+    width: 14px;
+}
+
+input[type="range"]:active:-moz-range-thumb {
+    background: none repeat scroll 0 0 black;
+    border: medium none;
+    border-radius: 50%;
+    height: 24px;
+    margin-top: -5px;
+    width: 24px;
+}
+
 body {
     display: flex;
     min-height: 100vh;
