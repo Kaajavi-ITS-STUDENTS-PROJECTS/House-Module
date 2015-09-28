@@ -107,6 +107,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
-OMNIBUS_ENDPOINT_SCHEME = 'http'
+OMNIBUS_ENDPOINT_SCHEME = 'ws
 OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.sockjs_webapp_factory'
 OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.sockjs_connection_factory'
