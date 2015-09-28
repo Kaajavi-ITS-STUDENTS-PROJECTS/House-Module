@@ -2,6 +2,7 @@
 {% if puerta.status %}
 <div class="switch">
     <label>
+        {{puerta.nombre}}
         Off
         <input type="checkbox" id="{{puerta.id}}" onclick="puerta(this.id)" checked="checked">
         <span class="lever"></span>
@@ -12,6 +13,7 @@
 {% else %}
 <div class="switch">
     <label>
+        {{puerta.nombre}}
         Off
         <input type="checkbox" id="{{puerta.id}}" onclick="puerta(this.id)">
         <span class="lever"></span>

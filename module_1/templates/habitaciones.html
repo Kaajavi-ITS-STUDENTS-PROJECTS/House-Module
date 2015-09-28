@@ -22,6 +22,7 @@
                 {% if habitacion.status %}
                 <div class="switch">
                     <label>
+                        {{habitacion.nombre}}
                         Off
                         <input type="checkbox" id="{{habitacion.id}}" onclick="habitacion(this.id)" checked="checked">
                         <span class="lever"></span>
@@ -32,6 +33,7 @@
                 {% else %}
                 <div class="switch">
                     <label>
+                        {{habitacion.nombre}}
                         Off
                         <input type="checkbox" id="{{habitacion.id}}" onclick="habitacion(this.id)" checked="checked">
                         <span class="lever"></span>
