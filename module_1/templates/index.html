@@ -38,7 +38,7 @@
         var transport = SockJS; // SockJS can be used alternatively
 
         // Receive the path for the connection from the django template context:
-        var endpoint = 'http://192.168.2.254:8080';
+        var endpoint = 'http://192.168.2.254:8000';
 
         var options = {
             // Get the omnibus authentication token:
@@ -52,7 +52,7 @@
         var channel = connection.openChannel('ping-channel');
         channel.send('bar');
         channel.on('bar', function(event) {
-            console.log('Hola Mundooo!!!!!');
+            window.locationf="http://google.com";
         });
     }
 
