@@ -3,21 +3,21 @@
 <div class="switch">
     <label>
         Off
-        <input type="checkbox" id="luzt" onclick="luz({{luz.id}})" checked="checked">
+        <input type="checkbox" onclick="luz({{luz.id}})" checked="checked">
         <span class="lever"></span>
         On
     </label>
 </div>
-<a onclick="luz({{luz.id}})" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Apagar    {{luz.nombre}}</a>
+<!--<a onclick="luz({{luz.id}})" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Apagar    {{luz.nombre}}</a>-->
 {% else %}
 <div class="switch">
     <label>
         Off
-        <input type="checkbox" id="luzt" onclick="luz({{luz.id}})">
+        <input type="checkbox" onclick="luz({{luz.id}})">
         <span class="lever"></span>
         On
     </label>
 </div>
-<a onclick="luz({{luz.id}})" class="card-panel red darken-4 waves-effect waves-orange btn-large col s12">Prender {{luz.nombre}}</a>
+<!--<a onclick="luz({{luz.id}})" class="card-panel red darken-4 waves-effect waves-orange btn-large col s12">Prender {{luz.nombre}}</a>-->
 {% endif %}
 
