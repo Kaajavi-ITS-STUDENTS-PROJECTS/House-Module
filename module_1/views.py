@@ -211,14 +211,5 @@ def logout_user(request):
     return redirect('/login')
 
 def send_hello_world():
-    publish(
-        'ping-channel',  # the name of the channel
-        'hello',  # the `type` of the message/event, clients use this name
-                  # to register event handlers
-        {'text': 'Hello world'},  # payload of the event, needs to be
-                                  # a dict which is JSON dumpable.
-        sender='server'  # sender id of the event, can be None.
-    )
-    print publish
-    print publish
-    print publish
+    print "Hola Mundo!!!!"
+    return redirect('/')

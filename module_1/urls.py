@@ -8,5 +8,5 @@ urlpatterns = patterns('',
                        url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', 'module_1.views.sanitario', name='sanitario'),
                        url(r'logout/', 'module_1.views.logout_user', name='logout'),
                        url(r'^alarma/(?P<id_alarma>[0-9]+)/$', 'module_1.views.alarma', name='alarma'),
-                       url(r'holaMundo/$', 'module_1.views.send_hello_world', name='holaMundo'),
+                       url(r'info/$', 'module_1.views.send_hello_world', name='holaMundo'),
                       )
