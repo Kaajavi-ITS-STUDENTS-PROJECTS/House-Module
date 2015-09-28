@@ -22,6 +22,7 @@
                 {% endfor %}
 
             </div>
+            <a class="btn" onclick="hola()">mensaje por el canal</a>
         </div>
     </div>
 </div>
@@ -51,9 +52,14 @@
     var connection = new Omnibus(transport, endpoint, options);
 
     var channel = connection.openChannel('ping-channel');
+    function hola(){
     channel.send('ping-event', {
         message: 'hello world'
     });
+        channel.on('ping-event', function(event) {
+            console.log("Hola Mundooo!!!!!")
+});
+    }
 
     function habitacion(habitacion_id){
         var data={
