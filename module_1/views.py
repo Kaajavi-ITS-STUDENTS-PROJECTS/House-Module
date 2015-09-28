@@ -212,7 +212,7 @@ def logout_user(request):
 
 def send_hello_world():
     publish(
-        'mychannel',  # the name of the channel
+        'ping-channel',  # the name of the channel
         'hello',  # the `type` of the message/event, clients use this name
                   # to register event handlers
         {'text': 'Hello world'},  # payload of the event, needs to be

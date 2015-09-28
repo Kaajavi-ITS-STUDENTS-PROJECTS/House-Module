@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block titulo %}
 <title>Inicio</title>
 {% endblock %}
@@ -26,7 +27,34 @@
 </div>
 {% endblock %}
 {% block scripts %}
+<script type="text/javascript" src="{% static 'omnibus/omnibus.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/sockjs.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/json2.min.js' %}"></script>
+
 <script>
+
+    // Select a transport implementation:
+    var transport = WebSocket; // SockJS can be used alternatively
+
+    // Receive the path for the connection from the django template context:
+    var endpoint = 'http://localhost:8080';
+
+    // Define connection options:
+    var options = {
+        // Get the omnibus authentication token:
+        authToken: '{{ OMNIBUS_AUTH_TOKEN }}',
+        autoReconnect: true,
+        autoReconnectTimeout: 1000,
+    };
+
+    // Create a new connection using transport, endpoint and options
+    var connection = new Omnibus(transport, endpoint, options);
+
+    var channel = connection.openChannel('ping-channel');
+    channel.send('ping-event', {
+        message: 'hello world'
+    });
+
     function habitacion(habitacion_id){
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
