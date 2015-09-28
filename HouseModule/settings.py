@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'onoff',
     'module_1',
+    'omnibus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'omnibus.context_processors.omnibus',
             ],
         },
     },
@@ -104,3 +106,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
+
+OMNIBUS_ENDPOINT_SCHEME = 'http'
+OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.sockjs_webapp_factory'
+OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.sockjs_connection_factory'
