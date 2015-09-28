@@ -3,7 +3,7 @@
     box-shadow: 0 1px 0 0 #EF5350;
 }
 
-.input[type="checkbox"]:checked + .lever{
+.switch label input[type="checkbox"]:checked + .lever{
     background-color:#1B5E20;
 }
 
