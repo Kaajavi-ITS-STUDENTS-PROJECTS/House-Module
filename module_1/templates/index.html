@@ -35,7 +35,7 @@
 <script>
     function hola(){
         // Select a transport implementation:
-        var transport = WebSocket; // SockJS can be used alternatively
+        var transport = SockJS; // SockJS can be used alternatively
 
         // Receive the path for the connection from the django template context:
         var endpoint = 'ws://192.168.2.254:4242/ec';
