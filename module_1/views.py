@@ -210,6 +210,6 @@ def logout_user(request):
     context = RequestContext(request)
     return redirect('/login')
 
-def send_hello_world():
+def send_hello_world(request):
     print "Hola Mundo!!!!"
-    return redirect('/')
+    return redirect('')
