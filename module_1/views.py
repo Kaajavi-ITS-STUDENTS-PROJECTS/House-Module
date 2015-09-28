@@ -219,4 +219,7 @@ def send_hello_world():
                                   # a dict which is JSON dumpable.
         sender='server'  # sender id of the event, can be None.
     )
-    return print publish
+    print publish
+    print publish
+    print publish
+    return False
