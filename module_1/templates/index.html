@@ -51,14 +51,13 @@
     // Create a new connection using transport, endpoint and options
     var connection = new Omnibus(transport, endpoint, options);
 
-    var channel = connection.openChannel('ping-channel');
+
     function hola(){
-    channel.send('ping-event', {
-        message: 'hello world'
-    });
+        var channel = connection.openChannel('ping-channel');
+        channel.send('ping-event');
         channel.on('ping-event', function(event) {
             console.log("Hola Mundooo!!!!!")
-});
+        });
     }
 
     function habitacion(habitacion_id){
