@@ -212,10 +212,10 @@ def logout_user(request):
     return redirect('/login')
 
 
-def gotohtmladdroom(request):
+def gotoaddroom(request):
     context = RequestContext(request)
     habitacion=Habitacion()
-    #habitacion.nombre=""
+    #habitacion.nombre=""   
     habitacion.save()
     return render_to_response('index.html',{'habitacion':habitacion},context)
 
