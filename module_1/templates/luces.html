@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% if luz.status %}
-<p class="col s6">{{luz.nombre}}</p>
+<p class="col s6 big">{{luz.nombre}}</p>
 <div class="switch col s6">
     <label>
         Off
@@ -12,7 +12,7 @@
 <br>
 <!--<a onclick="luz({{luz.id}})" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Apagar    {{luz.nombre}}</a>-->
 {% else %}
-<p class="col s6">{{luz.nombre}}</p>
+<p class="col s6 big">{{luz.nombre}}</p>
 <div class="switch col s6">
     <label>
         Off
