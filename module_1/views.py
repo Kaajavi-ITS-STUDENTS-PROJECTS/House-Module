@@ -211,22 +211,14 @@ def logout_user(request):
     context = RequestContext(request)
     return redirect('/login')
 
-
-def mellevaalhtmladdroom(request):
-    context = RequestContext(request)
-    habitacion=Habitacion()
-    #habitacion.nombre=""
-    habitacion.save()
-    return render_to_response('index.html',{'habitacion':habitacion},context)
-
-
 def add_room(request):
     context = RequestContext(request)
+    habitacion=Habitacion()
     if request.method=='POST':
         hab=request.POST['habitacion']
         habitacion= Habitacion.objects.filter(id = habId)
         habitacion.nombre=hab
-    return True
+    return render_to_response('addroom.html',{'habitacion':habitacion},context)
         
     
         
@@ -263,7 +255,7 @@ def add_puertas(request):
     return render_to_response('puerta-agregada.html',{'puertas':puertas,'habitacion':habitacion},context)
         
 
-def mousemove_connection_factory(auth_class, pubsub):
+"""def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
     # factory (we have to pass an auth class - provided by the server and a
     # pubsub singleton, also provided by the omnibusd server
@@ -278,4 +270,16 @@ def mousemove_connection_factory(auth_class, pubsub):
             return super(GeneratedConnection, self).close_connection()
 
     # Return the generated connection class
-    return GeneratedConnection
+    return GeneratedConnection"""
+
+def send_hello_world():
+    publish(
+        'canal',  # the name of the channel
+        'hello',  # the `type` of the message/event, clients use this name
+                  # to register event handlers
+        {'text': 'Hello world'},  # payload of the event, needs to be
+                                  # a dict which is JSON dumpable.
+        sender='server'  # sender id of the event, can be None.
+    )
+
+send_hello_world()
