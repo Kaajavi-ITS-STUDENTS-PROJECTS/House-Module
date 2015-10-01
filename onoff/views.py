@@ -208,4 +208,3 @@ def logout_user(request):
     logout(request)
     context = RequestContext(request)
     return redirect('/login')
-

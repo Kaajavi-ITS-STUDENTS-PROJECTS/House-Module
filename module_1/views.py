@@ -209,3 +209,61 @@ def logout_user(request):
     context = RequestContext(request)
     return redirect('/login')
 
+def mellevaalhtmladdroom(request):
+    context = RequestContext(request)
+    habitacion=Habitacion()
+    #habitacion.nombre=""
+    habitacion.save()
+    return render_to_response('index.html',{'habitacion':habitacion},context)
+
+
+def add_room(request):
+    context = RequestContext(request)
+    if request.method=='POST':
+        hab=request.POST['habitacion']
+        habitacion= Habitacion.objects.filter(id = habId)
+        habitacion.nombre=hab
+    return True
+        
+    
+        
+def add_luces(request):
+    context = RequestContext(request)
+    if request.method=='POST':
+        luces=request.POST['luces']
+        luzId=request.POST['luzId']
+        habId=request.POST['luzViene']
+        luz=Luz()
+        luz.nombre=luces
+        luz.pin=luzId
+        luz.lugar=habId
+        luz.save
+    luces = Luz.objects.filter(lugar_id = habId)
+    habitacion= Habitacion.objects.filter(id = habId)
+    return render_to_response('luz-agregada.html',{'luces':luces,'habitacion':habitacion},context)
+        
+
+        
+def add_puertas(request):
+    context = RequestContext(request)
+    if request.method=='POST':
+        puertas=request.POST['puertas']
+        puertaId=request.POST['puertaId']
+        habId=request.POST['puertaViene']
+        puertas=Puerta()
+        puerta.nombre=puerta
+        puerta.pin=puertaId
+        puerta.lugar=habId
+        puerta.save
+    puertas = Puerta.objects.filter(lugar_id = habId)
+    habitacion= Habitacion.objects.filter(id = habId)
+    return render_to_response('puerta-agregada.html',{'puertas':puertas,'habitacion':habitacion},context)
+        
+        
+        
+        
+        
+        
+        
+        
+        
