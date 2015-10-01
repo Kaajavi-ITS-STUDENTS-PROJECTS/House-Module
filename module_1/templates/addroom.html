@@ -59,7 +59,7 @@
         }
         $.ajax({
             method: "POST",
-            url: "{% url 'module_1:add_room' %}",
+            url: "{% url 'module_1:addroom' %}",
             data: data,
             success:function(result){
                 console.log("Todo OK")
@@ -80,7 +80,7 @@
         }
         $.ajax({
             method: "POST",
-            url: "{% url 'module_1:add_luces' %}",
+            url: "{% url 'module_1:addluces' %}",
             data: data,
             success:function(result){
                 $("#all_luces").html(result);
@@ -101,7 +101,7 @@
         }
         $.ajax({
             method: "POST",
-            url: "{% url 'module_1:add_puertas' %}",
+            url: "{% url 'module_1:addpuertas' %}",
             data: data,
             success:function(result){
                 $("#all_puertas").html(result);
