@@ -217,7 +217,7 @@ def gotoaddroom(request):
     habitacion=Habitacion()
     #habitacion.nombre=""   
     habitacion.save()
-    return render_to_response('index.html',{'habitacion':habitacion},context)
+    return render_to_response('addroom.html',{'habitacion':habitacion},context)
 
 
 def add_room(request):
@@ -226,7 +226,7 @@ def add_room(request):
         hab=request.POST['habitacion']
         habitacion= Habitacion.objects.filter(id = habId)
         habitacion.nombre=hab
-    return True
+    return redirect('')
         
     
         
