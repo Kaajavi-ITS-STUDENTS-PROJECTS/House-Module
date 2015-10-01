@@ -13,5 +13,4 @@ urlpatterns = patterns('',
                        url(r'addluces/', 'module_1.views.add_room', name='addluces'),
                        url(r'addpuertas/', 'module_1.views.add_room', name='addpuertas'),
                        url(r'info/$', 'module_1.views.send_hello_world', name='holaMundo'),
-                       url(r'^chau/', 'module_1.views.mousemove_connection_factory', name='chauMundo'),
                       )
