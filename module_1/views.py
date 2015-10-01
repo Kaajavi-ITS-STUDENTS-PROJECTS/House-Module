@@ -211,22 +211,16 @@ def logout_user(request):
     context = RequestContext(request)
     return redirect('/login')
 
-
-def gotoaddroom(request):
+def add_room(request):
     context = RequestContext(request)
     habitacion=Habitacion()
     #habitacion.nombre=""   
     habitacion.save()
-    return render_to_response('addroom.html',{'habitacion':habitacion},context)
-
-
-def add_room(request):
-    context = RequestContext(request)
     if request.method=='POST':
         hab=request.POST['habitacion']
         habitacion= Habitacion.objects.filter(id = habId)
         habitacion.nombre=hab
-    return redirect('/gotoaddroom')
+    return render_to_response('addroom.html',{'habitacion':habitacion},context)
         
     
         
