@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>AddRoom</title>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="card blue-grey darken-1 col l4 m6 s8 offset-l4 offset-m3 offset-s2">
+        <form action="{% url 'module_1:login' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container">
+                <div id="all_luces">
+                    
+                </div>
+                <div class="input-field">
+                    <input class="white-text" placeholder="Nombre luz" name="luces" id="id_luces" type="text" class="validate" value="">
+                    <input class="white-text" placeholder="Pin Luz" name="pinluz" id="pin_luces" type="text" class="validate" value="">
+                </div>
+
+                <div class="right-align">
+                    <button class="card-panel red  darken-4 waves-effect waves-orange btn-large" id="addluz" type="submit">
+                        <i class="fa fa-paper-plane right"></i>Agregar Luz
+                    </button>
+                </div>
+
+                <div id="all_puertas">
+                </div>
+                <div class="input-field">
+                    <input class="white-text" placeholder="Nombre Puerta" name="puertas" id="id_puertas" type="text" class="validate" value="">
+                    <input class="white-text" placeholder="Pin Puerta" name="pinpuerta" id="pin_puertas" type="text" class="validate" value="">
+                </div>
+
+                <div class="right-align">
+                    <button class="card-panel red  darken-4 waves-effect waves-orange btn-large" id="addpuerta" type="submit">
+                        <i class="fa fa-paper-plane right"></i>Agregar Puerta
+                    </button>
+                </div>
+
+                <div class="input-field">
+                    <input class="white-text" placeholder="Nombre de habitacion" maxlength="30" name="habitacion" id="id_habitacion" type="text" value="">
+                </div>
+
+                <div class="right-align">
+                    <button class="card-panel red  darken-4 waves-effect waves-orange btn-large" id="addhab" type="submit">
+                        <i class="fa fa-paper-plane right"></i>Crear Habitacion
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+
+<script>
+    $("#addhab").click(function add_room(){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            habtacion:$("#id_habitacion").val(),
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:add_room' %}",
+            data: data,
+            success:function(result){
+                console.log("Todo OK")
+            },
+            error: function(e){
+                console.log(e.responseText);
+            },
+        });
+    });
+
+    $("#addluz").click(function add_luz(){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            luzNombre:$("#id_luces").val(),
+            luzId:$("#pin_luces").val(),
+            luzViene:{{habitacion.id}},
+            
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:add_luces' %}",
+            data: data,
+            success:function(result){
+                $("#all_luces").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            },
+        });
+    });
+
+    $("#addpuerta").click(function add_puerta(){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            puertaNombre:$("#id_puertas").val(),
+            puertaId:$("#pin_puertas").val(),
+            puertaViene:{{habitacion.id}},
+
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:add_puertas' %}",
+            data: data,
+            success:function(result){
+                $("#all_puertas").html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            },
+        });
+    });
+
+</script>
+{% endblock %}
