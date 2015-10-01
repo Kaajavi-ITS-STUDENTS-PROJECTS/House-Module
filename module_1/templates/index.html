@@ -39,28 +39,27 @@
 <script type="text/javascript" src="{% static 'omnibus/json2.min.js' %}"></script>
 
 <script>
-    function hola(){
-        // Select a transport implementation:
-        var transport = SockJS; // SockJS can be used alternatively
+    // Select a transport implementation:
+    var transport = SockJS; // SockJS can be used alternatively
 
-        // Receive the path for the connection from the django template context:
-        var endpoint = 'http://192.168.2.254:8000';
+    // Receive the path for the connection from the django template context:
+    var endpoint = 'http://192.168.2.254:8000';
 
-        var options = {
-            // Get the omnibus authentication token:
-            authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
-        };
-        // Create a new connection using transport, endpoint and options
-        var connection = new Omnibus(transport, endpoint, options);
+    var options = {
+        // Get the omnibus authentication token:
+        authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
+    };
+    // Create a new connection using transport, endpoint and options
+    var connection = new Omnibus(transport, endpoint, options);
 
+    var channel = connection.openChannel('ping-channel');
 
-
-        var channel = connection.openChannel('ping-channel');
+    function hola (self){
         channel.send('bar');
-        channel.on('bar', function(event) {
-            window.locationf="http://google.com";
-        });
     }
+    channel.on('bar', function(event) {
+        window.location ="http://google.com";
+    });
 
     function habitacion(habitacion_id){
         var data={
