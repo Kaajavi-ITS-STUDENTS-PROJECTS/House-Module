@@ -212,7 +212,7 @@ def logout_user(request):
     return redirect('/login')
 
 
-def mellevaalhtmladdroom(request):
+def gotohtmladdroom(request):
     context = RequestContext(request)
     habitacion=Habitacion()
     #habitacion.nombre=""
