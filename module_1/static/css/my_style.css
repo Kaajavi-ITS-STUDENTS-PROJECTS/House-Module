@@ -5,8 +5,6 @@
 
 .switch label input[type="checkbox"]:checked + .lever{
     background-color:#1B5E20;
-    margin-bottom: 10px;
-    margin-top: 10px;
 }
 
 .switch label .lever{
@@ -19,6 +17,11 @@
 
 .switch label input[type="checkbox"]+ .lever::after{
     background-color:white;
+}
+
+.switch{
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 label{
@@ -36,5 +39,5 @@ main {
 }
 
 .big{
-    font-size:20;
+    font-size:25;
 }
