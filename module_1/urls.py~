@@ -8,9 +8,13 @@ urlpatterns = patterns('',
                        url(r'^sanitario/(?P<id_sanitario>[0-9]+)/$', 'module_1.views.sanitario', name='sanitario'),
                        url(r'logout/', 'module_1.views.logout_user', name='logout'),
                        url(r'^alarma/(?P<id_alarma>[0-9]+)/$', 'module_1.views.alarma', name='alarma'),
-<<<<<<< HEAD
                        url(r'addroom/', 'module_1.views.add_room', name='addroom'),
-=======
+<<<<<<< HEAD
+                       url(r'gotohtmladdroom/', 'module_1.views.add_room', name='gotoaddroom'),
+                       url(r'addluces/', 'module_1.views.add_room', name='addluces'),
+                       url(r'addpuertas/', 'module_1.views.add_room', name='addpuertas'),
                        url(r'info/$', 'module_1.views.send_hello_world', name='holaMundo'),
->>>>>>> 2782f869957e8c84756419e977494e0f97d0dea3
+=======
+>>>>>>> 76986b455be5ddcb556e71bb9a503db19777a2c8
+                       url(r'^chau/', 'module_1.views.mousemove_connection_factory', name='chauMundo'),
                       )
