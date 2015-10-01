@@ -10,6 +10,7 @@ import relay_functions
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario
 from django.contrib.auth import authenticate
 import time
+from omnibus.factories import websocket_connection_factory
 from omnibus.api import publish
 # Create your views here.
 
@@ -212,4 +213,21 @@ def logout_user(request):
 
 def send_hello_world(request):
     print "Hola Mundo!!!!"
-    return redirect('')
+    return redirect("/chau")
+
+def mousemove_connection_factory(auth_class, pubsub):
+    # Generate a new connection class using the default websocket connection
+    # factory (we have to pass an auth class - provided by the server and a
+    # pubsub singleton, also provided by the omnibusd server
+    class GeneratedConnection(websocket_connection_factory(auth_class, pubsub)):
+        def close_connection(self):
+            # We subclassed the `close_connection` method to publish a
+            # message. Afterwards, we call the parent's method.
+            self.pubsub.publish(
+                'mousemoves', 'disconnect',
+                sender=self.authenticator.get_identifier()
+            )
+            return super(GeneratedConnection, self).close_connection()
+
+    # Return the generated connection class
+    return GeneratedConnection

@@ -9,4 +9,5 @@ urlpatterns = patterns('',
                        url(r'logout/', 'module_1.views.logout_user', name='logout'),
                        url(r'^alarma/(?P<id_alarma>[0-9]+)/$', 'module_1.views.alarma', name='alarma'),
                        url(r'info/$', 'module_1.views.send_hello_world', name='holaMundo'),
+                       url(r'^chau/', 'module_1.views.mousemove_connection_factory', name='chauMundo'),
                       )
