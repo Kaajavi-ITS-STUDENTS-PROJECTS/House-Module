@@ -37,7 +37,7 @@ class Luz(models.Model):
 class Puerta(models.Model):
     class Meta:
         verbose_name = "Puerta"
-        verbose_name_plural = "Puertas	"
+        verbose_name_plural = "Puertas  "
     
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
@@ -71,9 +71,9 @@ class Alarma(models.Model):
 
 
 class Usuario(models.Model):
-    user = models.OneToOneField(User)
-    permisos_luces = models.ManyToManyField(Luz)
-    permisos_puertas = models.ManyToManyField(Puerta)
-    permisos_habitaciones = models.ManyToManyField(Habitacion)
+    user = models.OneToOneField(User, related_name="permisos_on")
+    permisos_luces = models.ManyToManyField(Luz,blank=True)
+    permisos_puertas = models.ManyToManyField(Puerta,blank=True)
+    permisos_habitaciones = models.ManyToManyField(Habitacion,blank=True)
     def __str__(self):
         return self.user.username

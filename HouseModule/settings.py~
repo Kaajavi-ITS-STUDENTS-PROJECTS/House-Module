@@ -40,8 +40,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'onoff',
     'module_1',
-    'omnibus',
+<<<<<<< HEAD
+    'ws4redis',
 
+=======
+    'omnibus',
+>>>>>>> 2782f869957e8c84756419e977494e0f97d0dea3
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,8 +112,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
+<<<<<<< HEAD
+WEBSOCKET_URL = '/ws/'
 
+WS4REDIS_CONNECTION = {
+    'host': '0.0.0.0:8000',
+    'port': 8080,
+    'db': 17,
+    'password': 'verysecret',
+}
+
+WS4REDIS_EXPIRE = 5
+
+=======
 OMNIBUS_ENDPOINT_SCHEME = 'http'
 OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.sockjs_webapp_factory'
 OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.sockjs_connection_factory'
-
+>>>>>>> 2782f869957e8c84756419e977494e0f97d0dea3

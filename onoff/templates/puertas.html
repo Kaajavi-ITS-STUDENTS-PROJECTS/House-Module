@@ -1,0 +1,7 @@
+{% load staticfiles %}
+{% if puerta.status %}
+<a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Cerrar {{puerta.nombre}} </a><br>
+{% else %}
+<a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel red darken-4 waves-effect waves-orange btn-large col s12">Abrir {{puerta.nombre}} </a><br>
+{% endif %}
+

@@ -1,0 +1,6 @@
+{% load staticfiles %}
+{% if luz.status %}
+<a onclick="luz({{luz.id}})" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Apagar    {{luz.nombre}}</a>
+{% else %}
+<a onclick="luz({{luz.id}})" class="card-panel red darken-4 waves-effect waves-orange btn-large col s12">Prender {{luz.nombre}}</a>
+{% endif %}
