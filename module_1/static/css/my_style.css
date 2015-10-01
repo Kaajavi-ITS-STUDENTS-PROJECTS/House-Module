@@ -12,11 +12,15 @@
 }
 
 .switch label input[type="checkbox"]:checked + .lever::after{
-    background-color:#1B5E20;
+    background-color:white;
 }
 
 .switch label input[type="checkbox"]+ .lever::after{
-    background-color:#B71C1C;
+    background-color:white;
+}
+
+label{
+    color: white;
 }
 
 body {
