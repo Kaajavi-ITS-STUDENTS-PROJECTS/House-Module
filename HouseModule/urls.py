@@ -22,7 +22,6 @@ from django.conf import settings
 from module_1 import relay_functions
 
 urlpatterns = [
-    url(r'^onoff/', include('onoff.urls', namespace = "onoff")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('module_1.urls', namespace = "module_1")),
 ]
