@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block titulo %}
 <title>Inicio</title>
 {% endblock %}
@@ -27,12 +28,40 @@
 
 
             </div>
+            <a class="btn" onclick="hola()">mensaje por el canal</a>
         </div>
     </div>
 </div>
 {% endblock %}
 {% block scripts %}
+<script type="text/javascript" src="{% static 'omnibus/omnibus.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/sockjs.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/json2.min.js' %}"></script>
+
 <script>
+    function hola(){
+        // Select a transport implementation:
+        var transport = SockJS; // SockJS can be used alternatively
+
+        // Receive the path for the connection from the django template context:
+        var endpoint = 'http://192.168.2.254:8000';
+
+        var options = {
+            // Get the omnibus authentication token:
+            authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
+        };
+        // Create a new connection using transport, endpoint and options
+        var connection = new Omnibus(transport, endpoint, options);
+
+
+
+        var channel = connection.openChannel('ping-channel');
+        channel.send('bar');
+        channel.on('bar', function(event) {
+            window.locationf="http://google.com";
+        });
+    }
+
     function habitacion(habitacion_id){
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',

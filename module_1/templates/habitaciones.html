@@ -20,9 +20,27 @@
                 {% endif %}
                 {% endfor %}
                 {% if habitacion.status %}
-                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
+                <div class="switch">
+                    <label>
+                        {{habitacion.nombre}}
+                        Off
+                        <input type="checkbox" id="{{habitacion.id}}" onclick="habitacion(this.id)" checked="checked">
+                        <span class="lever"></span>
+                        On
+                    </label>
+                </div>
+               <!-- <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a>--><br>
                 {% else %}
-                <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a><br>
+                <div class="switch">
+                    <label>
+                        {{habitacion.nombre}}
+                        Off
+                        <input type="checkbox" id="{{habitacion.id}}" onclick="habitacion(this.id)" checked="checked">
+                        <span class="lever"></span>
+                        On
+                    </label>
+                </div>
+                <!--<a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel red  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a>--><br>
                 {% endif %}
             </div>
         </div>

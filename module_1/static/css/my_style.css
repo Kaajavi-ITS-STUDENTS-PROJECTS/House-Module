@@ -3,6 +3,22 @@
     box-shadow: 0 1px 0 0 #EF5350;
 }
 
+.switch label input[type="checkbox"]:checked + .lever{
+    background-color:#1B5E20;
+}
+
+.switch label .lever{
+    background-color:#B71C1C;
+}
+
+.switch label input[type="checkbox"]:checked + .lever::after{
+    background-color:#1B5E20;
+}
+
+.switch label input[type="checkbox"]+ .lever::after{
+    background-color:#B71C1C;
+}
+
 body {
     display: flex;
     min-height: 100vh;
