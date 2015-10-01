@@ -60,7 +60,7 @@
 
     foo.on('bar', function(event) {
         console.log("hola");
-        connection.close();
+        connection.closeChannel('foo');
     });
 
     function habitacion(habitacion_id){
