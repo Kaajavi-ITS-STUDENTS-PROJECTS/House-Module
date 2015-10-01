@@ -226,7 +226,7 @@ def add_room(request):
         hab=request.POST['habitacion']
         habitacion= Habitacion.objects.filter(id = habId)
         habitacion.nombre=hab
-    return redirect('')
+    return redirect('gotoaddroom/')
         
     
         
