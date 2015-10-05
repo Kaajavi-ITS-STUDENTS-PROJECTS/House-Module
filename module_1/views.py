@@ -213,9 +213,7 @@ def logout_user(request):
 
 def add_room(request):
     context = RequestContext(request)
-    habitacion=Habitacion()
-    #habitacion.nombre=""   
-    habitacion.save()
+    #habitacion.nombre=""
     if request.method=='POST':
         hab=request.POST['habitacion']
         habitacion= Habitacion.objects.filter(id = habId)
