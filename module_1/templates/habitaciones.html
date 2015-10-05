@@ -7,14 +7,14 @@
                 <h4 class="card-title">{{habitacion.nombre}}</h4>
                 {% for puerta in puertas %}
                 {% if puerta.lugar == habitacion %}
-                <div id="puerta-{{puerta.id}}">
+                <div id="puerta-{{puerta.id}}" class="valign-wrapper">
                     {% include "puertas.html" %}
                 </div>
                 {% endif %}
                 {% endfor %}
                 {% for luz in luces %}
                 {% if luz.lugar == habitacion %}
-                <div id="luz-{{luz.id}}">
+                <div id="luz-{{luz.id}}" class="valign-wrapper">
                     {% include "luces.html" %}
                 </div>
                 {% endif %}
