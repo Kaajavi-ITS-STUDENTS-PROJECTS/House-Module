@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -67,11 +69,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'omnibus.context_processors.omnibus',
             ],
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'omnibus.context_processors.omnibus',
+)
 
 WSGI_APPLICATION = 'HouseModule.wsgi.application'
 
@@ -107,8 +112,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
-
-OMNIBUS_ENDPOINT_SCHEME = 'http'
-OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.sockjs_webapp_factory'
-OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.sockjs_connection_factory'
-
+OMNIBUS_ENDPOINT_SCHEME = 'ws'  # 'ws' is used for websocket connections
+OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.websocket_webapp_factory'
+OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.websocket_connection_factory'

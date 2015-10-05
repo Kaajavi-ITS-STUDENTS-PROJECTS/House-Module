@@ -38,32 +38,30 @@
 
 {% endblock %}
 {% block scripts %}
-<script type="text/javascript" src="{% static 'omnibus/omnibus.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'omnibus/sockjs.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'omnibus/json2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/omnibus.js' %}"></script>
 
 <script>
     function hola(){
         // Select a transport implementation:
-        var transport = SockJS; // SockJS can be used alternatively
+        var transport = WebSocket; // SockJS can be used alternatively
 
         // Receive the path for the connection from the django template context:
-        var endpoint = 'http://192.168.2.254:8000';
+        var endpoint = '{{ OMNIBUS_ENDPOINT }}';
 
+        // Define connection options:
         var options = {
             // Get the omnibus authentication token:
             authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
         };
+
         // Create a new connection using transport, endpoint and options
         var connection = new Omnibus(transport, endpoint, options);
-
-        var foo = connection.openChannel('foo');
-
-        foo.send('bar');
-        console.log("holar");
-        foo.on('bar', function(event) {
-            console.log("hola");
-            connection.closeChannel('foo');
+        var channel = connection.openChannel('boton');
+        channel.send('boton', {
+            message: 'hola'
+        });
+        channel.on('boton', function(event) {
+            console.log("chau")
         });
     }
 
