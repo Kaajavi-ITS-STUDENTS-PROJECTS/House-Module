@@ -127,36 +127,31 @@ def sanitario(request, id_sanitario):
 
 def habitacion(request):
     context = RequestContext(request)
-    id= request.POST.get('id')
-    lista_permitidos = Usuario.objects.filter(permisos_habitaciones=id)
-    if lista_permitidos.__str__() != "[]":
-        for permitido in lista_permitidos:
-            if permitido.user.id == request.user.id:
-                print "TRUEEE"
-                habitacion = Habitacion.objects.get(id = id)
-                luces = Luz.objects.filter(lugar_id = id)
-                if habitacion.status:
-                    habitacion.status = False
-                    for luz in luces:
-                        relay_functions.relay("close",luz.pin)
-                        luz.status = habitacion.status
-                        luz.save()
-                else:
-                    habitacion.status = True
-                    for luz in luces:
-                        relay_functions.relay("open",luz.pin)
-                        luz.status = habitacion.status
-                        luz.save()
-    habitacion.save()
+    if request.method=='POST':
+        id= request.POST.get('id')
+        lista_permitidos = Usuario.objects.filter(permisos_habitaciones=id)
+        if lista_permitidos.__str__() != "[]":
+            for permitido in lista_permitidos:
+                if permitido.user.id == request.user.id:
+                    print "TRUEEE"
+                    habitacion = Habitacion.objects.get(id = id)
+                    luces = Luz.objects.filter(lugar_id = id)
+                    if habitacion.status:
+                        habitacion.status = False
+                        for luz in luces:
+                            relay_functions.relay("close",luz.pin)
+                            luz.status = habitacion.status
+                            luz.save()
+                    else:
+                        habitacion.status = True
+                        for luz in luces:
+                            relay_functions.relay("open",luz.pin)
+                            luz.status = habitacion.status
+                            luz.save()
+        habitacion.save()
     habitaciones = Habitacion.objects.all()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
-    """luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
     return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones}, context)
 
 
@@ -271,15 +266,3 @@ def add_puertas(request):
 
     # Return the generated connection class
     return GeneratedConnection"""
-
-def send_hello_world():
-    publish(
-        'canal',  # the name of the channel
-        'hello',  # the `type` of the message/event, clients use this name
-                  # to register event handlers
-        {'text': 'Hello world'},  # payload of the event, needs to be
-                                  # a dict which is JSON dumpable.
-        sender='server'  # sender id of the event, can be None.
-    )
-
-send_hello_world()
