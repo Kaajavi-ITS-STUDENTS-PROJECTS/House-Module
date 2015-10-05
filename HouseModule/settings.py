@@ -87,21 +87,34 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 LOGGING = {
     'version': 1,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'stream': sys.stdout,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'simple': {'format': '%(levelname)s %(asctime)s %(name)s %(message)s'},
+        'short': {'format': '%(levelname)s %(asctime)s %(message)s'},
+        'verbose': {'format': '%(levelname)s %(asctime)s %(name)s %(message)s\n%(request)s'},
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
         }
     },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO'
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'short',
+        },
+    },
+    'loggers': {
+        'omnibus': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
