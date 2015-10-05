@@ -57,10 +57,10 @@
         channel.send('boton', {
             message: 'hola'
         });
-        channel.on('boton', function(event) {
-            console.log("chau")
-        });
     }
+    channel.on('boton', function(event) {
+        console.log("chau")
+    });
 
     function habitacion(habitacion_id){
         var data={
