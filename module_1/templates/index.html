@@ -53,7 +53,16 @@
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
     channel.on('habitacion', function(event) {
-        console.log("chau");
+        $.ajax({
+            method: "GET",
+            url: "{% url 'module_1:habitacion' %}",
+            success:function(result){
+                $('#habitaciones').html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
     });
 
     function habitacion(habitacion_id){
@@ -75,7 +84,7 @@
         });
     }
     function luz(luz_id){
-        console.log("a")
+        channel.send('luz');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:luz_id,
@@ -94,6 +103,7 @@
         });
     }
     function puerta(puerta_id){
+        channel.send('puerta');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:puerta_id,
