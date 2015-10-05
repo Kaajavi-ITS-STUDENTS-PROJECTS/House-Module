@@ -38,22 +38,22 @@
 <script type="text/javascript" src="{% static 'omnibus/omnibus.js' %}"></script>
 
 <script>
+    // Select a transport implementation:
+    var transport = WebSocket; // SockJS can be used alternatively
+
+    // Receive the path for the connection from the django template context:
+    var endpoint = '{{ OMNIBUS_ENDPOINT }}';
+
+    // Define connection options:
+    var options = {
+        // Get the omnibus authentication token:
+        authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
+    };
+
+    // Create a new connection using transport, endpoint and options
+    var connection = new Omnibus(transport, endpoint, options);
+    var channel = connection.openChannel('boton');
     function hola(){
-        // Select a transport implementation:
-        var transport = WebSocket; // SockJS can be used alternatively
-
-        // Receive the path for the connection from the django template context:
-        var endpoint = '{{ OMNIBUS_ENDPOINT }}';
-
-        // Define connection options:
-        var options = {
-            // Get the omnibus authentication token:
-            authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
-        };
-
-        // Create a new connection using transport, endpoint and options
-        var connection = new Omnibus(transport, endpoint, options);
-        var channel = connection.openChannel('boton');
         channel.send('boton', {
             message: 'hola'
         });
