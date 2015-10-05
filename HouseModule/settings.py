@@ -67,14 +67,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'omnibus.context_processors.omnibus',
             ],
         },
     },
 ]
-
-TEMPLATE_CONTEXT_PROCESSORS += (
-                'omnibus.context_processors.omnibus',
-)
 
 WSGI_APPLICATION = 'HouseModule.wsgi.application'
 
