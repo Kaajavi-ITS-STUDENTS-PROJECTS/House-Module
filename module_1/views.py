@@ -154,6 +154,7 @@ def habitacion(request):
     return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones}, context)
 
 def hab_get(request):
+    context = RequestContext(request)
     habitaciones = Habitacion.objects.all()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
