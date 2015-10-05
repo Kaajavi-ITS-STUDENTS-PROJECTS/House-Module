@@ -55,7 +55,7 @@
     channel.on('habitacion', function(event) {
         $.ajax({
             method: "GET",
-            url: "{% url 'module_1:habitacion' %}",
+            url: "{% url 'module_1:hab_get' %}",
             success:function(result){
                 $('#habitaciones').html(result);
             },
