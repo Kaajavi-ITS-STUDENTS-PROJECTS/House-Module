@@ -148,7 +148,7 @@ def habitacion(request):
                             relay_functions.relay("open",luz.pin)
                             luz.status = habitacion.status
                             luz.save()
-        habitacion.save()
+                    habitacion.save()
     habitaciones = Habitacion.objects.all()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
