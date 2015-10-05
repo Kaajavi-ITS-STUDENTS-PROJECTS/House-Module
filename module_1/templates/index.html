@@ -38,10 +38,27 @@
 
 <script>
     function hola(){
-        var transport = WebSocket;
+        // Select a transport implementation:
+        var transport = WebSocket; // SockJS can be used alternatively
+
+        // Receive the path for the connection from the django template context:
         var endpoint = '{{ OMNIBUS_ENDPOINT }}';
-        var connection = new Omnibus(transport, endpoint);
-        var manager = new Manager(connection);
+
+        // Define connection options:
+        var options = {
+            // Get the omnibus authentication token:
+            authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
+        };
+
+        // Create a new connection using transport, endpoint and options
+        var connection = new Omnibus(transport, endpoint, options);
+        var channel = connection.openChannel('boton');
+        channel.send('boton', {
+            message: 'hola'
+        });
+        channel.on('boton', function(event) {
+            console.log("chau")
+        });
     }
 
     function habitacion(habitacion_id){
