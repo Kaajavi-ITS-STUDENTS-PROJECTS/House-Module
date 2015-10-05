@@ -55,9 +55,7 @@
 
         var foo = connection.openChannel('foo');
 
-        foo.send('baz', {
-            omg: 'wtf'
-        });
+        foo.send('bar');
         console.log("holar");
         foo.on('bar', function(event) {
             console.log("hola");

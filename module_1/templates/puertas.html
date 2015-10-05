@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% if puerta.status %}
-<p class="col s6 big">{{puerta.nombre}}</p>
+<p class="col s6 big valign">{{puerta.nombre}}</p>
 <div class="switch col s6">
     <label>
         Off
@@ -11,7 +11,7 @@
 </div>
 <!--<a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Cerrar {{puerta.nombre}} </a>--><br>
 {% else %}
-<p class="col s6 big">{{puerta.nombre}}</p>
+<p class="col s6 big valign">{{puerta.nombre}}</p>
 <div class="switch col s6">
     <label>
         Off
