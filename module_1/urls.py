@@ -12,5 +12,4 @@ urlpatterns = patterns('',
                        url(r'addroom/', 'module_1.views.add_room', name='addroom'),
                        url(r'addluces/', 'module_1.views.add_luces', name='addluces'),
                        url(r'addpuertas/', 'module_1.views.add_puertas', name='addpuertas'),
-                       url(r'info/$', 'module_1.views.send_hello_world', name='holaMundo'),
                       )
