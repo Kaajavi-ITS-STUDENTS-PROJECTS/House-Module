@@ -52,7 +52,7 @@
     // Create a new connection using transport, endpoint and options
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
-    channel.on('boton', function(event) {
+    channel.on('habitacion', function(event) {
         console.log("chau");
     });
 
