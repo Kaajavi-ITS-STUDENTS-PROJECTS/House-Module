@@ -7,24 +7,16 @@
         <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {% block titulo %}
-        {% endblock %} 
+        {% endblock %}
     </head>
     <body class="grey lighten-2">
         <header>
             <nav>
                 <div class="nav-wrapper blue-grey darken-3">
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <h4>Modal Header</h4>
-                            <p>A bunch of text</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                        </div>
-                    </div>
                     <a href="#!" class="center brand-logo">Module-House</a>
                     <ul class="right hide-on-med-and-down">
                         <!--<li><a href="#!"><i class="material-icons">search</i></a></li>!-->
+                         <li><a class="modal-trigger" href="#modal1">Modal</a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
                         <!--<li><a href="#!"><i class="material-icons">search</i>Sass</a></li>!-->
@@ -33,6 +25,15 @@
             </nav>
         </header>
         <main>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
             {% block content %}
             {% endblock %}
         </main>
