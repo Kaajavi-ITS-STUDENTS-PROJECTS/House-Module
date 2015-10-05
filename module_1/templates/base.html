@@ -16,7 +16,7 @@
                     <a href="#!" class="center brand-logo">Module-House</a>
                     <ul class="right hide-on-med-and-down">
                         <!--<li><a href="#!"><i class="material-icons">search</i></a></li>!-->
-                         <li><a class="modal-trigger" href="#modal1">Modal</a></li>
+                        <li><a class="modal-trigger" href="#modal1">Modal</a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
                         <!--<li><a href="#!"><i class="material-icons">search</i>Sass</a></li>!-->
@@ -63,6 +63,10 @@
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
     <script>
         $(".button-collapse").sideNav();
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
     </script>
     {% block scripts %}
     {% endblock %}
