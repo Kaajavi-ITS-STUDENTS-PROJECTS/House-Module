@@ -34,33 +34,14 @@
 </div>
 {% endblock %}
 {% block scripts %}
-<script type="text/javascript" src="{% static 'omnibus/omnibus.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'omnibus/sockjs.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'omnibus/json2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/omnibus.js' %}"></script>
 
 <script>
     function hola(){
-        // Select a transport implementation:
-        var transport = SockJS; // SockJS can be used alternatively
-
-        // Receive the path for the connection from the django template context:
-        var endpoint = 'http://192.168.2.254:8000';
-
-        var options = {
-            // Get the omnibus authentication token:
-            authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
-        };
-        // Create a new connection using transport, endpoint and options
-        var connection = new Omnibus(transport, endpoint, options);
-
-        var foo = connection.openChannel('foo');
-
-        foo.send('bar');
-        console.log("holar");
-        foo.on('bar', function(event) {
-            console.log("hola");
-            connection.closeChannel('foo');
-        });
+        var transport = WebSocket;
+        var endpoint = '{{ OMNIBUS_ENDPOINT }}';
+        var connection = new Omnibus(transport, endpoint);
+        var manager = new Manager(connection);
     }
 
     function habitacion(habitacion_id){
