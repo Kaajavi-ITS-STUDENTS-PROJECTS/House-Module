@@ -53,16 +53,7 @@
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
     channel.on('habitacion', function(event) {
-        $.ajax({
-            method: "GET",
-            url: "{% url 'module_1:hab_get' %}",
-            success:function(result){
-                $('#habitaciones').html(result);
-            },
-            error: function(e){
-                console.log(e.responseText);
-            }
-        });
+        $('#habitaciones').refresh();
     });
 
     function habitacion(habitacion_id){
