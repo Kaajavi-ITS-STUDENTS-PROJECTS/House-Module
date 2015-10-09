@@ -48,13 +48,7 @@
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
 
-    channel.on('habitacion', function(event) {
-        $(event.data.payload.loader).html(event.data.payload.data);
-    });
-    channel.on('luz', function(event) {
-        $(event.data.payload.loader).html(event.data.payload.data);
-    });
-    channel.on('puerta', function(event) {
+    channel.on('reload', function(event) {
         $(event.data.payload.loader).html(event.data.payload.data);
     });
 
@@ -70,7 +64,7 @@
             data: data,
             success:function(result){
                 $('#habitaciones').html(result);
-                channel.send('habitacion',{
+                channel.send('reload',{
                     loader:'#habitaciones',
                     data:result,
                 });
@@ -93,7 +87,7 @@
             success:function(result){
                 var helper="#luz-"+luz_id;
                 $(helper).html(result);
-                channel.send('luz',{
+                channel.send('reload',{
                     loader:helper,
                     data:result,
                 });
@@ -116,7 +110,7 @@
             success:function(result){
                 var helper="#puerta-"+puerta_id;
                 $(helper).html(result);
-                channel.send('puerta',{
+                channel.send('reload',{
                     loader:helper,
                     data:result,
                 });
