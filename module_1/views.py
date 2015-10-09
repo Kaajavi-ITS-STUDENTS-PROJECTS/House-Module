@@ -237,6 +237,12 @@ def add_luces(request):
     return render_to_response('luz-agregada.html',{'luces':luces,'habitacion':habitacion},context)
 
 
+def auto_luz(request):
+    context = RequestContext(request)
+    
+    return render_to_response('luzauto.html',context)
+
+
 
 def add_puertas(request):
     context = RequestContext(request)
