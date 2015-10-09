@@ -62,16 +62,6 @@ def luz(request):
                     relay_functions.relay("open",luz.pin)
                 luz.save()
     luces = Luz.objects.all()
-    """for luz in luces:
-            luz_aux= Luz.objects.get(id = luz.id)
-            luz_aux.status = relay_functions.getStatus(luz.pin)
-            luz_aux.save()
-
-    puertas = Puerta.objects.all()
-    habitaciones = Habitacion.objects.all()
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
     return render_to_response('luces.html',{'luz':luz}, context)
 
 
@@ -93,18 +83,6 @@ def puerta(request):
                 puerta.save()
                 print puerta.status
     puertas = Puerta.objects.all()
-    """for puerta in puertas:
-            puerta_aux= Puerta.objects.get(id = puerta.id)
-            puerta_aux.status = relay_functions.getStatus(puerta.pin)
-            print puerta_aux.status
-            puerta_aux.save()
-    puertas = Puerta.objects.all()
-    luces = Luz.objects.all()
-
-    habitaciones = Habitacion.objects.all()
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
 def sanitario(request, id_sanitario):
@@ -115,12 +93,6 @@ def sanitario(request, id_sanitario):
     else:
         sanitario.ocupado = True
     sanitario.save()
-    """luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-    habitaciones = Habitacion.objects.all()
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
     return redirect('/')
 
 
@@ -131,10 +103,16 @@ def habitacion(request):
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                print "TRUEEE"
                 habitacion = Habitacion.objects.get(id = id)
                 luces = Luz.objects.filter(lugar_id = id)
-                if habitacion.status:
+                for luz in luces:
+                    if luz:
+                        status_l = True
+                    else:
+                        status_l = False
+                        break
+
+                if habitacion.status and status_l:
                     habitacion.status = False
                     for luz in luces:
                         relay_functions.relay("close",luz.pin)
@@ -171,17 +149,10 @@ def alarma(request, id_alarma):
         relay_functions.relay("open",alarma.pin)
         alarma.status=True
     alarma.save()
-    """luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-    habitaciones = Habitacion.objects.all()
-    sanitarios = Sanitario.objects.all()
-    alarmas = Alarma.objects.all()
-    return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)"""
     return redirect("/")
 
 @requires_csrf_token
 def login_user(request):
-
     context = RequestContext(request)
     if request.method=='POST':
         username=request.POST['username']
