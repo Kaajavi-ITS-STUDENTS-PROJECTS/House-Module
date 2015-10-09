@@ -45,31 +45,19 @@
     // Create a new connection using transport, endpoint and options
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
-    var hab;
-    function refresh(habitacion_id) {
-        var data={
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            id:habitacion_id,
-        }
-        $.ajax({
-            method: "POST",
-            url: "{% url 'module_1:habitacion' %}",
-            data: data,
-            success: function(result) {
-                $('#habitaciones').html(result);
-            },
-
-            error: function(e){
-                console.log(e.responseText);
-            }
-        });
-    }
 
     channel.on('habitacion', function(event) {
-        console.log(event.data.payload.loader);
         $(event.data.payload.loader).html(event.data.payload.data);
     });
-
+    channel.on('luz', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
+    channel.on('puerta', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
+    channel.on('alarma', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
 
     function habitacion(habitacion_id){
 
