@@ -70,9 +70,8 @@
     });
 
     function habitacion(habitacion_id){
-        channel.send('habitacion',{
-            hab:habitacion_id
-        });
+        hab = habitacion_id;
+        channel.send('habitacion');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:habitacion_id,
