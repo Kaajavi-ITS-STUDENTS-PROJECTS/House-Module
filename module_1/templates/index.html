@@ -45,7 +45,7 @@
     // Create a new connection using transport, endpoint and options
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
-    var hab = "";
+    var hab;
     function refresh(habitacion_id) {
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
@@ -70,8 +70,9 @@
     });
 
     function habitacion(habitacion_id){
-        hab = habitacion_id;
-        channel.send('habitacion');
+        channel.send('habitacion',{
+            hab:habitacion_id
+        });
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:habitacion_id,
