@@ -55,9 +55,6 @@
     channel.on('puerta', function(event) {
         $(event.data.payload.loader).html(event.data.payload.data);
     });
-    channel.on('alarma', function(event) {
-        $(event.data.payload.loader).html(event.data.payload.data);
-    });
 
     function habitacion(habitacion_id){
 
@@ -92,10 +89,10 @@
             url: "{% url 'module_1:luz' %}",
             data: data,
             success:function(result){
-                console.log(result);
-                $("#luz-"+luz_id).html(result);
+                var helper="#luz-"+luz_id;
+                $(helper).html(result);
                 channel.send('luz',{
-                    loader:"#luz-"+luz_id,
+                    loader:helper,
                     data:result,
                 });
             },
@@ -115,10 +112,10 @@
             url: "{% url 'module_1:puerta' %}",
             data: data,
             success:function(result){
-                console.log(result);
-                $("#puerta-"+puerta_id).html(result);
+                var helper="#puerta-"+puerta_id;
+                $(helper).html(result);
                 channel.send('puerta',{
-                    loader:"#puerta-"+puerta_id,
+                    loader:helper,
                     data:result,
                 });
             },
@@ -127,10 +124,5 @@
             }
         });
     }
-
-    function mapa(){
-
-    }
-
 </script>
 {% endblock %}
