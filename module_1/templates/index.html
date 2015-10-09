@@ -66,11 +66,9 @@
     }
 
     channel.on('habitacion', function(event) {
-        //console.log(data);
+        console.log(event.data.payload.loader);
     });
-    channel.trigger('habitacion', function(event, data) {
-        console.log(data);
-    });
+
 
     function habitacion(habitacion_id){
 
