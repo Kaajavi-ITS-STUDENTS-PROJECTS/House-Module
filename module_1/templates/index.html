@@ -52,11 +52,11 @@
             id:habitacion_id,
         }
         $.ajax({
-            method: "POST";
+            method: "POST",
             url: "{% url 'module_1:habitacion' %}",
             data: data,
-            success: function(data) {
-                $('#habitaciones').html(data);
+            success: function(result) {
+                $('#habitaciones').html(result);
             },
 
             error: function(e){
