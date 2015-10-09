@@ -49,7 +49,7 @@
     var channel = connection.openChannel('module_recargar');
     function refresh() {
         $.ajax({
-            url: '{% module_1:habitacion %}',
+            url: "{% url 'module_1:habitacion' %}",
             success: function(data) {
                 $('#habitaciones').html(data);
             }
