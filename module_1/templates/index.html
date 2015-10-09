@@ -65,13 +65,13 @@
         });
     }
 
-    channel.on(, function(event) {
+    channel.on('habitacion', function(event) {
         refresh(hab);
     });
 
     function habitacion(habitacion_id){
         hab = habitacion_id;
-        channel.send(hab);
+        channel.send('habitacion');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:habitacion_id,
