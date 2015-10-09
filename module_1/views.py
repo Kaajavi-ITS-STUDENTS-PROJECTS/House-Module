@@ -1,6 +1,5 @@
 from django.shortcuts import render_to_response, render, redirect
 from django.template import RequestContext
-from django.contrib.auth import authenticate
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -127,33 +126,38 @@ def sanitario(request, id_sanitario):
 
 def habitacion(request):
     context = RequestContext(request)
-    if request.method=='POST':
-        id= request.POST.get('id')
-        lista_permitidos = Usuario.objects.filter(permisos_habitaciones=id)
-        if lista_permitidos.__str__() != "[]":
-            for permitido in lista_permitidos:
-                if permitido.user.id == request.user.id:
-                    print "TRUEEE"
-                    habitacion = Habitacion.objects.get(id = id)
-                    luces = Luz.objects.filter(lugar_id = id)
-                    if habitacion.status:
-                        habitacion.status = False
-                        for luz in luces:
-                            relay_functions.relay("close",luz.pin)
-                            luz.status = habitacion.status
-                            luz.save()
-                    else:
-                        habitacion.status = True
-                        for luz in luces:
-                            relay_functions.relay("open",luz.pin)
-                            luz.status = habitacion.status
-                            luz.save()
-                    habitacion.save()
+    id= request.POST.get('id')
+    lista_permitidos = Usuario.objects.filter(permisos_habitaciones=id)
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                print "TRUEEE"
+                habitacion = Habitacion.objects.get(id = id)
+                luces = Luz.objects.filter(lugar_id = id)
+                if habitacion.status:
+                    habitacion.status = False
+                    for luz in luces:
+                        relay_functions.relay("close",luz.pin)
+                        luz.status = habitacion.status
+                        luz.save()
+                else:
+                    habitacion.status = True
+                    for luz in luces:
+                        relay_functions.relay("open",luz.pin)
+                        luz.status = habitacion.status
+                        luz.save()
+    habitacion.save()
     habitaciones = Habitacion.objects.all()
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
     return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones}, context)
 
+def hab_get(request):
+    context = RequestContext(request)
+    habitaciones = Habitacion.objects.all()
+    luces = Luz.objects.all()
+    puertas = Puerta.objects.all()
+    return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones}, context)
 
 def alarma(request, id_alarma):
     context = RequestContext(request)

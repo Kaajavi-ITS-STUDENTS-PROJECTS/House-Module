@@ -20,13 +20,6 @@
 
                 {% endif %}
                 {% endfor %}
-                <br>
-
-                <a href="" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">Mapa</a>
-
-
-
-
             </div>
         </div>
     </div>
@@ -52,21 +45,22 @@
     // Create a new connection using transport, endpoint and options
     var connection = new Omnibus(transport, endpoint, options);
     var channel = connection.openChannel('module_recargar');
+
     channel.on('habitacion', function(event) {
-        $.ajax({
-            method: "GET",
-            url: "{% url 'module_1:habitacion' %}",
-            success:function(result){
-                $('#habitaciones').html(result);
-            },
-            error: function(e){
-                console.log(e.responseText);
-            }
-        });
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
+    channel.on('luz', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
+    channel.on('puerta', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
+    channel.on('alarma', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
     });
 
     function habitacion(habitacion_id){
-        channel.send('habitacion');
+
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:habitacion_id,
@@ -77,6 +71,10 @@
             data: data,
             success:function(result){
                 $('#habitaciones').html(result);
+                channel.send('habitacion',{
+                    loader:'#habitaciones',
+                    data:result,
+                });
             },
             error: function(e){
                 console.log(e.responseText);
