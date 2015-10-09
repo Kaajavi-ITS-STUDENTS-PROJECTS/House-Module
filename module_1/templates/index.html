@@ -66,12 +66,11 @@
     }
 
     channel.on('habitacion', function(event) {
-        refresh(hab);
+        console.log(event);
     });
 
     function habitacion(habitacion_id){
-        hab = habitacion_id;
-        channel.send('habitacion');
+
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id:habitacion_id,
@@ -82,6 +81,10 @@
             data: data,
             success:function(result){
                 $('#habitaciones').html(result);
+                channel.send('habitacion',{
+                    loader:'#habitaciones',
+                    data:result,
+                });
             },
             error: function(e){
                 console.log(e.responseText);
