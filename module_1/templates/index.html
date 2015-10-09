@@ -67,6 +67,7 @@
 
     channel.on('habitacion', function(event) {
         console.log(event.data.payload.loader);
+        $(event.data.payload.loader).html(event.data.payload.data);
     });
 
 
