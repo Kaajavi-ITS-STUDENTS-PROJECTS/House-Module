@@ -65,7 +65,10 @@
         });
     }
 
-    channel.on('habitacion', function(event, data) {
+    channel.on('habitacion', function(event) {
+        //console.log(data);
+    });
+    channel.trigger('habitacion', function(event, data) {
         console.log(data);
     });
 
