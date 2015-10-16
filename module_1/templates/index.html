@@ -4,13 +4,13 @@
 <title>Inicio</title>
 {% endblock %}
 {% block navbar %}
-<li><a class="modal-trigger" href="#modal1"><i class="material-icons">maps</i>Mapa</a></li>
+<li><a class="modal-trigger" href="#modal1">Mapa</a></li>
 <li>
     {% for alarma in alarmas %}
     {% if alarma.status %}
-    <a href="{% url 'module_1:alarma' alarma.id %}" class="green darken-4 btn-large"><i class="material-icons">notification</i>Desactivar {{alarma.nombre}} </a>
+    <a href="{% url 'module_1:alarma' alarma.id %}" class="green darken-4">Desactivar {{alarma.nombre}} </a>
     {% else %}
-    <a href="{% url 'module_1:alarma' alarma.id %}" class="red darken-4 btn-large"><i class="material-icons">notification</i>Activar {{alarma.nombre}} </a>
+    <a href="{% url 'module_1:alarma' alarma.id %}" class="red darken-4">Activar {{alarma.nombre}} </a>
     {% endif %}
     {% endfor %}
 </li>
