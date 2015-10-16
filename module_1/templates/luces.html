@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% if luz.status %}
-<p class="col l6 m6 s12 valign">{{luz.nombre}}</p>
-<div class="switch col l5 m5 s12 offset-l1 offset-m1">
+<p class="col m6 s12 valign">{{luz.nombre}}</p>
+<div class="switch col m6 s12">
     <label>
         Off
         <input type="checkbox" onclick="luz({{luz.id}})" checked="checked">
@@ -12,8 +12,8 @@
 <br>
 <!--<a onclick="luz({{luz.id}})" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Apagar    {{luz.nombre}}</a>-->
 {% else %}
-<p class="col l6 m6 s12 valign">{{luz.nombre}}</p>
-<div class="switch col l5 m5 s12 offset-l1 offset-m1">
+<p class="col m6 s12 valign">{{luz.nombre}}</p>
+<div class="switch col m6 s12">
     <label>
         Off
         <input type="checkbox" onclick="luz({{luz.id}})">
