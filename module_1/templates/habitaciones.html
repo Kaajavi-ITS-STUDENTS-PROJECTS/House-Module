@@ -20,7 +20,7 @@
                 {% endif %}
                 {% endfor %}
                 {% if habitacion.status %}
-                <div class="switch col l5 m7 s12 offset-l7 offset-m5">
+                <div class="switch col l4 m6 s12">
                     <label>
                         Off
                         <input type="checkbox" id="{{habitacion.id}}" onclick="habitacion(this.id)" checked="checked">
@@ -30,7 +30,7 @@
                 </div>
                 <!-- <a onclick="habitacion(this.id)" id="{{habitacion.id}}" class="card-panel green  darken-4 waves-effect waves-orange btn-large col s12">{{habitacion.nombre}}</a>--><br>
                 {% else %}
-                <div class="switch col l5 m7 s12 offset-l7 offset-m5">
+                <div class="switch col l4 m6 s12">
                     <label>
                         Off
                         <input type="checkbox" id="{{habitacion.id}}" onclick="habitacion(this.id)">

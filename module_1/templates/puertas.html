@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% if puerta.status %}
-<p class="col s6 big valign">{{puerta.nombre}}</p>
-<div class="switch col s6">
+<p class="col l6 m6 s12 valign">{{puerta.nombre}}</p>
+<div class="switch col l5 m5 s12 offset-l1 offset-m1">
     <label>
         Off
         <input type="checkbox" id="{{puerta.id}}" onclick="puerta(this.id)" checked="checked">
@@ -11,8 +11,8 @@
 </div>
 <!--<a onclick="puerta(this.id)" id="{{puerta.id}}" class="card-panel green darken-4 waves-effect waves-orange btn-large col s12">Cerrar {{puerta.nombre}} </a>--><br>
 {% else %}
-<p class="col s6 big valign">{{puerta.nombre}}</p>
-<div class="switch col s6">
+<p class="col l6 m6 s12 valign">{{puerta.nombre}}</p>
+<div class="switch col l5 m5 s12 offset-l1 offset-m1">
     <label>
         Off
         <input type="checkbox" id="{{puerta.id}}" onclick="puerta(this.id)">
