@@ -21,7 +21,7 @@
     <tbody>
         <tr>
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown1'>Horas</a>
+                <a class='dropdown-button btn' id="dp1" data-activates='dropdown1'>Horas</a>
                 <ul id='dropdown1' class='dropdown-content'>
                     <li><a id="1" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="2" onclick="open_modal(this.id)">01:00</a></li>
@@ -52,7 +52,7 @@
             </td>
 
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown2'>Horas</a>
+                <a class='dropdown-button btn' id="dp2" data-activates='dropdown2'>Horas</a>
                 <ul id='dropdown2' class='dropdown-content'>
                     <li><a id="26" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="27" onclick="open_modal(this.id)">01:00</a></li>
@@ -83,7 +83,7 @@
             </td>
 
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown3'>Horas</a>
+                <a class='dropdown-button btn' id="dp3"data-activates='dropdown3'>Horas</a>
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a id="51" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="52" onclick="open_modal(this.id)">01:00</a></li>
@@ -114,7 +114,7 @@
             </td>
 
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown4'>Horas</a>
+                <a class='dropdown-button btn' id="dp4" data-activates='dropdown4'>Horas</a>
                 <ul id='dropdown4' class='dropdown-content'>
                     <li><a id="76" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="77" onclick="open_modal(this.id)">01:00</a></li>
@@ -145,7 +145,7 @@
             </td>
 
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown5'>Horas</a>
+                <a class='dropdown-button btn' id="dp5" data-activates='dropdown5'>Horas</a>
                 <ul id='dropdown5' class='dropdown-content'>
                     <li><a id="101" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="102" onclick="open_modal(this.id)">01:00</a></li>
@@ -176,7 +176,7 @@
             </td>
 
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown6'>Horas</a>
+                <a class='dropdown-button btn' id="dp6" data-activates='dropdown6'>Horas</a>
                 <ul id='dropdown6' class='dropdown-content'>
                     <li><a id="206" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="207" onclick="open_modal(this.id)">01:00</a></li>
@@ -207,7 +207,7 @@
             </td>
         
             <td>
-                <a class='dropdown-button btn' data-activates='dropdown7'>Horas</a>
+                <a class='dropdown-button btn' id="dp7" data-activates='dropdown7'>Horas</a>
                 <ul id='dropdown7' class='dropdown-content'>
                     <li><a id="231" onclick="open_modal(this.id)">00:00</a></li>
                     <li><a id="232" onclick="open_modal(this.id)">01:00</a></li>
@@ -240,18 +240,257 @@
     </tbody>
 </table>
 
-    <table>
+
+<!------------------------------------------------------------------------------------------------>
+
+<table class="responsive-table">
+    <thead>
+        <tr>
+            <th data-field="id-lunes">Lunes</th>
+            <th data-field="id-martes">Martes</th>
+            <th data-field="id-miercoles">Miercoles</th>
+            <th data-field="id-jueves">Jueves</th>
+            <th data-field="id-viernes">Viernes</th>
+            <th data-field="id-sabado">Sabado</th>
+            <th data-field="id-domingo">Domingo</th>
+        </tr>
+    </thead>
+     
+    <tbody>
+        <tr>
+            <td>
+                <a class='dropdown-button btn' id="dp1" data-activates='dropdown1'>Horas</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a id="1" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="2" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="3" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="4" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="5" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="6" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="7" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="8" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="9" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="10" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="11" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="12" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="13" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="14" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="15" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="16" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="17" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="18" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="19" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="20" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="21" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="22" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="23" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="24" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="25" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+
+            <td>
+                <a class='dropdown-button btn' id="dp2" data-activates='dropdown2'>Horas</a>
+                <ul id='dropdown2' class='dropdown-content'>
+                    <li><a id="26" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="27" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="28" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="29" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="30" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="31" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="32" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="33" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="34" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="35" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="36" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="37" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="38" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="39" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="40" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="41" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="42" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="43" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="44" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="45" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="46" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="47" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="48" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="49" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="50" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+
+            <td>
+                <a class='dropdown-button btn' id="dp3"data-activates='dropdown3'>Horas</a>
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a id="51" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="52" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="53" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="54" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="55" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="56" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="57" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="58" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="59" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="60" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="61" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="62" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="63" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="64" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="65" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="66" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="67" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="68" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="69" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="70" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="71" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="72" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="73" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="74" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="75" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+
+            <td>
+                <a class='dropdown-button btn' id="dp4" data-activates='dropdown4'>Horas</a>
+                <ul id='dropdown4' class='dropdown-content'>
+                    <li><a id="76" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="77" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="78" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="79" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="80" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="81" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="82" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="83" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="84" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="85" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="86" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="87" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="88" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="89" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="90" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="91" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="92" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="93" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="94" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="95" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="96" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="97" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="98" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="99" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="100" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+
+            <td>
+                <a class='dropdown-button btn' id="dp5" data-activates='dropdown5'>Horas</a>
+                <ul id='dropdown5' class='dropdown-content'>
+                    <li><a id="101" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="102" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="103" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="104" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="105" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="106" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="107" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="108" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="109" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="110" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="111" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="112" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="113" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="114" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="115" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="116" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="117" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="118" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="119" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="200" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="201" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="202" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="203" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="204" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="205" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+
+            <td>
+                <a class='dropdown-button btn' id="dp6" data-activates='dropdown6'>Horas</a>
+                <ul id='dropdown6' class='dropdown-content'>
+                    <li><a id="206" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="207" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="208" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="209" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="210" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="211" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="212" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="213" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="214" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="215" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="216" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="217" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="218" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="219" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="220" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="221" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="222" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="223" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="224" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="225" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="226" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="227" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="228" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="229" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="230" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+        
+            <td>
+                <a class='dropdown-button btn' id="dp7" data-activates='dropdown7'>Horas</a>
+                <ul id='dropdown7' class='dropdown-content'>
+                    <li><a id="231" onclick="open_modal(this.id)">00:00</a></li>
+                    <li><a id="232" onclick="open_modal(this.id)">01:00</a></li>
+                    <li><a id="233" onclick="open_modal(this.id)">02:00</a></li>
+                    <li><a id="234" onclick="open_modal(this.id)">03:00</a></li>
+                    <li><a id="235" onclick="open_modal(this.id)">04:00</a></li>
+                    <li><a id="236" onclick="open_modal(this.id)">05:00</a></li>
+                    <li><a id="237" onclick="open_modal(this.id)">06:00</a></li>
+                    <li><a id="238" onclick="open_modal(this.id)">07:00</a></li>
+                    <li><a id="239" onclick="open_modal(this.id)">08:00</a></li>
+                    <li><a id="240" onclick="open_modal(this.id)">09:00</a></li>
+                    <li><a id="241" onclick="open_modal(this.id)">10:00</a></li>
+                    <li><a id="242" onclick="open_modal(this.id)">11:00</a></li>
+                    <li><a id="243" onclick="open_modal(this.id)">12:00</a></li>
+                    <li><a id="244" onclick="open_modal(this.id)">13:00</a></li>
+                    <li><a id="245" onclick="open_modal(this.id)">14:00</a></li>
+                    <li><a id="246" onclick="open_modal(this.id)">15:00</a></li>
+                    <li><a id="247" onclick="open_modal(this.id)">16:00</a></li>
+                    <li><a id="248" onclick="open_modal(this.id)">17:00</a></li>
+                    <li><a id="249" onclick="open_modal(this.id)">18:00</a></li>
+                    <li><a id="250" onclick="open_modal(this.id)">19:00</a></li>
+                    <li><a id="251" onclick="open_modal(this.id)">20:00</a></li>
+                    <li><a id="252" onclick="open_modal(this.id)">21:00</a></li>
+                    <li><a id="253" onclick="open_modal(this.id)">22:00</a></li>
+                    <li><a id="254" onclick="open_modal(this.id)">23:00</a></li>
+                    <li><a id="255" onclick="open_modal(this.id)">24:00</a></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+    <!--<table>
         <thead>
         </thead>
         <tbody>
         </tbody>
-    </table>
+    </table>-->
             
 
 {% block scripts %}
     
 <script>
-    $("#addhab").click(function open_modal(id){
+ /*   $("#addhab").click(function open_modal(id){
         var data={  
             csrfmiddlewaretoken: '{{ csrf_token }}',
             habtacion:$("#id_habitacion").val(),
@@ -267,7 +506,7 @@
                 console.log(e.responseText);
             },
         });
-    });
+    });*/
 </script>
 
 {% endblock %}
