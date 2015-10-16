@@ -17,7 +17,9 @@
                     <a href="#!" class="center brand-logo">Module-House</a>
                     <ul class="right hide-on-med-and-down">
                         <!--<li><a href="#!"><i class="material-icons">search</i></a></li>!-->
-                        <li><a class="modal-trigger" href="#modal1">Mapa</a></li>
+                        {% block navbar %}
+                        {% endblock %}
+                        <!--<li><a class="modal-trigger" href="#modal1">Mapa</a></li>-->
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
                         <!--<li><a href="#!"><i class="material-icons">search</i>Sass</a></li>!-->
@@ -27,11 +29,13 @@
         </header>
         <main>
             <div id="modal1" class="modal">
+                {% block content %}
                 <div class="modal-content">
                     <h4>Mapa</h4>
                     <p>Este es un mapita de la casa del Mitico UlisesT</p>
                     <img src="{% static 'img/planocasa.svg' %}"></img>
                 </div>
+                {% endblock %}
                 <div class="modal-footer">
                     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
                 </div>
