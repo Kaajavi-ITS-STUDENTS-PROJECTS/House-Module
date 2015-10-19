@@ -33,13 +33,12 @@
         start: [ 0 ],
         range: {
             'min': 0,
-            'max': 24 * 60
-        }
-    });
-
-    $("#slider").Link("lower").to($("#time"), null, {
-        to: minutesToHHMM,
-        from: HHMMtoMinutes
+            'max': 24 * 60 -1
+        },
+        format: {
+            to: minutesToHHMM,
+            from: HHMMtoMinutes
+        },
     });
 
     function minutesToHHMM(value) {
