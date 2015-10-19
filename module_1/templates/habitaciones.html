@@ -1,12 +1,12 @@
 {% load staticfiles %}
 <div class="col s10 offset-s1" id="habitaciones">
-    {par = False}
+    {% par = False %}
     {% for habitacion in habitaciones %}
     {% if par %}
-        {par = False}
+        {% par = False %}
         <div class="col m5 s12">
     {% else %}
-        {par = True}
+        {% par = True %}
         <div class="col m5 s12 offset-m1">
     {% endif %}
         <div class="card blue-grey darken-1">
