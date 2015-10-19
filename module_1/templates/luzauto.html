@@ -29,13 +29,17 @@
     $(document).ready(function() {
         $('select').material_select();
     });
-    $("#slider").noUiSlider({
-        start: [ 0 ],
+
+    var slider = document.getElementById('slider');
+    noUiSlider.create(slider, {
+        start: [20, 80],
+        connect: true,
+        step: 1,
         range: {
             'min': 0,
-            'max': 24 * 60 -1
+            'max': 100
         },
-        format: {
+        format:{
             to: minutesToHHMM,
             from: HHMMtoMinutes
         },
