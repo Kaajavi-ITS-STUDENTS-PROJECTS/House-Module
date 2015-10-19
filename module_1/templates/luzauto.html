@@ -22,9 +22,7 @@
     </div>
     <br>
     <br>
-    <p class="range-field">
-      <input type="range" id="test5"/>
-    </p>
+      <input type="range" id="test5" class="test5"/>
 </div>
 
 
@@ -310,7 +308,7 @@
         $('select').material_select();
     });
 
-    var slider = document.getElementById('test5');
+    var slider = $("#test5");
     noUiSlider.create(slider, {
         start: [0, 23],
         connect: true,
