@@ -32,9 +32,10 @@
 
     var slider = document.getElementById('slider');
     noUiSlider.create(slider, {
-        range: true,
-        min: 0,
-        max: 1440,
+        range: {
+            min: 0,
+            max: 1440,
+        },
         step: 15,
         slide: function(e, ui) {
             var hours = Math.floor(ui.value / 60);
