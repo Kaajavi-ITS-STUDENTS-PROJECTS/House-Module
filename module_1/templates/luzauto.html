@@ -20,7 +20,7 @@
     <label>Elije un dia</label>
 </div>
 
-<div id="test5"></div>
+<div id="slider"></div>
 
 
 
@@ -298,26 +298,25 @@
 </tr>
 </tbody>
 </table>-->
-
+{% endblock %}
 {% block scripts %}
-<script type="text/javascript" src="{% static 'js/nouislider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     $(document).ready(function() {
         $('select').material_select();
-        var slider = document.getElementById('test5');
-        noUiSlider.create(slider, {
-            start: [20, 80],
-            connect: true,
-            step: 1,
-            range: {
-                'min': 0,
-                'max': 100
-            }
-        });
+    });
+
+    var slider = document.getElementById('slider');
+    noUiSlider.create(slider, {
+        start: [20, 80],
+        connect: true,
+        step: 1,
+        range: {
+            'min': 0,
+            'max': 100
+        }
     });
 
 
 </script>
-
-{% endblock %}
 {% endblock %}
