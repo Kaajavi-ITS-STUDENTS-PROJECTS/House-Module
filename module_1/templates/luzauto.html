@@ -20,11 +20,7 @@
     <label>Elije un dia</label>
 </div>
 
-<form action="#">
-    <p class="range-field">
-        <input type="range" id="test5" min="0" max="100" />
-    </p>
-</form>
+<div id="test5"></div>
 
 
 
@@ -308,18 +304,19 @@
 <script>
     $(document).ready(function() {
         $('select').material_select();
+        var slider = document.getElementById('test5');
+        noUiSlider.create(slider, {
+            start: [20, 80],
+            connect: true,
+            step: 1,
+            range: {
+                'min': 0,
+                'max': 100
+            }
+        });
     });
 
-    var slider = document.getElementById('test5');
-    noUiSlider.create(slider, {
-        start: [20, 80],
-        connect: true,
-        step: 1,
-        range: {
-            'min': 0,
-            'max': 100
-        }
-    });
+
 </script>
 
 {% endblock %}
