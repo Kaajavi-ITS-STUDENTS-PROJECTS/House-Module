@@ -21,6 +21,7 @@
         <label>Elije un dia</label>
     </div>
     <br>
+    <br>
     <div id="test5"></div>
 </div>
 
@@ -303,6 +304,10 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
     var slider = document.getElementById('test5');
     noUiSlider.create(slider, {
         start: [0, 23],
