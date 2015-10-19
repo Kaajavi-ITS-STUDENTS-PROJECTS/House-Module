@@ -3,6 +3,7 @@
 <div class="col s10 offset-s1" id="habitaciones">
     {% for habitacion in habitaciones %}
     {% if forloop.counter|divisibleby:2 %}
+        <div>
         <div class="col m5 s12">
     {% else %}
         <div class="col m5 s12 offset-m1">
@@ -52,5 +53,9 @@
             </div>
         </div>
     </div>
+    {% if forloop.counter|divisibleby:2 %}
+    {% else %}
+        </div>
+    {% endif %}
     {% endfor %}
 </div>
