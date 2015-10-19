@@ -6,7 +6,26 @@
 {% endblock %}
 {% block content %}
 
-
+<div class="card blue-grey darken-1">
+    <div class="input-field col s12">
+        <select>
+            <option value="1" selected>Domingo</option>
+            <option value="2">Lunes</option>
+            <option value="3">Martes</option>
+            <option value="4">Miercoles</option>
+            <option value="5">Jueves</option>
+            <option value="6">Viernes</option>
+            <option value="7">Sabado</option>
+        </select>
+        <label>Elije un dia</label>
+    </div>
+    <br>
+    <br>
+    <p class="range-field">
+      <input type="range" min="0" max="23" />
+        <input type="range" id="test5" min="0" max="23" />
+    </p>
+    <div id="slider"></div>
 <div class="input-field col s12">
     <select>
         <option value="1" selected>Domingo</option>
@@ -18,6 +37,7 @@
         <option value="7">Sabado</option>
     </select>
     <label>Elije un dia</label>
+    <!--ESTO ES PARA VER SIPUEDO PUSHEAR-->
 </div>
 
 <div id="slider"></div>
