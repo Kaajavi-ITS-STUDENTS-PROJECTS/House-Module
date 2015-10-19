@@ -22,12 +22,10 @@
     </div>
     <br>
     <br>
-    <form action="#" id="test5">
     <p class="range-field">
       <input type="range" min="0" max="23" />
+        <input type="range" id="test5" min="0" max="100" />
     </p>
-  </form>
-
 </div>
 
 
@@ -307,7 +305,7 @@
 </table>-->
 
 {% block scripts %}
-<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/nouislider.js' %}"></script>
 <script>
     $(document).ready(function() {
         $('select').material_select();
@@ -326,6 +324,26 @@
             decimals: 2
         })
     });
+
+
+    var valueInput = document.getElementById('value-input'),
+        valueSpan = document.getElementById('value-span');
+
+    // When the slider value changes, update the input and span
+    slider.noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) {
+            valueInput.value = values[handle];
+        } else {
+            valueSpan.innerHTML = values[handle];
+        }
+    });
+
+    // When the input changes, set the slider value
+    valueInput.addEventListener('change', function(){
+        slider.noUiSlider.set([null, this.value]);
+    });
+
+
 
 </script>
 
