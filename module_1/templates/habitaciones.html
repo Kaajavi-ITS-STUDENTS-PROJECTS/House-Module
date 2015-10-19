@@ -2,10 +2,10 @@
 <div class="col s10 offset-s1" id="habitaciones">
     {par = False}
     {% for habitacion in habitaciones %}
-    {% if par==True %}
+    {% if par %}
         {par = False}
         <div class="col m5 s12">
-    {% elif par==False %}
+    {% else %}
         {par = True}
         <div class="col m5 s12 offset-m1">
     {% endif %}
