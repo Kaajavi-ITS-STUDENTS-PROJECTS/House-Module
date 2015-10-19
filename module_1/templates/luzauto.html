@@ -32,16 +32,22 @@
 
     var slider = document.getElementById('slider');
     noUiSlider.create(slider, {
-        start: [0, 23],
+        start: [500, 1000],
         connect: true,
-        step: 1,
+        step: 5,
+        slide: function(e, ui) {
+            var hours = Math.floor(ui.value / 60);
+            var minutes = ui.value - (hours * 60);
+
+            if(hours.toString().length == 1) hours = '0' + hours;
+            if(minutes.toString().length == 1) minutes = '0' + minutes;
+
+            $('#something').html(hours+':'+minutes);
+        },
         range: {
             'min': 0,
-            'max': 23
+            'max': 1440
         },
-        format: wNumb({
-            decimals: 0
-        })
     });
 
 </script>
