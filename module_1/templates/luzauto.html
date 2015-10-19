@@ -47,11 +47,7 @@
 >>>>>>> 322e78e711cf9f1ffb4eaa3cb3654c61164a3b8f
 </div>
 
-<form action="#">
-    <p class="range-field">
-        <input type="range" id="test5" min="0" max="100" />
-    </p>
-</form>
+<div id="slider"></div>
 
 
 
@@ -329,15 +325,15 @@
 </tr>
 </tbody>
 </table>-->
-
+{% endblock %}
 {% block scripts %}
-<script type="text/javascript" src="{% static 'js/nouislider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     $(document).ready(function() {
         $('select').material_select();
     });
 
-    var slider = document.getElementById('test5');
+    var slider = document.getElementById('slider');
     noUiSlider.create(slider, {
         start: [20, 80],
         connect: true,
@@ -347,7 +343,7 @@
             'max': 100
         }
     });
-</script>
 
-{% endblock %}
+
+</script>
 {% endblock %}
