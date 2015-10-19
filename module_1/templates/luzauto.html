@@ -3,7 +3,6 @@
 {% block titulo %}
 <title>Luz Auto</title>
 <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
-<link rel="stylesheet" href="{% static 'css/nouislider.pips.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -23,10 +22,14 @@
     </div>
     <br>
     <br>
+<<<<<<< HEAD
     <p class="range-field">
       <input type="range" min="0" max="23" />
         <input type="range" id="test5" min="0" max="23" />
     </p>
+=======
+    <div id="slider"></div>
+>>>>>>> 05772b6640847f2a2cad049f72a517c98992574d
 </div>
 
 
@@ -306,13 +309,13 @@
 </table>-->
 
 {% block scripts %}
-<script type="text/javascript" src="{% static 'js/nouislider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     $(document).ready(function() {
         $('select').material_select();
     });
 
-    var slider = $("#test5");
+    var slider = $("#slider");
     noUiSlider.create(slider, {
         start: [0, 23],
         connect: true,
@@ -325,27 +328,6 @@
             decimals: 2
         })
     });
-
-
-    var valueInput = document.getElementById('value-input'),
-        valueSpan = document.getElementById('value-span');
-
-    // When the slider value changes, update the input and span
-    slider.noUiSlider.on('update', function( values, handle ) {
-        if ( handle ) {
-            valueInput.value = values[handle];
-        } else {
-            valueSpan.innerHTML = values[handle];
-        }
-    });
-
-    // When the input changes, set the slider value
-    valueInput.addEventListener('change', function(){
-        slider.noUiSlider.set([null, this.value]);
-    });
-
-
-
 </script>
 
 {% endblock %}
