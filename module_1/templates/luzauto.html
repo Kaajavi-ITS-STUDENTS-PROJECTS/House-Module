@@ -31,22 +31,34 @@
     });
 
     var slider = document.getElementById('slider');
-    noUiSlider.create(slider, {
+    $(".slider").noUiSlider({
+        start: [ 0 ],
         range: {
-            min: 0,
-            max: 1440,
-        },
-        step: 15,
-        slide: function(e, ui) {
-            var hours = Math.floor(ui.value / 60);
-            var minutes = ui.value - (hours * 60);
-
-            if(hours.toString().length == 1) hours = '0' + hours;
-            if(minutes.toString().length == 1) minutes = '0' + minutes;
-
-            $('#slider').html(hours+':'+minutes);
+            'min': 0,
+            'max': 24 * 60
         }
     });
+
+    $(".slider").Link("lower").to($("#time"), null, {
+        to: minutesToHHMM,
+        from: HHMMtoMinutes
+    });
+
+    function minutesToHHMM(value) {
+        value = Math.round(value);
+        var hour = Math.floor(value / 60);
+        var min = value - hour * 60;
+        //console.log("value:" + value + "\thour: " + hour + "\tmin: " + min)
+        return ("0" + hour).slice(-2) + ":" + ("0" + min).slice(-2);
+    }
+
+    function HHMMtoMinutes(value) {
+        var split = value.toString().split(":");
+        var hour = parseInt(split[0]) * 60;
+        var min = parseInt(split[1]);
+        //console.log("value: " + value + "\thour: " + hour + "\tmin " + min);
+        return hour + min;
+    }
 
 </script>
 {% endblock %}
