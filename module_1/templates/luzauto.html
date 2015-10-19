@@ -20,11 +20,11 @@
         </select>
         <label>Elije un dia</label>
     </div>
-    <form action="#">
-        <p class="range-field">
-            <input type="range" id="test5"/>
-        </p>
-    </form>
+    <br>
+    <br>
+    <p class="range-field">
+      <input type="range" id="test5"/>
+    </p>
 </div>
 
 
@@ -306,6 +306,9 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
 
     var slider = document.getElementById('test5');
     noUiSlider.create(slider, {
