@@ -29,9 +29,7 @@
     $(document).ready(function() {
         $('select').material_select();
     });
-
-    var slider = document.getElementById('slider');
-    $(".slider").noUiSlider({
+    $("#slider").noUiSlider({
         start: [ 0 ],
         range: {
             'min': 0,
@@ -39,7 +37,7 @@
         }
     });
 
-    $(".slider").Link("lower").to($("#time"), null, {
+    $("#slider").Link("lower").to($("#time"), null, {
         to: minutesToHHMM,
         from: HHMMtoMinutes
     });
