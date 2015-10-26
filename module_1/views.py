@@ -219,7 +219,10 @@ def auto_luz(request):
         nompin[puerta.pin]=puerta.nombre
     return render_to_response('luzauto.html',{'pins':nompin},context)
 
-
+def get_current_user(request):
+    context = RequestContext(request)
+    current_user = request.user
+    return current_user.username
 
 def add_puertas(request):
     context = RequestContext(request)
