@@ -101,7 +101,8 @@ class Regla(models.Model):
         (domingo, 'Domingo'),
     )
     dias_de_semana = models.CharField(max_length=3,
-                                      choices=dias_semana,)
+                                      choices=dias_semana,
+                                     default=lunes)
     
     from_hour = models.IntegerField(choices=range(1,24))
     to_hour = models.IntegerField(choices=range(1,24))
