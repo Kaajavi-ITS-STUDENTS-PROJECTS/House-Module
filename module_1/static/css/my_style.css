@@ -66,3 +66,9 @@ main {
 .btn-crear{
     padding-top: 6px;
 }
+
+.check-inline{
+    display:inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+}
