@@ -84,7 +84,7 @@ background: #FAFAFA;
 box-shadow: inset 0 1px 1px #f0f0f0;
 }
 .noUi-connect {
-background: #3FB8AF;
+background: #000;
 box-shadow: inset 0 0 3px rgba(51,51,51,0.45);
 -webkit-transition: background 450ms;
 transition: background 450ms;
@@ -217,7 +217,7 @@ height: 30px;
 width: 30px;
 top: -17px;
 left: -2px;
-background-color: #26A69A;
+background-color: #000;
 border-radius: 50%;
 transition: border-radius .25s cubic-bezier(0.215, 0.610, 0.355, 1.000),
 transform .25s cubic-bezier(0.215, 0.610, 0.355, 1.000);
