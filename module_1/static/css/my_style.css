@@ -54,3 +54,12 @@ main {
 	text-align: center;
 	margin: 0;
 }
+.noUi-connect {
+    background-color: #000;
+}
+
+.noUi-target .range-label {
+    background-color: #000;
+}
+
+
