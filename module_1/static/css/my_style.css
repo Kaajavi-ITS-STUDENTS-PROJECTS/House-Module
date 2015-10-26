@@ -55,3 +55,14 @@ main {
 	margin: 0;
 }
 
+[type="checkbox"] + label::before {
+    border: 2px solid #FFF;
+}
+
+[type="checkbox"]:checked + label::before{
+    border-color: transparent #FFF #FFF transparent;
+}
+
+.btn-crear{
+    padding-top: 6px;
+}
