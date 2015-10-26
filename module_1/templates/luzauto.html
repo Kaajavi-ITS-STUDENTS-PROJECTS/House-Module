@@ -7,7 +7,7 @@
 {% block content %}
 
 
-<div class="card  blue-grey darken-1 row">
+<div class="card  blue-grey darken-1">
     <div id="dias">
         <p class="check-inline" style="padding-left:75;">
             <input type="checkbox" id="d" />
@@ -29,7 +29,7 @@
             <input type="checkbox" id="j" />
             <label for="j">Jueves</label>
         </p>
-        <p>
+        <p class="check-inline">
             <input type="checkbox" id="v" />
             <label for="v">Viernes</label>
         </p>
@@ -40,7 +40,7 @@
     </div>
 
     <!--<div class="btn" onclick="getSelected()"></div>-->
-    <div class="valign-wrapper col s9" style="min-height:60px;">
+    <div class="valign-wrapper row" style="min-height:60px;">
         <div id="slider" class="col s9 offset-s1 valign"></div>
         <a href="getSelected()" class="col s1 offset-s1 waves-effect btn-flat valign btn-crear white-text">Crear</a>
     </div>
