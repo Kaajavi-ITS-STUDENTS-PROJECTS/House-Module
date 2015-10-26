@@ -210,8 +210,14 @@ def add_luces(request):
 
 def auto_luz(request):
     context = RequestContext(request)
-    
-    return render_to_response('luzauto.html',context)
+    luces = Luz.objects.all()
+    puertas = Puerta.objects.all()
+    nompin={}
+    for luz in luces:
+        nompin[luz.pin]=luz.nombre
+    for puerta in puertas:
+        nompin[puerta.pin]=puerta.nombre
+    return render_to_response('luzauto.html',{'pins':nompin},context)
 
 
 
