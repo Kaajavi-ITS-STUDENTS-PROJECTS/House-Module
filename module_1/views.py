@@ -221,6 +221,7 @@ def auto_luz(request):
 
 def get_current_user(request):
     context = RequestContext(request)
+    print request.user.username
     current_user = request.user
     return current_user.username
 
