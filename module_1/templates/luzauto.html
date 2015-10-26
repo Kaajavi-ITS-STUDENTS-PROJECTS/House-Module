@@ -41,10 +41,18 @@
 
     <!--<div class="btn" onclick="getSelected()"></div>-->
     <div class="valign-wrapper row" style="min-height:60px;">
-        <div id="slider" class="col s9 offset-s1 valign"></div>
-        <a href="getSelected()" class="col s1 offset-s1 waves-effect btn-flat valign btn-crear white-text">Crear</a>
+        <div id="slider" class="col s10 offset-s1 valign"></div>
     </div>
+    <a href="getSelected()" class="waves-effect btn-flat btn-crear white-text">Crear</a>
     {{pins}}
+    <div class="container">
+        {% for pin,nombre in pins %}
+        <p class="check-inline">
+            <input type="checkbox" id="{{pin}}" />
+            <label for="{{pin}}">{{nombre}}</label>
+        </p>
+        {% endfor %}
+    </div>
 </div>
 
 
