@@ -43,8 +43,6 @@
     <div class="valign-wrapper row" style="min-height:60px;">
         <div id="slider" class="col s10 offset-s1 valign"></div>
     </div>
-    <a href="getSelected()" class="waves-effect btn-flat btn-crear white-text">Crear</a>
-    {{pins}}
     <div class="container">
         {% for pin,nombre in pins.items %}
         <p class="check-inline">
@@ -52,6 +50,11 @@
             <label for="{{pin}}">{{nombre}}</label>
         </p>
         {% endfor %}
+        <p class="check-inline">
+            <input type="checkbox" id="on" />
+            <label for="on">Prender</label>
+        </p>
+        <a href="getSelected()" class="waves-effect btn-flat btn-crear white-text">Crear</a>
     </div>
 </div>
 
