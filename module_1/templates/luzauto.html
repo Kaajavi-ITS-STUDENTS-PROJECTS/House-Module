@@ -46,7 +46,7 @@
     <a href="getSelected()" class="waves-effect btn-flat btn-crear white-text">Crear</a>
     {{pins}}
     <div class="container">
-        {% for pin,nombre in pins %}
+        {% for pin,nombre in pins.items() %}
         <p class="check-inline">
             <input type="checkbox" id="{{pin}}" />
             <label for="{{pin}}">{{nombre}}</label>
