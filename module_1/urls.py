@@ -14,4 +14,6 @@ urlpatterns = patterns('',
                        url(r'addpuertas/', 'module_1.views.add_puertas', name='addpuertas'),
                        url(r'autoluz/', 'module_1.views.auto_luz', name='autoluz'),
                        url(r'getcurrentuser/', 'module_1.views.get_current_user', name='getcurrentuser'),
+                       url(r'add_rule/', 'module_1.views.add_rule', name='add_rule'),
+
                       )

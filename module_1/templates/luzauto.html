@@ -82,14 +82,10 @@
         }
         $.ajax({
             method: "POST",
-            url: "{% url 'module_1:habitacion' %}",
+            url: "{% url 'module_1:add_rule %}",
             data: data,
             success:function(result){
-                $('#habitaciones').html(result);
-                channel.send('reload',{
-                    loader:'#habitaciones',
-                    data:result,
-                });
+               console.log("Anduvo")
             },
             error: function(e){
                 console.log(e.responseText);
