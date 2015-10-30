@@ -212,7 +212,27 @@ def auto_luz(request):
     context = RequestContext(request)
     luces = Luz.objects.all()
     puertas = Puerta.objects.all()
-    nompin={}
+    nompin = {}
+    for luz in luces:
+        nompin[luz.pin]=luz.nombre
+    for puerta in puertas:
+        nompin[puerta.pin]=puerta.nombre
+    return render_to_response('luzauto.html',{'pins':nompin},context)
+
+def add_rule(request):
+    context = RequestContext(request)
+    if request.method=='POST':
+        luz=request.POST['nombre']
+        luzId=request.POST['id']
+        status=request.POST['status']
+        regla = Regla()
+        regla.relacion=puerta
+        regla.pin=puertaId
+        regla.status = status
+        regla.save
+    luces = Luz.objects.all()
+    puertas = Puerta.objects.all()
+    nompin = {}
     for luz in luces:
         nompin[luz.pin]=luz.nombre
     for puerta in puertas:
