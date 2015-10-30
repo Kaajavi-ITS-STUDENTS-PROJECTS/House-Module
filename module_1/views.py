@@ -230,14 +230,7 @@ def add_rule(request):
         regla.pin=puertaId
         regla.status = status
         regla.save
-    luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-    nompin = {}
-    for luz in luces:
-        nompin[luz.pin]=luz.nombre
-    for puerta in puertas:
-        nompin[puerta.pin]=puerta.nombre
-    return render_to_response('luzauto.html',{'pins':nompin},context)
+    return redirect("/")
 
 def get_current_user(request):
     context = RequestContext(request)
