@@ -39,23 +39,30 @@
         </p>
     </div>
 
+
     <!--<div class="btn" onclick="getSelected()"></div>-->
     <div class="valign-wrapper row" style="min-height:60px;">
         <div id="slider" class="col s10 offset-s1 valign"></div>
     </div>
     <div class="container">
-        {% for pin,nombre in pins.items %}
-        <p class="check-inline">
-            <input type="checkbox" id="{{pin}}" />
-            <label for="{{pin}}">{{nombre}}</label>
-        </p>
-        {% endfor %}
+        <select id="cmb">
+            <option value="" disabled selected>Choose your option</option>
+            {% for pin,nombre in pins.items %}
+            <option id='{{pin}}'>{{nombre}}</option>
+            {% endfor %}
+        </select>
+        <!-- {% for pin,nombre in pins.items %}
+<p class="check-inline">
+<input type="checkbox" id="{{pin}}" />
+<label for="{{pin}}">{{nombre}}</label>
+</p>
+{% endfor %}-->
         <div class="right">
             <p class="check-inline">
                 <input type="checkbox" id="on" />
                 <label for="on">Prender</label>
             </p>
-            <a href="getSelected()" class="waves-effect btn-flat white-text">Crear</a>
+            <a href="getSelected()" class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
         </div>
     </div>
 </div>
@@ -65,6 +72,30 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    function add_rule(){
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id: $('#cmb').options[selectedIndex].id,
+            nombre : $('#cmb').options[selectedIndex].innerHTML,
+            status: $('#on').is(':checked'),
+
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:habitacion' %}",
+            data: data,
+            success:function(result){
+                $('#habitaciones').html(result);
+                channel.send('reload',{
+                    loader:'#habitaciones',
+                    data:result,
+                });
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
+    }
     function getSelected(){
         /*var e = $('select option:selected');
         console.log(e);*/
