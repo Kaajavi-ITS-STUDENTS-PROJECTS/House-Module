@@ -75,8 +75,8 @@
     function add_rule(){
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            id: $('#cmb').options[selectedIndex].id,
-            nombre : $('#cmb').children(":selected").attr("id"),
+            nombre: $('#cmb').children(":selected").innerHTML,
+            id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
 
         }
