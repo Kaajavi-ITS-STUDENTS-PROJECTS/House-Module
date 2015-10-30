@@ -55,7 +55,7 @@
     $("#addhab").click(function add_room(){
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            habtacion:$("#id_habitacion").val(),
+            habitacion:$("#id_habitacion").val(),
         }
         $.ajax({
             method: "POST",
