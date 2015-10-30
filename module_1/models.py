@@ -104,7 +104,9 @@ class Regla(models.Model):
                                       choices=dias_semana,)
     
     from_hour = models.TimeField()
-    to_hour = models.TimeField()
+    to_hour = models.TimeField()    
+    relacion_puerta = models.ForeignKey(Puerta)
+    relacion_luz = models.ForeignKey(Luz)
     pin = models.IntegerField(u'Pin', default=1)
     status = models.BooleanField(u'Status', default=False)
     
