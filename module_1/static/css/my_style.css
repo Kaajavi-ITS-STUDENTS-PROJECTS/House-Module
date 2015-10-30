@@ -63,10 +63,6 @@ main {
     border-color: transparent #FFF #FFF transparent;
 }
 
-.btn-crear{
-    padding-top: 6px;
-}
-
 .check-inline{
     display:inline-block;
     padding-left: 25px;
