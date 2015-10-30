@@ -226,8 +226,8 @@ def add_rule(request):
         luzId=request.POST['id']
         status=request.POST['status']
         regla = Regla()
-        regla.relacion=puerta
-        regla.pin=puertaId
+        regla.relacion=luz
+        regla.pin=luzId
         regla.status = status
         regla.save
     return redirect("/")
