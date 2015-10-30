@@ -104,10 +104,11 @@ class Regla(models.Model):
                                       choices=dias_semana,)
     
     from_hour = models.TimeField()
-    to_hour = models.TimeField()    
-    relacion_puerta = models.ForeignKey(Puerta)
-    relacion_luz = models.ForeignKey(Luz)
-    pin_luz = models.IntegerField(u'Pin', default=1)
-    pin_puerta = models.IntegerField(u'Pin', default=1)
+    to_hour = models.TimeField()
+    relacion = models.ForeignKey(Luz)
+    pin = models.IntegerField(u'Pin', default=1)
     status = models.BooleanField(u'Status', default=False)
     
+    
+    def __str_(self):
+        return self.relacion.nombre
