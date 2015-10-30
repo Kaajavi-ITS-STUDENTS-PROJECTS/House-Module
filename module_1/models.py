@@ -103,8 +103,8 @@ class Regla(models.Model):
     dias_de_semana = models.CharField(max_length=3,
                                       choices=dias_semana,)
     
-    from_hour = models.TimeField(u'Start', default=1)
-    to_hour = models.TimeField(u'End', default=1)
+    from_hour = models.TimeField(u'Start')
+    to_hour = models.TimeField(u'End')
     relacion = models.ForeignKey(Luz)
     pin = models.IntegerField(u'Pin', default=1)
     status = models.BooleanField(u'Status', default=False)
