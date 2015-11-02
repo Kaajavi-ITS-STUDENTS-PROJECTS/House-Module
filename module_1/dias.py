@@ -1,3 +1,5 @@
+
+from django.db import models
 from django.utils.translation import ugettext as _
 from django.db.models import SmallIntegerField
 
