@@ -74,14 +74,22 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.status:
+                    relay_functions.relay("close",puerta.pin)
                     puerta.status = False
                     print puerta.status
-                    relay_functions.relay("close",puerta.pin)
                 else:
                     puerta.status = True
                     relay_functions.relay("open",puerta.pin)
                 puerta.save()
                 print puerta.status
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                if puerta.auto_close:
+                    time.sleep(5)
+                    relay_functions.relay("close",puerta.pin)
+                    puerta.status = False
+                    puerta.save()
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
@@ -239,8 +247,8 @@ def add_rule(request):
 def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
-    current_user = request.user
-    return HttpResponse(current_user.username)
+    username = request.user
+    return render_to_response('perfil.html',{'username':username},context)
 
 def add_puertas(request):
     context = RequestContext(request)
