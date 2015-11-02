@@ -110,13 +110,9 @@
 
 
 {% endblock %}
-
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
-    function add_table(){
-
-    }
     function add_rule(){
         var dias = [];
         $('input').each(function(){
@@ -150,6 +146,15 @@
             },
             error: function(e){
                 console.log(e.responseText);
+            }
+        });
+    }
+    function getSelected(){
+        /*var e = $('select option:selected');
+        console.log(e);*/
+        $('input').each(function(){
+            if($(this).is(':checked')){
+                console.log($('label[for="' + this.id + '"]').html());
             }
         });
     }
