@@ -3,7 +3,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
-import dias
 
 # Create your models here.
 class Habitacion(models.Model):
@@ -79,10 +78,15 @@ class Usuario(models.Model):
     permisos_habitaciones = models.ManyToManyField(Habitacion,blank=True)
     def __str__(self):
         return self.user.username
-    
 
 class Regla(models.Model):
-    dias_de_semana = dias.DayOfTheWeekField()
+    lun = models.BooleanField(u'Lunes', default=False)
+    mar = models.BooleanField(u'Martes', default=False)
+    mie = models.BooleanField(u'Miercoles', default=False)
+    jue = models.BooleanField(u'Jueves', default=False)
+    vie = models.BooleanField(u'Viernes', default=False)
+    sab = models.BooleanField(u'Sabado', default=False)
+    dom = models.BooleanField(u'Domingo', default=False)
     
     from_hour = models.TimeField(u'Start')
     to_hour = models.TimeField(u'End')
