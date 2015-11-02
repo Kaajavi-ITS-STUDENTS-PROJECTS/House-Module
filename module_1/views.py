@@ -89,6 +89,7 @@ def puerta(request):
                     time.sleep(5)
                     relay_functions.relay("close",puerta.pin)
                     puerta.status = False
+                    puerta.save()
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
