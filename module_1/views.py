@@ -247,7 +247,7 @@ def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
     username = request.user
-    return render_to_response('profile.html',{'username':username},context)
+    return render_to_response('perfil.html',{'username':username},context)
 
 def add_puertas(request):
     context = RequestContext(request)
