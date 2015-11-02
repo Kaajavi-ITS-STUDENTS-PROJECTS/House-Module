@@ -115,6 +115,33 @@
                 console.log(e.responseText);
             }
         });
+        if ($('#' + puerta_id).is(':checked')){
+            setTimeout(close_door(puerta_id), 5000)
+    }
+    }
+
+    function close_door(puerta_id){
+        channel.send('puerta');
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id:puerta_id,
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:puerta' %}",
+            data: data,
+            success:function(result){
+                var helper="#puerta-"+puerta_id;
+                $(helper).html(result);
+                channel.send('reload',{
+                    loader:helper,
+                    data:result,
+                });
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
     }
 </script>
 {% endblock %}
