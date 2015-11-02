@@ -110,13 +110,9 @@
 
 
 {% endblock %}
-
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
-    function add_table(){
-
-    }
     function add_rule(){
         var dias = [];
         $('input').each(function(){
@@ -153,7 +149,6 @@
             }
         });
     }
-
     $(document).ready(function() {
         $('select').material_select();
         $('.collapsible').collapsible({

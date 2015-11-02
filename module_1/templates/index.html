@@ -115,12 +115,15 @@
                 console.log(e.responseText);
             }
         });
-        if ($('#' + puerta_id).is(':checked')){
+        var status = $('#' + puerta_id).is(':checked');
+        console.log(status);
+        if (status){
             setTimeout(close_door(puerta_id), 5000)
     }
     }
 
     function close_door(puerta_id){
+        console.log("Auto Closeee!!!!!!");
         channel.send('puerta');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
