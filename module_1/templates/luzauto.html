@@ -79,11 +79,14 @@
                 dias.push(('label[for="' + this.id + '"]').html());
             }
         });
+        var hora = slider.noUiSlider.get()
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             /*            nombre: $('#cmb').children(":selected").value,*/
             id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
+            days: dias,
+            hours: hora,
 
         }
         console.log(data);
