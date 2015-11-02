@@ -3,7 +3,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
-
+import dias
 
 # Create your models here.
 class Habitacion(models.Model):
@@ -79,29 +79,9 @@ class Usuario(models.Model):
     def __str__(self):
         return self.user.username
     
-    
-    
-    
-    
+
 class Regla(models.Model):
-    lunes = 'lun'
-    martes = 'mar'
-    miercoles = 'mie'
-    jueves = 'jue'
-    viernes = 'vie'
-    sabado = 'sab'
-    domingo = 'dom'
-    dias_semana = (
-        (lunes, 'Lunes'),
-        (martes, 'Martes'),
-        (miercoles, 'Miercoles'),
-        (jueves, 'Jueves'),
-        (viernes, 'Viernes'),
-        (sabado, 'Sabado'),
-        (domingo, 'Domingo'),
-    )
-    dias_de_semana = models.MultipleChoiceField(max_length=3,
-                                      choices=dias_semana,)
+    dias_de_semana = dias.DayOfTheWeekField()
     
     from_hour = models.TimeField(u'Start')
     to_hour = models.TimeField(u'End')
