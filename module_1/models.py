@@ -100,7 +100,7 @@ class Regla(models.Model):
         (sabado, 'Sabado'),
         (domingo, 'Domingo'),
     )
-    dias_de_semana = models.CharField(max_length=3,
+    dias_de_semana = models.MultipleChoiceField(max_length=3,
                                       choices=dias_semana,)
     
     from_hour = models.TimeField(u'Start')
