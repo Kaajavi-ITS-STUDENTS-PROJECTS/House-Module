@@ -43,6 +43,7 @@ class Puerta(models.Model):
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
     pin = models.IntegerField(u'Pin', default=1)
+    auto_close = models.BooleanField(u'Auto Close', default=False)
     lugar = models.ForeignKey(Habitacion)
     
     def __str__(self):

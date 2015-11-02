@@ -115,36 +115,6 @@
                 console.log(e.responseText);
             }
         });
-        var status = $('#' + puerta_id).is(':checked');
-        console.log(status);
-        if (status){
-            setTimeout(close_door(puerta_id), 5000)
-    }
-    }
-
-    function close_door(puerta_id){
-        console.log("Auto Closeee!!!!!!");
-        channel.send('puerta');
-        var data={
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            id:puerta_id,
-        }
-        $.ajax({
-            method: "POST",
-            url: "{% url 'module_1:puerta' %}",
-            data: data,
-            success:function(result){
-                var helper="#puerta-"+puerta_id;
-                $(helper).html(result);
-                channel.send('reload',{
-                    loader:helper,
-                    data:result,
-                });
-            },
-            error: function(e){
-                console.log(e.responseText);
-            }
-        });
     }
 </script>
 {% endblock %}
