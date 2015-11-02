@@ -1,3 +1,5 @@
+
+from django.db import models
 from django.utils.translation import ugettext as _
 from django.db.models import SmallIntegerField
 
@@ -12,7 +14,7 @@ DAY_OF_THE_WEEK = {
     '7' : _(u'Domingo'),
 }
 
-class dias(models.CharField):
+class DayOfTheWeekField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs['choices']=tuple(sorted(DAY_OF_THE_WEEK.items()))
         kwargs['max_length']=1
