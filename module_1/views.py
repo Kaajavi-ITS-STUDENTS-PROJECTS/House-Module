@@ -222,14 +222,18 @@ def auto_luz(request):
 def add_rule(request):
     context = RequestContext(request)
     if request.method=='POST':
-        luz=request.POST['nombre']
         luzId=request.POST['id']
-        status=request.POST['status']
-        regla = Regla()
-        regla.relacion=luz
-        regla.pin=luzId
-        regla.status = status
-        regla.save
+        luces = Luz.objects.all()
+        for luz in luces:
+            if luz.pin == luzId:
+                luzNom = luz.nombre
+                status = request.POST['status']
+                regla = Regla()
+                regla.relacion = luzNom
+                regla.pin=luzId
+                regla.status = status
+                regla.save
+
     return redirect("/")
 
 def get_current_user(request):
