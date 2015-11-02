@@ -96,6 +96,7 @@
     function getSelected(){
         /*var e = $('select option:selected');
         console.log(e);*/
+        console.log(slider.noUiSlider.get());
         $('input').each(function(){
             if($(this).is(':checked')){
                 console.log($('label[for="' + this.id + '"]').html());
