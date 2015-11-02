@@ -128,11 +128,22 @@
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     function add_rule(){
+        var dias = [];
+        $('input').each(function(){
+            if($(this).is(':checked')){
+                dias.push(('label[for="' + this.id + '"]').html());
+            }
+        });
+        var hora = slider.noUiSlider.get()
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id: $('#cmb').options[selectedIndex].id,
             nombre : $('#cmb').options[selectedIndex].innerHTML,
+            /*            nombre: $('#cmb').children(":selected").value,*/
+            id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
+            days: dias,
+            hours: hora,
 
         }
         $.ajax({
@@ -145,6 +156,7 @@
                     loader:'#habitaciones',
                     data:result,
                 });
+                console.log("Anduvo")
             },
             error: function(e){
                 console.log(e.responseText);
