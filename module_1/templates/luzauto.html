@@ -71,24 +71,16 @@
 <table class="highlight">
     <thead>
         <tr>
-            <th data-field="name_regla">Numero de Regla</th>
-            <th data-field="name_luz">Nombre de Luz</th>
-            <th data-field="in_luz">Pin Luz</th>
-            <th data-field="name_dia">Dia</th>
+            <th data-field="name_regla">Regla Nº</th>
+            <th data-field="name_luz">Luz</th>
+            <th data-field="in_luz">Pin</th>
+            <th data-field="name_dia">Dias</th>
             <th data-field="horario">Horario</th>
             <th data-field="status">Status</th>
         </tr>
     </thead>
 
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tbody id="tabla">
     </tbody>
 </table>
 
@@ -97,6 +89,11 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    function add_row(){
+        cosas = "<tr> <td>{{rules.id}}</td> <td>{{rules.relacion}}</td> <td>{{rules.pin}}</td> <td>{{rules.dias}}</td> <td>rules.from_hour '-' {{rules.to_hour}}</td> <td>{{rules.status}}</td> </tr>"
+        $("#tabla").append(cosas);
+    }
+
     function add_rule(){
         var dias = [];
         $('input').each(function(){
