@@ -223,12 +223,14 @@ def add_rule(request):
     context = RequestContext(request)
     if request.method=='POST':
         luz = Luz.objects.filter(pin = request.POST['id'])
+        dias = request.POST['days']
+        hora = request.POST['hours']
         regla = Regla()
         regla.relacion = luz.id
         regla.pin = luz.pin
         regla.status = request.POST['status']
-        regla.from_hour =
-        regla.to_hour =
+        regla.from_hour = hora[0]
+        regla.to_hour = hora[1]
         regla.save
     return redirect("/")
 
