@@ -73,9 +73,15 @@
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     function add_rule(){
+        var dias = [];
+        $('input').each(function(){
+            if($(this).is(':checked')){
+                dias.push(('label[for="' + this.id + '"]').html());
+            }
+        });
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-/*            nombre: $('#cmb').children(":selected").value,*/
+            /*            nombre: $('#cmb').children(":selected").value,*/
             id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
 
@@ -86,7 +92,7 @@
             url: "{% url 'module_1:add_rule' %}",
             data: data,
             success:function(result){
-               console.log("Anduvo")
+                console.log("Anduvo")
             },
             error: function(e){
                 console.log(e.responseText);
