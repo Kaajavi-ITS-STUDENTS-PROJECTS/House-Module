@@ -62,16 +62,61 @@
                 <input type="checkbox" id="on" />
                 <label for="on">Prender</label>
             </p>
-            <a class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
+            <a href="getSelected()" class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
         </div>
     </div>
 </div>
 
 
+<table class="highlight">
+    <thead>
+        <tr>
+            <th data-field="name_regla">Numero de Regla</th>
+            <th data-field="name_luz">Nombre de Luz</th>
+            <th data-field="in_luz">Pin Luz</th>
+            <th data-field="name_dia">Dia</th>
+            <th data-field="horario">Horario</th>
+            <th data-field="status">Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
 {% endblock %}
+
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    function add_table(){
+
+    }
     function add_rule(){
         var dias = [];
         $('input').each(function(){
@@ -82,6 +127,8 @@
         var hora = slider.noUiSlider.get()
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
+            id: $('#cmb').options[selectedIndex].id,
+            nombre : $('#cmb').options[selectedIndex].innerHTML,
             /*            nombre: $('#cmb').children(":selected").value,*/
             id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
@@ -89,26 +136,20 @@
             hours: hora,
 
         }
-        console.log(data);
         $.ajax({
             method: "POST",
-            url: "{% url 'module_1:add_rule' %}",
+            url: "{% url 'module_1:habitacion' %}",
             data: data,
             success:function(result){
+                $('#habitaciones').html(result);
+                channel.send('reload',{
+                    loader:'#habitaciones',
+                    data:result,
+                });
                 console.log("Anduvo")
             },
             error: function(e){
                 console.log(e.responseText);
-            }
-        });
-    }
-    function getSelected(){
-        /*var e = $('select option:selected');
-        console.log(e);*/
-        console.log(slider.noUiSlider.get());
-        $('input').each(function(){
-            if($(this).is(':checked')){
-                console.log($('label[for="' + this.id + '"]').html());
             }
         });
     }
