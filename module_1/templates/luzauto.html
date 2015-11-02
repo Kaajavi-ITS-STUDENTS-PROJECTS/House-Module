@@ -75,11 +75,12 @@
     function add_rule(){
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            nombre: $('#cmb').children(":selected").value,
+/*            nombre: $('#cmb').children(":selected").value,*/
             id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
 
         }
+        console.log(data);
         $.ajax({
             method: "POST",
             url: "{% url 'module_1:add_rule' %}",

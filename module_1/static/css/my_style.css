@@ -68,3 +68,23 @@ main {
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.dropdown-content {
+    background-color: rgb(0, 0, 0);
+}
+
+.dropdown-content li:hover, .dropdown-content li.active{
+    background-color: rgb(0, 0, 0);
+}
+
+.dropdown-content li {
+    color: rgba(254, 254, 254, 0.898);
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #FCFCFC;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #FCFCFC;
+}
