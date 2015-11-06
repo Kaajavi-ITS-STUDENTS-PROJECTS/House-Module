@@ -270,7 +270,7 @@ def add_rule(request):
         print "from"
         regla.to_hour = hora[1]
         print "to"
-        regla.save
+        regla.save()
         print "save"
     rule = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rule},context)
