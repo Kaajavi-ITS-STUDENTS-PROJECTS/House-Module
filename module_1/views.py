@@ -220,7 +220,6 @@ def auto_luz(request):
     context = RequestContext(request)
     luces = Luz.objects.all()
     rule = Regla.objects.all()
-    nompin = {}
 
     return render_to_response('luzauto.html',{'luz':luces, 'rules':rule},context)
 
