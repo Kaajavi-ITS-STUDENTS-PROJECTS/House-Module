@@ -103,7 +103,7 @@
         var dias = "[";
         $('input').each(function(){
             if($(this).is(':checked')){
-                dias += " '"+$('label[for="' + this.id + '"]').html()+"',";
+                dias += " "+$('label[for="' + this.id + '"]').html()+",";
             }
         });
         dias += " ]"
