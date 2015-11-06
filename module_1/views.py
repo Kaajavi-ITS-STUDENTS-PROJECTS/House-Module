@@ -233,11 +233,9 @@ def add_rule(request):
     if request.method=='POST':
         print "hola"
         luz = Luz.objects.filter(pin = request.POST['id'])
-        dias = []
-        hora = []
-        dias = request.POST['days']
+        dias = eval(request.POST['days'])
         dias.pop(len(dias))
-        hora = request.POST['hours']
+        hora = eval(request.POST['hours'])
         regla = Regla()
         regla.relacion = luz.id
         regla.pin = luz.pin
