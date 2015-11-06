@@ -101,12 +101,15 @@
 
     function add_rule(){
         var dias = "[";
+        var helper;
         $('input').each(function(){
             if($(this).is(':checked')){
-                dias += " "+$('label[for="' + this.id + '"]').html()+",";
+                helper = $('label[for="' + this.id + '"]').html();
+                dias += " '"+helper+"',";
             }
         });
         dias += " ]"
+        console.log(dias);
         var hora = slider.noUiSlider.get()
         var hor = "["
         for (i = 0; i < hora.length; i++) {
