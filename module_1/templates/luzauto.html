@@ -47,7 +47,7 @@
     <div class="container">
         <select id="cmb">
             <option value="" disabled selected>Choose your option</option>
-            {% for luz in luces %}
+            {% for luces in luz %}
             <option id='{{luces.id}}'>{{luces.nombre}}</option>
             {% endfor %}
         </select>
