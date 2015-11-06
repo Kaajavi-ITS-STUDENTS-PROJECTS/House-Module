@@ -233,7 +233,7 @@ def add_rule(request):
         print "hola"
         luz = Luz.objects.filter(pin = request.POST['id'])
         dias = eval(request.POST['days'])
-        dias.pop(len(dias))
+        dias.pop(len(dias)-1)
         hora = eval(request.POST['hours'])
         regla = Regla()
         regla.relacion = luz.id
