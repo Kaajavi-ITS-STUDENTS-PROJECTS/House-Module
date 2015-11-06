@@ -105,17 +105,18 @@
         $('input').each(function(){
             if($(this).is(':checked')){
                 helper = $('label[for="' + this.id + '"]').html();
-                dias += " '"+helper+"',";
+                dias += " '"+helper+"' ,";
             }
         });
-        dias += " ]"
-        console.log(dias);
+        dias += " ]";
         var hora = slider.noUiSlider.get()
         var hor = "["
         for (i = 0; i < hora.length; i++) {
             hor += " '"+hora[i]+"',"
         }
         hor = " ]"
+        console.log(hora);
+        console.log(hor);
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             nombre: $('#cmb').children(":selected").value,
