@@ -8,9 +8,9 @@
 <li>
     {% for alarma in alarmas %}
     {% if alarma.status %}
-    <a href="{% url 'module_1:alarma' alarma.id %}" class="green darken-4">Desactivar {{alarma.nombre}} </a>
+    <a href="{% url 'module_1:alarma' alarma.id %}" id="alarmita" class="green darken-4">Desactivar {{alarma.nombre}} </a>
     {% else %}
-    <a href="{% url 'module_1:alarma' alarma.id %}" class="red darken-4">Activar {{alarma.nombre}} </a>
+    <a href="{% url 'module_1:alarma' alarma.id %}" id="alarmita" class="red darken-4">Activar {{alarma.nombre}} </a>
     {% endif %}
     {% endfor %}
 </li>
