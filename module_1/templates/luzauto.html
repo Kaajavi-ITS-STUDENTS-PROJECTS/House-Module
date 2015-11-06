@@ -81,6 +81,15 @@
     </thead>
 
     <tbody id="tabla">
+        {% for rule in rules %}
+        <tr><td>{{rule.id}}</td>
+            <td>{{rule.relacion}}</td>
+            <td>{{rule.pin}}</td>
+            <td>{{rule.dias}}</td>
+            <td>{{rule.from_hour}} - {{rules.to_hour}}</td>
+            <td>{{rule.status}}</td>
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
 
@@ -89,10 +98,6 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
-    function add_row(){
-        cosas = "<tr> <td>{{rules.id}}</td> <td>{{rules.relacion}}</td> <td>{{rules.pin}}</td> <td>{{rules.dias}}</td> <td>rules.from_hour '-' {{rules.to_hour}}</td> <td>{{rules.status}}</td> </tr>"
-        $("#tabla").append(cosas);
-    }
 
     function add_rule(){
         var dias = [];
@@ -121,6 +126,8 @@
 /*                $('#habitaciones').html(result);*/
                 channel.send('reload',{
                 });
+                cosas = "<tr> <td>"rule.id"</td> <td>"+data.nombre+"</td> <td>"+data.id+"</td> <td>"+data.days+"</td> <td>"+data.hours[0]+" - "+data.hours[1]+"</td> <td>"+data.status+"</td> </tr>"
+                $("#tabla").append(cosas)
                 console.log("Anduvo")
             },
             error: function(e){
