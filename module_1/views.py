@@ -230,6 +230,7 @@ def auto_luz(request):
 def add_rule(request):
     context = RequestContext(request)
     if request.method=='POST':
+        print "hola"
         luz = Luz.objects.filter(pin = request.POST['id'])
         dias = request.POST['days']
         dias.pop(len(dias))
