@@ -283,7 +283,7 @@ def get_current_user(request):
     print request.user.username
     username = request.user
     if request.user.is_authenticated():
-        return render_to_response('perfil.html',{'username':username, "picture":request.user.img},context)
+        return render_to_response('perfil.html',{'username':username},context)
     else:
         return render_to_response('perfil.html',{'username':""},context)
 
