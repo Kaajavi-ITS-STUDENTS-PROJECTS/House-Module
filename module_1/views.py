@@ -264,7 +264,11 @@ def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
     username = request.user
-    return render_to_response('perfil.html',{'username':username},context)
+    if username.user.username=="AnonymousUser":
+        return render_to_response('login.html',
+                              context)
+    else:
+        return render_to_response('perfil.html',{'username':username},context)
 
 def add_puertas(request):
     context = RequestContext(request)
