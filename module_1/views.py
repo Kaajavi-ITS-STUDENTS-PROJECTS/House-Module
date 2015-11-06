@@ -233,9 +233,9 @@ def add_rule(request):
     if request.method=='POST':
         print "hola"
         luz = Luz.objects.filter(pin = request.POST['id'])
-        dias = request.POST['days']
+        dias = eval(request.POST['days'])
         dias.pop(len(dias))
-        hora = request.POST['hours']
+        hora = eval(request.POST['hours'])
         regla = Regla()
         regla.relacion = luz.id
         regla.pin = luz.pin
@@ -264,8 +264,11 @@ def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
     username = request.user
-    return render_to_response('perfil.html',{'username':username},context)
-
+    if request.user.is_authenticated():
+        return render_to_response('perfil.html',{'username':username},context)
+    else:
+        return render_to_response('login.html',
+                              context)
 def add_puertas(request):
     context = RequestContext(request)
     if request.method=='POST':

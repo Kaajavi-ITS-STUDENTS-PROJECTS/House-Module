@@ -62,7 +62,7 @@
                 <input type="checkbox" id="on" />
                 <label for="on">Prender</label>
             </p>
-            <a href="add_rule()" class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
+            <a class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
         </div>
     </div>
 </div>
@@ -100,22 +100,26 @@
 <script>
 
     function add_rule(){
-        var dias = [];
+        var dias = "[";
         $('input').each(function(){
             if($(this).is(':checked')){
-                dias.push(('label[for="' + this.id + '"]').html());
+                dias += " "+$('label[for="' + this.id + '"]').html()+",";
             }
         });
+        dias += " ]"
         var hora = slider.noUiSlider.get()
+        var hor = "["
+        for (i = 0; i < hora.length; i++) {
+            hor += " "+hora[i]+","
+        }
+        hor = " ]"
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            id: $('#cmb').options[selectedIndex].id,
-            nombre : $('#cmb').options[selectedIndex].innerHTML,
-            /*            nombre: $('#cmb').children(":selected").value,*/
+            nombre: $('#cmb').children(":selected").value,
             id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
             days: dias,
-            hours: hora,
+            hours: hor,
 
         }
         $.ajax({
