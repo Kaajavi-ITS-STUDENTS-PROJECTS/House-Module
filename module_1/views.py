@@ -235,31 +235,48 @@ def add_rule(request):
         dias = eval(request.POST['days'])
         print dias,"-",request.POST['days']
         dias.pop(len(dias)-1)
+        print "0"
+        print dias,"-",request.POST['days']
         hora = eval(request.POST['hours'])
+        print "1"
         regla = Regla()
+        print "2"
         regla.relacion = luz.id
+        print "3"
         regla.pin = luz.pin
+        print "4"
         regla.status = request.POST['status']
+        print "4"
         for i in dias:
             if i=="Lunes":
+                print "Lun"
                 regla.lun = True
             elif i=="Martes":
+                print "Mar"
                 regla.mar = True
             elif i=="Miercoles":
+                print "Mie"
                 regla.mie = True
             elif i=="Jueves":
+                print "Jue"
                 regla.jue = True
             elif i=="Viernes":
+                print "Vie"
                 regla.vie = True
             elif i=="Sabado":
+                print "Sab"
                 regla.sab = True
             elif i=="Domingo":
+                print "Dom"
                 regla.dom = True
         regla.from_hour = hora[0]
+        print "from"
         regla.to_hour = hora[1]
+        print "to"
         regla.save
+        print "save"
         return regla.id
-    return regla.id
+    return redirect('/')
 
 def get_current_user(request):
     context = RequestContext(request)

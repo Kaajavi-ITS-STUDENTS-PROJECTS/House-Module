@@ -76,9 +76,10 @@ class Usuario(models.Model):
     permisos_luces = models.ManyToManyField(Luz,blank=True)
     permisos_puertas = models.ManyToManyField(Puerta,blank=True)
     permisos_habitaciones = models.ManyToManyField(Habitacion,blank=True)
+    img = models.FileField(u'Profile Image',upload_to = 'img_perfil', default='null')
     def __str__(self):
         return self.user.username
-
+    
 class Regla(models.Model):
     lun = models.BooleanField(u'Lunes', default=False)
     mar = models.BooleanField(u'Martes', default=False)

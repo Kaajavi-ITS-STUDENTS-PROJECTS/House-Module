@@ -136,6 +136,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
+MEDIA_URL = '/documents/'
+MEDIA_ROOT = BASE_DIR +'/documents/'
+
 OMNIBUS_ENDPOINT_SCHEME = 'ws'  # 'ws' is used for websocket connections
 OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.websocket_webapp_factory'
 OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.websocket_connection_factory'
