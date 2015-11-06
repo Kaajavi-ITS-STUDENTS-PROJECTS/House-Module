@@ -241,7 +241,7 @@ def add_rule(request):
         print "1"
         regla = Regla()
         print "2"
-        regla.relacion = luz.id
+        regla.relacion = luz
         print "3"
         regla.pin = luz.pin
         print "4"
