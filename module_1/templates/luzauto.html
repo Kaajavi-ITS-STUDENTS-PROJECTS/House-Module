@@ -62,7 +62,7 @@
                 <input type="checkbox" id="on" />
                 <label for="on">Prender</label>
             </p>
-            <a href="add_rule()" class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
+            <a class="waves-effect btn-flat white-text" onclick="add_rule()">Crear</a>
         </div>
     </div>
 </div>
@@ -98,7 +98,7 @@
         var dias = [];
         $('input').each(function(){
             if($(this).is(':checked')){
-                dias.push(('label[for="' + this.id + '"]').html());
+                dias.push($('label[for="' + this.id + '"]').html());
             }
         });
         var hora = slider.noUiSlider.get()
