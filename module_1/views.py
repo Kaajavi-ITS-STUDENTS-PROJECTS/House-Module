@@ -238,7 +238,21 @@ def add_rule(request):
         regla.relacion = luz.id
         regla.pin = luz.pin
         regla.status = request.POST['status']
-        regla.dias_de_semana = dias
+        for i in dias:
+            if i=="Lunes":
+                regla.lun = True
+            elif i=="Martes":
+                regla.mar = True
+            elif i=="Miercoles":
+                regla.mie = True
+            elif i=="Jueves":
+                regla.jue = True
+            elif i=="Viernes":
+                regla.vie = True
+            elif i=="Sabado":
+                regla.sab = True
+            elif i=="Domingo":
+                regla.dom = True
         regla.from_hour = hora[0]
         regla.to_hour = hora[1]
         regla.save
