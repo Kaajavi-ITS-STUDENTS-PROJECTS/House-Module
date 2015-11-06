@@ -80,14 +80,7 @@
     </thead>
 
     <tbody id="tabla">
-        {% for rule in rules %}
-        <tr><td>{{rule.id}}</td>
-            <td>{{rule.relacion}}</td>
-            <td>{{rule.dias}}</td>
-            <td>{{rule.from_hour}} - {{rules.to_hour}}</td>
-            <td>{{rule.status}}</td>
-        </tr>
-        {% endfor %}
+        {% include "tab.html" %}
     </tbody>
 </table>
 
@@ -129,12 +122,7 @@
             url: "{% url 'module_1:add_rule' %}",
             data: data,
             success:function(result){
-/*                $('#habitaciones').html(result);*/
-                channel.send('reload',{
-                });
-                cosas = "<tr> <td>"+rule.id+"</td> <td>"+data.nombre+"</td> <td>"+data.days+"</td> <td>"+data.hours[0]+" - "+data.hours[1]+"</td> <td>"+data.status+"</td> </tr>";
-                $("#tabla").append(cosas);
-                console.log("Anduvo");
+                $('#tabla').html(result);
             },
             error: function(e){
                 console.log(e.responseText);

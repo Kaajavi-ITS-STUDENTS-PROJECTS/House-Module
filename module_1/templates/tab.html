@@ -1,0 +1,8 @@
+{% for rule in rules %}
+<tr><td>{{rule.id}}</td>
+    <td>{{rule.relacion}}</td>
+    <td>{{rule.dias}}</td>
+    <td>{{rule.from_hour}} - {{rules.to_hour}}</td>
+    <td>{{rule.status}}</td>
+</tr>
+{% endfor %}

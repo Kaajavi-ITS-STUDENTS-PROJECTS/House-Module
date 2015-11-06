@@ -273,8 +273,8 @@ def add_rule(request):
         print "to"
         regla.save
         print "save"
-        return regla.id
-    return redirect('/')
+    rule = Regla.objects.all()
+    return render_to_response('tab.html',{'rules':rule},context)
 
 def get_current_user(request):
     context = RequestContext(request)
