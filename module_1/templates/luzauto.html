@@ -105,10 +105,11 @@
         $('input').each(function(){
             if($(this).is(':checked')){
                 helper = $('label[for="' + this.id + '"]').html();
-                dias += String.raw` ${helper},`;
+                dias += " "+helper+",";
             }
         });
         dias += " ]"
+        console.log(dias);
         var hora = slider.noUiSlider.get()
         var hor = "["
         for (i = 0; i < hora.length; i++) {
