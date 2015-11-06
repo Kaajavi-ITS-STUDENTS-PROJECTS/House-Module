@@ -104,9 +104,7 @@
         var hora = slider.noUiSlider.get()
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            id: $('#cmb').options[selectedIndex].id,
-            nombre : $('#cmb').options[selectedIndex].innerHTML,
-            /*            nombre: $('#cmb').children(":selected").value,*/
+            nombre: $('#cmb').children(":selected").value,
             id: $('#cmb').children(":selected").attr("id"),
             status: $('#on').is(':checked'),
             days: dias,
