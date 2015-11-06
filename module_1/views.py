@@ -219,13 +219,12 @@ def add_luces(request):
 def auto_luz(request):
     context = RequestContext(request)
     luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
+    rule = Regla.objects.all()
     nompin = {}
     for luz in luces:
         nompin[luz.pin]=luz.nombre
-    for puerta in puertas:
-        nompin[puerta.pin]=puerta.nombre
-    return render_to_response('luzauto.html',{'pins':nompin},context)
+
+    return render_to_response('luzauto.html',{'pins':nompin, 'rules':rule},context)
 
 def add_rule(request):
     context = RequestContext(request)
@@ -234,7 +233,7 @@ def add_rule(request):
         print "hola"
         luz = Luz.objects.filter(pin = request.POST['id'])
         dias = eval(request.POST['days'])
-        dias.pop(len(dias))
+        dias.pop(len(dias)-1)
         hora = eval(request.POST['hours'])
         regla = Regla()
         regla.relacion = luz.id
@@ -258,18 +257,21 @@ def add_rule(request):
         regla.from_hour = hora[0]
         regla.to_hour = hora[1]
         regla.save
-    return redirect("/")
+        return regla.id
+    return regla.id
 
 def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
     username = request.user
+
+    return render_to_response('perfil.html',{'username':username},context)
+
     if request.user.is_authenticated():
         return render_to_response('perfil.html',{'username':username},context)
     else:
         return render_to_response('perfil.html',{'username':""},context)
-    
-    
+
 def add_puertas(request):
     context = RequestContext(request)
     if request.method=='POST':
