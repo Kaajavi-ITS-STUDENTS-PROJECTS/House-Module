@@ -76,6 +76,7 @@ class Usuario(models.Model):
     permisos_luces = models.ManyToManyField(Luz,blank=True)
     permisos_puertas = models.ManyToManyField(Puerta,blank=True)
     permisos_habitaciones = models.ManyToManyField(Habitacion,blank=True)
+    avatar = models.ImageField(default=None)
     def __str__(self):
         return self.user.username
 
