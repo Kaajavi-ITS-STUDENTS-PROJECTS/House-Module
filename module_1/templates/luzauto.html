@@ -98,7 +98,7 @@
         var dias = [];
         $('input').each(function(){
             if($(this).is(':checked')){
-                dias.push(('label[for="' + this.id + '"]').html());
+                dias.push($('label[for="' + this.id + '"]').html());
             }
         });
         var hora = slider.noUiSlider.get()
