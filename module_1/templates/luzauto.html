@@ -47,8 +47,8 @@
     <div class="container">
         <select id="cmb">
             <option value="" disabled selected>Choose your option</option>
-            {% for pin,nombre in pins.items %}
-            <option id='{{pin}}'>{{nombre}}</option>
+            {% for luz in luces %}
+            <option id='{{luces.id}}'>{{luces.nombre}}</option>
             {% endfor %}
         </select>
         <!-- {% for pin,nombre in pins.items %}
@@ -73,7 +73,6 @@
         <tr>
             <th data-field="name_regla">Regla Nº</th>
             <th data-field="name_luz">Luz</th>
-            <th data-field="in_luz">Pin</th>
             <th data-field="name_dia">Dias</th>
             <th data-field="horario">Horario</th>
             <th data-field="status">Status</th>
@@ -84,7 +83,6 @@
         {% for rule in rules %}
         <tr><td>{{rule.id}}</td>
             <td>{{rule.relacion}}</td>
-            <td>{{rule.pin}}</td>
             <td>{{rule.dias}}</td>
             <td>{{rule.from_hour}} - {{rules.to_hour}}</td>
             <td>{{rule.status}}</td>
@@ -134,7 +132,7 @@
 /*                $('#habitaciones').html(result);*/
                 channel.send('reload',{
                 });
-                cosas = "<tr> <td>"+rule.id+"</td> <td>"+data.nombre+"</td> <td>"+data.id+"</td> <td>"+data.days+"</td> <td>"+data.hours[0]+" - "+data.hours[1]+"</td> <td>"+data.status+"</td> </tr>";
+                cosas = "<tr> <td>"+rule.id+"</td> <td>"+data.nombre+"</td> <td>"+data.days+"</td> <td>"+data.hours[0]+" - "+data.hours[1]+"</td> <td>"+data.status+"</td> </tr>";
                 $("#tabla").append(cosas);
                 console.log("Anduvo");
             },

@@ -221,17 +221,15 @@ def auto_luz(request):
     luces = Luz.objects.all()
     rule = Regla.objects.all()
     nompin = {}
-    for luz in luces:
-        nompin[luz.pin]=luz.nombre
 
-    return render_to_response('luzauto.html',{'pins':nompin, 'rules':rule},context)
+    return render_to_response('luzauto.html',{'luz':luces, 'rules':rule},context)
 
 def add_rule(request):
     context = RequestContext(request)
     print "aca estoy"
     if request.method=='POST':
         print "hola"
-        luz = Luz.objects.filter(pin = request.POST['id'])
+        luz = Luz.objects.get(id = request.POST['id'])
         dias = eval(request.POST['days'])
         print dias,"-",request.POST['days']
         dias.pop(len(dias)-1)
