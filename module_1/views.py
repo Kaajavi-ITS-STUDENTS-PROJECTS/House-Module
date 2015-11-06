@@ -229,6 +229,7 @@ def auto_luz(request):
 
 def add_rule(request):
     context = RequestContext(request)
+    print "aca estoy"
     if request.method=='POST':
         print "hola"
         luz = Luz.objects.filter(pin = request.POST['id'])
