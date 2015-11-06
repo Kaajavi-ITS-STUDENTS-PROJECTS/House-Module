@@ -79,7 +79,6 @@ class Usuario(models.Model):
     img = models.FileField(u'Profile Image',upload_to = 'img_perfil', default='null')
     def __str__(self):
         return self.user.username
-
     
 class Regla(models.Model):
     lun = models.BooleanField(u'Lunes', default=False)
