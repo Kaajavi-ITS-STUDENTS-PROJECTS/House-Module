@@ -269,8 +269,9 @@ def get_current_user(request):
     if request.user.is_authenticated():
         return render_to_response('perfil.html',{'username':username},context)
     else:
-        return render_to_response('login.html',
-                              context)
+        return render_to_response('perfil.html',{'username':""},context)
+    
+    
 def add_puertas(request):
     context = RequestContext(request)
     if request.method=='POST':
