@@ -80,6 +80,7 @@ class Usuario(models.Model):
     def __str__(self):
         return self.user.username
 
+    
 class Regla(models.Model):
     lun = models.BooleanField(u'Lunes', default=False)
     mar = models.BooleanField(u'Martes', default=False)
