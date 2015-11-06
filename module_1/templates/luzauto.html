@@ -101,9 +101,11 @@
 
     function add_rule(){
         var dias = "[";
+        var helper;
         $('input').each(function(){
             if($(this).is(':checked')){
-                dias += " "+$('label[for="' + this.id + '"]').html()+",";
+                helper = $('label[for="' + this.id + '"]').html();
+                dias += String.raw` ${helper},`;
             }
         });
         dias += " ]"
