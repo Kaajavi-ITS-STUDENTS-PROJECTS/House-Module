@@ -1,8 +1,9 @@
-{% for i in luces %}
-<span>
-    {{i.nombre}}
-    {{i.id}}
-</span>
-{% endfor %}
-
-<!--ESTO ES PARA PROBAR SI PUEDO PUSHEAR-->
+<div class="card blue-grey darken-2 center">
+    {% for i in luces %}
+    <p class="white-text">
+        Nombre luz: {{i.nombre}}<br>
+        Pin luz: {{i.pin}}
+    </p>
+    <div class="divider"></div>
+    {% endfor %}
+</div>

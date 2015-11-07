@@ -1,6 +1,15 @@
-{% for i in puertas %}
-<span>
-    {{i.nombre}}
-    {{i.id}}
-</span>
-{% endfor %}
+<div class="card blue-grey darken-2 center">
+    {% for i in puertas %}
+    <p class="white-text">
+        Nombre Puerta: {{i.nombre}}<br>
+        Pin Puerta: {{i.pin}}<br>
+        {% if i.auto_close %}
+        Cierre automático: Si
+        {% endif %}
+        {% if not i.auto_close %}
+        Cierre automático: No
+        {% endif %}
+    </p>
+    <div class="divider"></div>
+    {% endfor %}
+</div>

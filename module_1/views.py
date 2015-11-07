@@ -169,18 +169,14 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                context = RequestContext(request)
                 return redirect("/")
             else:
-                context = RequestContext(request)
                 return render_to_response('login.html',
                               context)
         else:
-            context = RequestContext(request)
             return render_to_response('login.html',
                               context)
     else:
-        context = RequestContext(request)
         return render_to_response('login.html',
                               context)
 
@@ -191,29 +187,50 @@ def logout_user(request):
 
 def add_room(request):
     context = RequestContext(request)
-    habitacion=Habitacion()
     if request.method=='POST':
-        hab=request.POST['habitacion']
-        habitacion= Habitacion.objects.filter(id = habId)
+        hab = request.POST['habitacion']
+        habitacion = Habitacion()
         habitacion.nombre=hab
-    return render_to_response('addroom.html',{'habitacion':habitacion},context)
+        habitacion.save()
+    return render_to_response('addroom.html',context)
 
 
 
 def add_luces(request):
     context = RequestContext(request)
     if request.method=='POST':
-        luces=request.POST['luces']
+        print "adentro"
+        luces=request.POST['luzNombre']
         luzId=request.POST['luzId']
-        habId=request.POST['luzViene']
+        habId = Habitacion.objects.latest('id')
         luz=Luz()
         luz.nombre=luces
         luz.pin=luzId
         luz.lugar=habId
-        luz.save
-    luces = Luz.objects.filter(lugar_id = habId)
-    habitacion= Habitacion.objects.filter(id = habId)
-    return render_to_response('luz-agregada.html',{'luces':luces,'habitacion':habitacion},context)
+        luz.save()
+    luces = Luz.objects.filter(lugar_id = habId.id)
+    print "afuera", luces, " ", Luz.objects.all()
+    return render_to_response('luz-agregada.html',{'luces':luces},context)
+
+def add_puertas(request):
+    context = RequestContext(request)
+    if request.method=='POST':
+        puerta=request.POST['puertaNombre']
+        puertaId=request.POST['puertaId']
+        habId = Habitacion.objects.latest('id')
+        puertas=Puerta()
+        puertas.nombre=puerta
+        puertas.pin=puertaId
+        puertas.lugar=habId
+        if request.POST['autoPuerta'] == "false":
+            puertas.auto_close=False
+            print request.POST['autoPuerta']
+        else:
+            puertas.auto_close=True
+            print "true"
+        puertas.save()
+    puertas = Puerta.objects.filter(lugar_id = habId.id)
+    return render_to_response('puerta-agregada.html',{'puertas':puertas},context)
 
 
 def auto_luz(request):
@@ -283,21 +300,6 @@ def get_current_user(request):
         return render_to_response('perfil.html',{'username':username},context)
     else:
         return render_to_response('perfil.html',{'username':""},context)
-
-def add_puertas(request):
-    context = RequestContext(request)
-    if request.method=='POST':
-        puertas=request.POST['puertas']
-        puertaId=request.POST['puertaId']
-        habId=request.POST['puertaViene']
-        puertas=Puerta()
-        puerta.nombre=puerta
-        puerta.pin=puertaId
-        puerta.lugar=habId
-        puerta.save
-    puertas = Puerta.objects.filter(lugar_id = habId)
-    habitacion= Habitacion.objects.filter(id = habId)
-    return render_to_response('puerta-agregada.html',{'puertas':puertas,'habitacion':habitacion},context)
 
 
 """def mousemove_connection_factory(auth_class, pubsub):
