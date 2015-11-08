@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-from .celery import module_1 as celery_app
+from .celery import app as celery_app
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
