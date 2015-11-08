@@ -4,7 +4,7 @@ from celery import Celery
 from django.conf import settings
 
 # Indicate Celery to use the default Django settings module
-os.environ.setdefaultH('DJANGO_SETTINGS_MODULE', 'HouseModule.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'HouseModule.settings')
 app = Celery('HouseModule')
 
 app.config_from_object('django.conf:settings')
