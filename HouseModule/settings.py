@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from __future__ import absolute_import
+from .celery import app as celery_app
+
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'module_1',
     'omnibus',
+    'djcelery',
 
 )
 
@@ -121,7 +125,9 @@ LOGGING = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Cordoba'
+
+CELERY_TIMEZONE = 'America/Argentina/Cordoba'
 
 USE_I18N = True
 
@@ -142,3 +148,12 @@ MEDIA_ROOT = BASE_DIR +'/documents/'
 OMNIBUS_ENDPOINT_SCHEME = 'ws'  # 'ws' is used for websocket connections
 OMNIBUS_WEBAPP_FACTORY = 'omnibus.factories.websocket_webapp_factory'
 OMNIBUS_CONNECTION_FACTORY = 'omnibus.factories.websocket_connection_factory'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+BROKER_URL = 'amqp://guest:guest@localhost//'
+
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
