@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'module_1',
     'omnibus',
+    'kombu.transport.django',
     'djcelery',
 
 )
@@ -151,7 +152,10 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-BROKER_URL = 'amqp://admin:admin@0.0.0.0:8000//'
+BROKER_URL = 'django://'
+
+import djcelery
+djcelery.setup_loader()
 
 CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 
