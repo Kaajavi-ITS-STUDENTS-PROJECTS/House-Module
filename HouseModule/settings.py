@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 from __future__ import absolute_import
-from .celery import app as celery_app
+from .celery import module_1 as celery_app
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
