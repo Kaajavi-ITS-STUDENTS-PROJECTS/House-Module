@@ -155,5 +155,9 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 BROKER_URL = 'amqp://guest:guest@localhost//'
 
-CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+app.conf.update(
+        CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend',
+    CELERY_RESULT_BACKEND='djcelery.backends.cache:CacheBackend',
+)
+
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
