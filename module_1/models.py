@@ -117,11 +117,14 @@ class LogLuz(models.Model):
         verbose_name = "Log de Luz"
         verbose_name_plural = "Logs de Luces"
     fecha = models.DateField(u"Fecha", default=timezone.now)
-    hora = models.TimeField(u'Hora',default=timezone.now)
+    hora = models.TimeField(u'Hora',auto_now=True)
     output = models.ForeignKey(Luz)
     status = models.BooleanField(u'Status', default=False)
     def __str__(self):
-        return self.output.nombre + "set on " + self.status.__str__
+        if self.status==True:
+            return self.output.nombre + "set on On"
+        else:
+            return self.output.nombre + "set on Off"
 
 
 class LogPuerta(models.Model):
@@ -129,7 +132,7 @@ class LogPuerta(models.Model):
         verbose_name = "Log de Puerta"
         verbose_name_plural = "Logs de Puertas"
     fecha = models.DateField(u"Fecha", default=timezone.now)
-    hora = models.TimeField(u'Hora',default=timezone.now)
+    hora = models.TimeField(u'Hora',auto_now=True)
     output = models.ForeignKey(Puerta)
     status = status = models.BooleanField(u'Status', default=False)
     def __str__(self):
