@@ -93,6 +93,7 @@
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id_r:rule.id,
+
         }
         $.ajax({
             method: "POST",
@@ -100,6 +101,7 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                Materialize.toast('DESTRUIR', 4000)
             },
             error: function(e){
                 console.log(e.responseText);
