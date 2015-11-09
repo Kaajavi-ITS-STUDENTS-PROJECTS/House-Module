@@ -110,7 +110,7 @@ class Mapa(models.Model):
 
 class LogLuz(models.Model):
     fecha = models.DateField(u"Fecha", default=timezone.now)
-    hora = models.TimeField(u'Hora',default=timezone.now)
+    hora = models.TimeField(u'Hora',default=datetime.now().time)
     output = models.ForeignKey(Luz)
     status = models.BooleanField(u'Status', default=False)
     def __str_(self):
@@ -119,7 +119,7 @@ class LogLuz(models.Model):
 
 class LogPuerta(models.Model):
     fecha = models.DateField(u"Fecha", default=timezone.now)
-    hora = models.TimeField(u'Hora')
+    hora = models.TimeField(u'Hora',default=datetime.now().time)
     output = models.ForeignKey(Puerta)
     status = status = models.BooleanField(u'Status', default=False)
     def __str_(self):
