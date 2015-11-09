@@ -102,6 +102,10 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                channel.send('reload',{
+                    loader:'#tabla',
+                    data:result,
+                });
                 Materialize.toast('Regla destruida correctamente!', 4000)
             },
             error: function(e){
@@ -144,6 +148,10 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                channel.send('reload',{
+                    loader:'#tabla',
+                    data:result,
+                });
                 Materialize.toast('Regla agregada correctamente!', 4000)
             },
             error: function(e){
