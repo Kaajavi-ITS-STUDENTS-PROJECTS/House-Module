@@ -90,10 +90,10 @@
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     function del_rule(rule){
-        console.log($(rule).parent().get(1));
+        console.log(rule.id);
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            id_r:rule.parent().parent().id,
+            id_r:rule.id,
 
         }
         $.ajax({
@@ -102,6 +102,10 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                channel.send('reload',{
+                    loader:'#tabla',
+                    data:result,
+                });
                 Materialize.toast('Regla destruida correctamente!', 4000)
             },
             error: function(e){
@@ -144,6 +148,10 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                channel.send('reload',{
+                    loader:'#tabla',
+                    data:result,
+                });
                 Materialize.toast('Regla agregada correctamente!', 4000)
             },
             error: function(e){
