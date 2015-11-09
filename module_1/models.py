@@ -117,7 +117,7 @@ class LogLuz(models.Model):
     output = models.ForeignKey(Luz)
     status = models.BooleanField(u'Status', default=False)
     def __str__(self):
-        return self.output.nombre + "set on " + self.status
+        return self.output.nombre + "set on " + self.status.__str__
 
 
 class LogPuerta(models.Model):
@@ -129,4 +129,4 @@ class LogPuerta(models.Model):
     output = models.ForeignKey(Puerta)
     status = status = models.BooleanField(u'Status', default=False)
     def __str__(self):
-        return self.output.nombre + "set on " + self.status
+        return self.output.nombre + "set on " + self.status.__str__
