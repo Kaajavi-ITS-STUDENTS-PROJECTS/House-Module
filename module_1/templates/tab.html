@@ -1,8 +1,30 @@
 {% for rule in rules %}
 <tr><td>{{rule.id}}</td>
     <td>{{rule.relacion}}</td>
-    <td>{{rule.dias}}</td>
-    <td>{{rule.from_hour}} - {{rules.to_hour}}</td>
+    <td>
+        {% if rule.lun %}
+        Lunes,
+        {% endif %}
+        {% if rule.mar %}
+        Martes,
+        {% endif %}
+        {% if rule.mie %}
+        Miercoles,
+        {% endif %}
+        {% if rule.jue %}
+        Jueves,
+        {% endif %}
+        {% if rule.vie %}
+        Viernes,
+        {% endif %}
+        {% if rule.sab %}
+        Sabado,
+        {% endif %}
+        {% if rule.dom %}
+        Domingo
+        {% endif %}
+    </td>
+    <td>{{rule.from_hour}} - {{rule.to_hour}}</td>
     <td>{{rule.status}}</td>
 </tr>
 {% endfor %}
