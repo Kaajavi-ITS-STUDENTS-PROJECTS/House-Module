@@ -101,6 +101,20 @@ class Regla(models.Model):
 
     
     
-class UploadImage(forms.Form):
-    title = forms.CharField()
-    file  = forms.FileField()
+class Mapa(models.Model):
+    img = models.FileField(u'Mapa',upload_to = 'img_mapas', default='null')
+
+class LogLuz(models.Model):
+    fecha = models.DateField(u"Fecha")
+    output = models.ForeignKey(Luz)
+    status = models.BooleanField(u'Status', default=False)
+    def __str_(self):
+        return output.nombre + "set on " + status
+
+
+class LogPuerta(models.Model):
+    fecha = models.DateField(u"Fecha")
+    output = models.ForeignKey(Puerta)
+    status = status = models.BooleanField(u'Status', default=False)
+    def __str_(self):
+        return output.nombre + "set on " + status
