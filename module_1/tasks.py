@@ -12,7 +12,7 @@ def scraper_example():
 
 @task
 def on(pin):
-    relay_functions.relay("open" ,pin)
+    relay_functions.relay("open" ,15)
 
 @task
 def off(pin):
