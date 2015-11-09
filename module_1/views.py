@@ -56,20 +56,24 @@ def luz(request):
                 luz = Luz.objects.get(id = id)
                 if luz.status:
                     luz.status=False
-                    setLuz(False, luz.pin)
+                    setLuz(False, luz)
                 else:
                     luz.status=True
-                    setLuz(True, luz.pin)
+                    setLuz(True, luz)
                 luz.save()
     luces = Luz.objects.all()
     return render_to_response('luces.html',{'luz':luz}, context)
 
 
-def setLuz(status, pin ):
+def setLuz(status, luz ):
+    log=LogLuz()
+    log.output=luz
+    log.status=status
     if status==True:
-        relay_functions.relay("open",pin)
+        relay_functions.relay("open",luz.pin)
     else:
-        relay_functions.relay("close",pin)
+        relay_functions.relay("close",luz.pin)
+    log.save()
 
 
 def puerta(request):
