@@ -99,6 +99,12 @@ class Regla(models.Model):
     def __str_(self):
         return self.relacion.nombre
 
+    
+    
+class Mapa(models.Model):
+    img = models.FileField(u'Mapa',upload_to = 'img_mapas', default='null')
+    
+    
 
 class LogLuz(models.Model):
     fecha = models.DateField(u"Fecha")
