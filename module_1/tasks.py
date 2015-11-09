@@ -1,6 +1,7 @@
 from celery.task.schedules import crontab
-from celery.decorators import periodic_task, task
+from celery.decorators import periodic_task
 from celery.utils.log import get_task_logger
+import relay_functions
 
 logger = get_task_logger(__name__)
 # A periodic task that will run every minute (the symbol "*" means every)
@@ -14,6 +15,6 @@ def scraper_example():
 def on():
     relay_functions.relay("open" ,15)
 
-@task
-def off(pin):
-    relay_functions.relay("close" ,pin)
+#@task
+#def off(pin):
+#    relay_functions.relay("close" ,pin)
