@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla
+from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, LogLuz, LogPuerta
 from django.contrib.auth import authenticate
 import time
 from omnibus.factories import websocket_connection_factory
@@ -56,20 +56,24 @@ def luz(request):
                 luz = Luz.objects.get(id = id)
                 if luz.status:
                     luz.status=False
-                    setLuz(False, luz.pin)
+                    setLuz(False, luz)
                 else:
                     luz.status=True
-                    setLuz(True, luz.pin)
+                    setLuz(True, luz)
                 luz.save()
     luces = Luz.objects.all()
     return render_to_response('luces.html',{'luz':luz}, context)
 
 
-def setLuz(status, pin ):
+def setLuz(status, luz ):
+    log=LogLuz()
+    log.output=luz
+    log.status=status
     if status==True:
-        relay_functions.relay("open",pin)
+        relay_functions.relay("open",luz.pin)
     else:
-        relay_functions.relay("close",pin)
+        relay_functions.relay("close",luz.pin)
+    log.save()
 
 
 def puerta(request):
