@@ -102,10 +102,11 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
-                Materialize.toast('DESTRUIR', 4000)
+                Materialize.toast('Regla destruida correctamente!', 4000)
             },
             error: function(e){
                 console.log(e.responseText);
+                Materialize.toast('Error al destruir la regla!', 4000)
             }
         });
     }
@@ -143,9 +144,11 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                Materialize.toast('Regla agregada correctamente!', 4000)
             },
             error: function(e){
                 console.log(e.responseText);
+                Materialize.toast('No se agrego la regla!', 4000)
             }
         });
     }
