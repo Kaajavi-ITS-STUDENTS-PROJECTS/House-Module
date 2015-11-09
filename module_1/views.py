@@ -81,12 +81,12 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.status:
-                    setPuerta(False)
+                    setPuerta(False,puerta.pin)
                     puerta.status = False
                     print puerta.status
                 else:
                     puerta.status = True
-                    setPuerta(True)
+                    setPuerta(True, puerta.pin)
                 puerta.save()
                 print puerta.status
     if lista_permitidos.__str__() != "[]":
