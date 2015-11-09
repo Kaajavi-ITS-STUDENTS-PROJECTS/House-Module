@@ -81,12 +81,12 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.status:
-                    relay_functions.relay("close",puerta.pin)
+                    setPuerta(False)
                     puerta.status = False
                     print puerta.status
                 else:
                     puerta.status = True
-                    relay_functions.relay("open",puerta.pin)
+                    setPuerta(True)
                 puerta.save()
                 print puerta.status
     if lista_permitidos.__str__() != "[]":
@@ -99,6 +99,12 @@ def puerta(request):
                     puerta.save()
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
+
+def setPuerta(status, pin ):
+    if status==True:
+        relay_functions.relay("open",pin)
+    else:
+        relay_functions.relay("close",pin)
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
