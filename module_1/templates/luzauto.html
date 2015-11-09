@@ -89,7 +89,7 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
-    function delete_rule(rule){
+    function del_rule(rule){
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id_r:rule.id,
