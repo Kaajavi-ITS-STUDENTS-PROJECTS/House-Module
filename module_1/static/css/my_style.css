@@ -93,5 +93,4 @@ main {
 }
 .parent:hover .hidden {
     display:block;
-    cursor:pointer;
 }

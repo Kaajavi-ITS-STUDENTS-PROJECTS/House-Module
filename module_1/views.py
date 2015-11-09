@@ -311,7 +311,8 @@ def add_rule(request):
 
 def del_rule(request):
     context = RequestContext(request)
-    rule = Regla.objects.get(id = int(request.POST['id_r']))
+    print int(request.POST['id_r'])
+    #rule = Regla.objects.get(id = )
     rule.delete()
     rules = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rules},context)
