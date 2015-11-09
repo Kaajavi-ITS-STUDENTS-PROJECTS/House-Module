@@ -9,6 +9,7 @@ import relay_functions
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla
 from django.contrib.auth import authenticate
 import time
+from djcelery.models import PeriodicTask, CrontabSchedule
 from omnibus.factories import websocket_connection_factory
 from omnibus.api import publish
 # Create your views here.
@@ -243,6 +244,9 @@ def auto_luz(request):
 def add_rule(request):
     context = RequestContext(request)
     print "aca estoy"
+    days_t = []
+    periodic = PeriodicTask.objects.all()
+    cron = CrontabSchedule.objects.all()
     if request.method=='POST':
         print "hola"
         luz = Luz.objects.get(id = request.POST['id'])
@@ -260,35 +264,49 @@ def add_rule(request):
         regla.pin = luz.pin
         print "4"
         regla.status = request.POST['status']
+        status = regla.status
+        pin = regla.pin
+        nombre = regla.relacion
         print "4"
         for i in dias:
             if i=="Lunes":
                 print "Lun"
                 regla.lun = True
+                days_t.append(1)
             elif i=="Martes":
                 print "Mar"
                 regla.mar = True
+                days_t.append(2)
             elif i=="Miercoles":
                 print "Mie"
                 regla.mie = True
+                days_t.append(3)
             elif i=="Jueves":
                 print "Jue"
                 regla.jue = True
+                days_t.append(4)
             elif i=="Viernes":
                 print "Vie"
                 regla.vie = True
+                days_t.append(5)
             elif i=="Sabado":
                 print "Sab"
                 regla.sab = True
+                days_t.append(6)
             elif i=="Domingo":
                 print "Dom"
                 regla.dom = True
+                days_t.append(0)
         regla.from_hour = hora[0]
         print "from"
         regla.to_hour = hora[1]
         print "to"
         regla.save()
         print "save"
+#        if status:
+#
+#        elif status == False:
+
     rule = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rule},context)
 
