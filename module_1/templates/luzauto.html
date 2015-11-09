@@ -90,7 +90,7 @@
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
     function del_rule(rule){
-        console.log(rule.id);
+        console.log(rule);
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             id_r:rule.id,
