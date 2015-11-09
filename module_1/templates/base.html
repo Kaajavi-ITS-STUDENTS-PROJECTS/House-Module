@@ -33,45 +33,46 @@
                     <h4>Mapa</h4>
                     <p>Este es un mapita de la casa del Mitico UlisesT</p>
                     <img src="{% static 'img/home.png' %}"></img>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
-                </div>
             </div>
-            {% block content %}
-            {% endblock %}
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
+            </div>
+            </div>
+        {% block content %}
+        {% endblock %}
         </main>
-        <!--<footer class="page-footer site-footer blue-grey darken-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Modular</h5>
-                        <p class="grey-text text-lighten-4">Somos una organizacion muy dedicada a nuestros clientes.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="https://github.com/Modular-G">Github</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2015 Modular SA.
-                </div>
-            </div>
-        </footer>-->
+    <!--<footer class="page-footer site-footer blue-grey darken-3">
+<div class="container">
+<div class="row">
+<div class="col l6 s12">
+<h5 class="white-text">Modular</h5>
+<p class="grey-text text-lighten-4">Somos una organizacion muy dedicada a nuestros clientes.</p>
+</div>
+<div class="col l4 offset-l2 s12">
+<h5 class="white-text">Links</h5>
+<ul>
+<li><a class="grey-text text-lighten-3" href="https://github.com/Modular-G">Github</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+© 2015 Modular SA.
+</div>
+</div>
+</footer>-->
     </body>
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}" type="text/javascript"></script>
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-    <script>
-        $(".button-collapse").sideNav();
-        $(document).ready(function(){
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-        });
-            // Select a transport implementation:
+<script src="{% static 'js/jquery-1.11.3.min.js' %}" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'omnibus/omnibus.js' %}"></script>
+<script>
+    $(".button-collapse").sideNav();
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
+    // Select a transport implementation:
     var transport = WebSocket; // SockJS can be used alternatively
 
     // Receive the path for the connection from the django template context:
@@ -92,7 +93,7 @@
     channel.on('reload', function(event) {
         $(event.data.payload.loader).html(event.data.payload.data);
     });
-    </script>
-    {% block scripts %}
-    {% endblock %}
+</script>
+{% block scripts %}
+{% endblock %}
 </html>
