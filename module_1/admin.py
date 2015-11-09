@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from .models import Luz, Habitacion, Puerta, Sanitario, Alarma, Usuario, Regla, LogLuz, LogPuerta
+from .models import Luz, Habitacion, Puerta, Sanitario, Alarma, Usuario, Regla, LogLuz, LogPuerta, Mapa
 # Register your models here.
 admin.site.register(Luz)
 admin.site.register(Habitacion)
@@ -12,3 +12,4 @@ admin.site.register(Usuario)
 admin.site.register(Regla)
 admin.site.register(LogLuz)
 admin.site.register(LogPuerta)
+admin.site.register(Mapa)

@@ -91,8 +91,20 @@
 <script>
     function delete_rule(rule){
         var data={
-            id_r:rule.id
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id_r:rule.id,
         }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:del_rule' %}",
+            data: data,
+            success:function(result){
+                $('#tabla').html(result);
+            },
+            error: function(e){
+                console.log(e.responseText);
+            }
+        });
     }
 
     function add_rule(){
