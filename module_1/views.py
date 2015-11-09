@@ -342,9 +342,9 @@ def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
     username = request.user
-    log = LogLuz.objects.get(id=0)
+    log = LogLuz.objects.all()
     if request.user.is_authenticated():
-        return render_to_response('perfil.html',{'username':log.hora},context)
+        return render_to_response('perfil.html',{'username':log[0].hora},context)
     else:
         return render_to_response('perfil.html',{'username':""},context)
 
