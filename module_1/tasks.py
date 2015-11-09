@@ -11,7 +11,7 @@ def scraper_example():
     print("This is run every Monday morning at 8 every minute")
 
 @periodic_task
-def on(pin):
+def on():
     relay_functions.relay("open" ,15)
 
 @task
