@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla
+from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, LogLuz, LogPuerta
 from django.contrib.auth import authenticate
 import time
 from omnibus.factories import websocket_connection_factory
