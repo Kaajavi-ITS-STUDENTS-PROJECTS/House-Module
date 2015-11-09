@@ -88,3 +88,5 @@ main {
 .select-wrapper input.select-dropdown {
     color: #FCFCFC;
 }
+.hidden { display:none; }
+.parent:hover .hidden { display:block; }

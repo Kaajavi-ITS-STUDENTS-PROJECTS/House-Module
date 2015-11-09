@@ -292,6 +292,13 @@ def add_rule(request):
     rule = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rule},context)
 
+def del_rule(request):
+    context = RequestContext(request)
+    rule = Regla.objects.get(id = request.POST['id_r'])
+    rule.delete()
+    rules = Regla.objects.all()
+    return render_to_response('tab.html',{'rules':rules},context)
+
 def get_current_user(request):
     context = RequestContext(request)
     print request.user.username
