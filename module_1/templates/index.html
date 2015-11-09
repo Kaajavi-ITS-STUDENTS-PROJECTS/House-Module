@@ -94,5 +94,14 @@
             }
         });
     }
+    window.onload = function() {
+        var canvas = document.getElementById("id_canvas");
+        var ctx = canvas.getContext("2d");
+        var img = document.getElementById("map-img");
+        {% for %}
+        ctx.drawImage(img, 10, 10);
+        ctx.fillStyle = "#VVV";
+        ctx.fillRect(10,10,30,30);
+    }
 </script>
 {% endblock %}

@@ -32,15 +32,18 @@
                 <div class="modal-content">
                     <h4>Mapa</h4>
                     <p>Este es un mapita de la casa del Mitico UlisesT</p>
-                    <img src="{% static 'img/home.png' %}"></img>
+                    <canvas id="id_canvas" width="260" height="170"
+                            style="border:1px solid #d3d3d3;">
+                    </canvas>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
+                </div>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
-            </div>
-            </div>
-        {% block content %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
         </main>
+        <img id="map-img" hidden src="{% static 'img/home.png' %}" width="270" height="280"></img>
     <!--<footer class="page-footer site-footer blue-grey darken-3">
 <div class="container">
 <div class="row">

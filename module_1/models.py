@@ -31,6 +31,8 @@ class Luz(models.Model):
     status = models.BooleanField(u'Status', default=False)
     pin = models.IntegerField(u'Pin', default=1)
     lugar = models.ForeignKey(Habitacion)
+    dibujo_y = models.IntegerField(u'Posicion en mapa, y', default=0)
+    dibujo_x = models.IntegerField(u'Posicion en mapa, x', default=0)
     
     def __str__(self):
         return self.nombre
@@ -45,6 +47,8 @@ class Puerta(models.Model):
     pin = models.IntegerField(u'Pin', default=1)
     auto_close = models.BooleanField(u'Auto Close', default=True)
     lugar = models.ForeignKey(Habitacion)
+    dibujo_y = models.IntegerField(u'Posicion en mapa, y', default=0)
+    dibujo_x = models.IntegerField(u'Posicion en mapa, x', default=0)
     
     def __str__(self):
         return self.nombre
