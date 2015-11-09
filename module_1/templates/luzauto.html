@@ -89,6 +89,11 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    function delete_rule(rule){
+        var data={
+            id_r:rule.id
+        }
+    }
 
     function add_rule(){
         var dias = "[";
