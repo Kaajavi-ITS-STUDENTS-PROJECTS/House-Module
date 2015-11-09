@@ -100,7 +100,17 @@ class Regla(models.Model):
         return self.relacion.nombre
 
 
-class Log(models.Model):
+class LogLuz(models.Model):
     fecha = models.DateField(u"Fecha")
+    output = models.ForeignKey(Luz)
+    status = models.BooleanField(u'Status', default=False)
+    def __str_(self):
+        return output.nombre + "set on " + status
 
-    
+
+class LogPuerta(models.Model):
+    fecha = models.DateField(u"Fecha")
+    output = models.ForeignKey(Puerta)
+    status = status = models.BooleanField(u'Status', default=False)
+    def __str_(self):
+        return output.nombre + "set on " + status
