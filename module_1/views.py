@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla
+from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, LogLuz, LogPuerta
 from django.contrib.auth import authenticate
 import time
 from djcelery.models import PeriodicTask, CrontabSchedule
@@ -57,13 +57,24 @@ def luz(request):
                 luz = Luz.objects.get(id = id)
                 if luz.status:
                     luz.status=False
-                    relay_functions.relay("close",luz.pin)
+                    setLuz(False, luz)
                 else:
                     luz.status=True
-                    relay_functions.relay("open",luz.pin)
+                    setLuz(True, luz)
                 luz.save()
     luces = Luz.objects.all()
     return render_to_response('luces.html',{'luz':luz}, context)
+
+
+def setLuz(status, luz ):
+    log=LogLuz()
+    log.output=luz
+    log.status=status
+    if status==True:
+        relay_functions.relay("open",luz.pin)
+    else:
+        relay_functions.relay("close",luz.pin)
+    log.save()
 
 
 def puerta(request):
@@ -75,12 +86,12 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.status:
-                    relay_functions.relay("close",puerta.pin)
+                    setPuerta(False,puerta)
                     puerta.status = False
                     print puerta.status
                 else:
                     puerta.status = True
-                    relay_functions.relay("open",puerta.pin)
+                    setPuerta(True, puerta)
                 puerta.save()
                 print puerta.status
     if lista_permitidos.__str__() != "[]":
@@ -93,6 +104,16 @@ def puerta(request):
                     puerta.save()
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
+
+def setPuerta(status, puerta ):
+    log=LogPuerta()
+    log.output=puerta
+    log.status=status
+    if status==True:
+        relay_functions.relay("open",puerta.pin)
+    else:
+        relay_functions.relay("close",puerta.pin)
+    log.save()
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
@@ -309,6 +330,13 @@ def add_rule(request):
 
     rule = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rule},context)
+
+def del_rule(request):
+    context = RequestContext(request)
+    rule = Regla.objects.get(id = request.POST['id_r'])
+    rule.delete()
+    rules = Regla.objects.all()
+    return render_to_response('tab.html',{'rules':rules},context)
 
 def get_current_user(request):
     context = RequestContext(request)

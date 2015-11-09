@@ -39,20 +39,20 @@ main {
 }
 
 #showcase {
-	margin: 0 20px;
-	text-align: center;
+    margin: 0 20px;
+    text-align: center;
 }
 #range {
-	height: 300px;
-	margin: 0 auto 30px;
+    height: 300px;
+    margin: 0 auto 30px;
 }
 #value-span,
 #value-input {
-	width: 50%;
-	float: left;
-	display: block;
-	text-align: center;
-	margin: 0;
+    width: 50%;
+    float: left;
+    display: block;
+    text-align: center;
+    margin: 0;
 }
 
 [type="checkbox"] + label::before {
@@ -87,4 +87,10 @@ main {
 
 .select-wrapper input.select-dropdown {
     color: #FCFCFC;
+}
+.hidden {
+    display:none;
+}
+.parent:hover .hidden {
+    display:block;
 }

@@ -89,6 +89,27 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+    function del_rule(rule){
+        console.log(rule.id);
+        var data={
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id_r:rule.id,
+
+        }
+        $.ajax({
+            method: "POST",
+            url: "{% url 'module_1:del_rule' %}",
+            data: data,
+            success:function(result){
+                $('#tabla').html(result);
+                Materialize.toast('Regla destruida correctamente!', 4000)
+            },
+            error: function(e){
+                console.log(e.responseText);
+                Materialize.toast('Error al destruir la regla!', 4000)
+            }
+        });
+    }
 
     function add_rule(){
         var dias = "[";
@@ -123,9 +144,11 @@
             data: data,
             success:function(result){
                 $('#tabla').html(result);
+                Materialize.toast('Regla agregada correctamente!', 4000)
             },
             error: function(e){
                 console.log(e.responseText);
+                Materialize.toast('No se agrego la regla!', 4000)
             }
         });
     }

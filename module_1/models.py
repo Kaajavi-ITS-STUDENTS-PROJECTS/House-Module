@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 from datetime import datetime, timedelta
 
 # Create your models here.
@@ -96,11 +97,36 @@ class Regla(models.Model):
     status = models.BooleanField(u'Status', default=False)
     
     
-    def __str_(self):
+    def __str__(self):
         return self.relacion.nombre
 
-
-class Log(models.Model):
-    fecha = models.DateField(u"Fecha")
-
     
+    
+class Mapa(models.Model):
+    img = models.FileField(u'Mapa',upload_to = 'img_mapas', default='null')
+    
+    
+    
+
+class LogLuz(models.Model):
+    class Meta:
+        verbose_name = "Log de Luz"
+        verbose_name_plural = "Logs de Luces"
+    fecha = models.DateField(u"Fecha", default=timezone.now)
+    hora = models.TimeField(u'Hora',default=datetime.now().time)
+    output = models.ForeignKey(Luz)
+    status = models.BooleanField(u'Status', default=False)
+    def __str__(self):
+        return self.output.nombre + "set on " + status
+
+
+class LogPuerta(models.Model):
+    class Meta:
+        verbose_name = "Log de Puerta"
+        verbose_name_plural = "Logs de Puertas"
+    fecha = models.DateField(u"Fecha", default=timezone.now)
+    hora = models.TimeField(u'Hora',default=datetime.now().time)
+    output = models.ForeignKey(Puerta)
+    status = status = models.BooleanField(u'Status', default=False)
+    def __str__(self):
+        return self.output.nombre + "set on " + status
