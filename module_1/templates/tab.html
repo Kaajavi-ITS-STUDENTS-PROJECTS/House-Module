@@ -1,5 +1,5 @@
 {% for rule in rules %}
-<tr class="parent" id="{{rule.id}}"><td>{{rule.id}}</td>
+<tr class="parent"><td>{{rule.id}}</td>
     <td>{{rule.relacion}}</td>
     <td>
         {% if rule.lun %}
@@ -25,7 +25,7 @@
         {% endif %}
     </td>
     <td>{{rule.from_hour}} - {{rule.to_hour}}</td>
-    <td>{{rule.status}}<a class="hidden right black-text" style="cursor:pointer;" onclick="del_rule(this)"><i class="material-icons">delete</i></a>
+    <td>{{rule.status}}<a id="{{rule.id}}" class="hidden right black-text" style="cursor:pointer;" onclick="del_rule(this)"><i class="material-icons">delete</i></a>
     </td>
 </tr>
 {% endfor %}
