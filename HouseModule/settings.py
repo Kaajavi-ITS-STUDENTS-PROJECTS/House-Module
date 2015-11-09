@@ -126,7 +126,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Argentina/Cordoba'
 
-CELERY_TIMEZONE = 'America/Argentina/Cordoba'
+CELERY_TIMEZONE = TIME_ZONE #'America/Argentina/Cordoba'
 
 USE_I18N = True
 
