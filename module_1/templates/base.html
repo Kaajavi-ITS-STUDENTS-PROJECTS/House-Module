@@ -71,6 +71,27 @@
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
         });
+            // Select a transport implementation:
+    var transport = WebSocket; // SockJS can be used alternatively
+
+    // Receive the path for the connection from the django template context:
+    var endpoint = '{{ OMNIBUS_ENDPOINT }}';
+
+    // Define connection options:
+    var options = {
+        // Get the omnibus authentication token:
+        autoReconnect: true,
+        autoReconnectTimeout: 1000,
+        authToken: '{{ OMNIBUS_AUTH_TOKEN }}'
+    };
+
+    // Create a new connection using transport, endpoint and options
+    var connection = new Omnibus(transport, endpoint, options);
+    var channel = connection.openChannel('module_recargar');
+
+    channel.on('reload', function(event) {
+        $(event.data.payload.loader).html(event.data.payload.data);
+    });
     </script>
     {% block scripts %}
     {% endblock %}
