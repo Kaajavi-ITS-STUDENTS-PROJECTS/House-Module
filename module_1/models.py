@@ -98,3 +98,9 @@ class Regla(models.Model):
     
     def __str_(self):
         return self.relacion.nombre
+
+    
+    
+class UploadImage(forms.Form):
+    title = forms.CharField()
+    file  = forms.FileField()
