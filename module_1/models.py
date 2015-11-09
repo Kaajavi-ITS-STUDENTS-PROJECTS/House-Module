@@ -97,7 +97,7 @@ class Regla(models.Model):
     status = models.BooleanField(u'Status', default=False)
     
     
-    def __str_(self):
+    def __str__(self):
         return self.relacion.nombre
 
     
@@ -109,18 +109,24 @@ class Mapa(models.Model):
     
 
 class LogLuz(models.Model):
+    class Meta:
+        verbose_name = "Log de Luz"
+        verbose_name_plural = "Logs de Luces"
     fecha = models.DateField(u"Fecha", default=timezone.now)
     hora = models.TimeField(u'Hora',default=datetime.now().time)
     output = models.ForeignKey(Luz)
     status = models.BooleanField(u'Status', default=False)
-    def __str_(self):
+    def __str__(self):
         return output.nombre + "set on " + status
 
 
 class LogPuerta(models.Model):
+    class Meta:
+        verbose_name = "Log de Puerta"
+        verbose_name_plural = "Logs de Puertas"
     fecha = models.DateField(u"Fecha", default=timezone.now)
     hora = models.TimeField(u'Hora',default=datetime.now().time)
     output = models.ForeignKey(Puerta)
     status = status = models.BooleanField(u'Status', default=False)
-    def __str_(self):
+    def __str__(self):
         return output.nombre + "set on " + status
