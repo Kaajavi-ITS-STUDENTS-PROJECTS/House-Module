@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 from datetime import datetime, timedelta
 
 # Create your models here.
@@ -108,7 +109,8 @@ class Mapa(models.Model):
     
 
 class LogLuz(models.Model):
-    fecha = models.DateField(u"Fecha")
+    fecha = models.DateField(u"Fecha", default=timezone.now)
+    hora = models.TimeField(u'Hora')
     output = models.ForeignKey(Luz)
     status = models.BooleanField(u'Status', default=False)
     def __str_(self):
@@ -116,7 +118,8 @@ class LogLuz(models.Model):
 
 
 class LogPuerta(models.Model):
-    fecha = models.DateField(u"Fecha")
+    fecha = models.DateField(u"Fecha", default=timezone.now)
+    hora = models.TimeField(u'Hora')
     output = models.ForeignKey(Puerta)
     status = status = models.BooleanField(u'Status', default=False)
     def __str_(self):
