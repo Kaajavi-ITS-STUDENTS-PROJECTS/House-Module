@@ -185,7 +185,7 @@ def logout_user(request):
     context = RequestContext(request)
     return redirect('/login')
 
-def add_room(request):
+"""def add_room(request):
     context = RequestContext(request)
     if request.method=='POST':
         hab = request.POST['habitacion']
@@ -230,7 +230,7 @@ def add_puertas(request):
             print "true"
         puertas.save()
     puertas = Puerta.objects.filter(lugar_id = habId.id)
-    return render_to_response('puerta-agregada.html',{'puertas':puertas},context)
+    return render_to_response('puerta-agregada.html',{'puertas':puertas},context)"""
 
 
 def auto_luz(request):
