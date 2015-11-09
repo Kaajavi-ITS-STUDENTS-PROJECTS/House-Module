@@ -1,5 +1,5 @@
 from celery.task.schedules import crontab
-from celery.decorators import periodic_task
+from celery.decorators import periodic_task, task
 from celery.utils.log import get_task_logger
 import relay_functions
 
@@ -11,7 +11,7 @@ def scraper_example():
 
     print("This is run every Monday morning at 8 every minute")
 
-@periodic_task
+@task
 def on():
     relay_functions.relay("open" ,15)
 
