@@ -129,4 +129,7 @@ class LogPuerta(models.Model):
     output = models.ForeignKey(Puerta)
     status = status = models.BooleanField(u'Status', default=False)
     def __str__(self):
-        return self.output.nombre + "set on " + self.status.__str__
+        if self.status==True:
+            return self.output.nombre + "set on On"
+        else:
+            return self.output.nombre + "set on Off"
