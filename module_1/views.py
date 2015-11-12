@@ -336,7 +336,7 @@ def add_rule(request):
         cronT = CrontabSchedule.objects.latest('id')
         print "regla y cronT"
         periodic = PeriodicTask()
-        print "P_t"
+        print "P_t",regla.nombre,regla.status,regla.id
         na = str(regla.nombre),"_",str(regla.status),"_",str(regla.id)
         print "na"
         periodic.name = na
