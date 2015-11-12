@@ -337,7 +337,7 @@ def add_rule(request):
         print "regla y cronT"
         periodic = PeriodicTask()
         print "P_t"
-        na = regla.nombre,"_",regla.status,"_",regla.id
+        na = str(regla.nombre),"_",str(regla.status),"_",str(regla.id)
         print "na"
         periodic.name = na
         print "name"
