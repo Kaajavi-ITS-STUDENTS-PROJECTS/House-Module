@@ -265,9 +265,8 @@ def auto_luz(request):
 def add_rule(request):
     context = RequestContext(request)
     print "aca estoy"
-    days_t = []
-    periodic = PeriodicTask.objects.all()
-    cron = CrontabSchedule.objects.all()
+    #periodic = PeriodicTask.objects.all()
+    #cron = CrontabSchedule.objects.all()
     if request.method=='POST':
         print "hola"
         luz = Luz.objects.get(id = request.POST['id'])
@@ -289,6 +288,7 @@ def add_rule(request):
         pin = regla.pin
         nombre = regla.relacion
         print "4"
+        days_t = []
         for i in dias:
             if i=="Lunes":
                 print "Lun"
@@ -319,11 +319,18 @@ def add_rule(request):
                 regla.dom = True
                 days_t.append(0)
         regla.from_hour = hora[0]
-        print "from"
+        print "from",str(hora[0])
+
         regla.to_hour = hora[1]
         print "to"
         regla.save()
         print "save"
+        """cron = CrontabSchedule()
+        cron.minute =
+        cron.hour =
+        cron.day_of_week =
+        cron.save()"""
+
 #        if status:
 #
 #        elif status == False:

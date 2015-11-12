@@ -7,6 +7,6 @@ relay_functions.setting_pines()
 def on(pin):
     relay_functions.relay("open" ,pin)
 
-#@task
-#def off(pin):
-#    relay_functions.relay("close" ,pin)
+@task
+def off(pin):
+    relay_functions.relay("close" ,pin)
