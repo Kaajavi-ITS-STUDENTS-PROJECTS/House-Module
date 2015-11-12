@@ -133,11 +133,15 @@
         hor += " ]"
         console.log(hora);
         console.log(hor);
+        var e = "false";
+        if ($('#on').is(':checked')){
+            e = "true";
+        }
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
             nombre: $('#cmb').children(":selected").value,
             id: $('#cmb').children(":selected").attr("id"),
-            status: $('#on').is(':checked'),
+            status: e,
             days: dias,
             hours: hor,
 

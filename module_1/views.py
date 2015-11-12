@@ -271,8 +271,6 @@ def add_rule(request):
         print "hola"
         luz = Luz.objects.get(id = request.POST['id'])
         dias = eval(request.POST['days'])
-        print dias,"-",request.POST['days']
-        dias.pop(len(dias)-1)
         print "0"
         print dias,"-",request.POST['days']
         hora = eval(request.POST['hours'])
@@ -283,10 +281,12 @@ def add_rule(request):
         print "3"
         regla.pin = luz.pin
         print "4"
-        regla.status = request.POST['status']
-        status = regla.status
-        pin = regla.pin
-        nombre = regla.relacion
+        if request.POST['status'] == "false":
+            regla.status=False
+            print request.POST['status']
+        else:
+            regla.status=True
+            print "true"
         print "4"
         days_t = []
         for i in dias:
@@ -319,18 +319,30 @@ def add_rule(request):
                 regla.dom = True
                 days_t.append(0)
         regla.from_hour = hora[0]
-        prueba = str(hora[0])
-        print "from", prueba[3], prueba[4]
-
+        f_h = str(hora[0])
+        print "from"
         regla.to_hour = hora[1]
+        t_h = str(hora[1])
         print "to"
         regla.save()
         print "save"
-        """cron = CrontabSchedule()
-        cron.minute =
-        cron.hour =
-        cron.day_of_week =
-        cron.save()"""
+        cron = CrontabSchedule()
+        cron.minute = f_h[-2:]
+        cron.hour = f_h[:2]
+        cron.day_of_week = days_t
+        cron.save()
+        regla = Regla.objects.latest('id')
+        cronT = CrontabSchedule.objects.latest('id')
+        periodic = PeriodicTask()
+        na = regla.nombre,"_",regla.status,"_",regla.id
+        periodic.name = na
+        if regla.status:
+            periodic.task = "module_1.tasks.on"
+        else:
+            periodic.task = "module_1.tasks.off"
+        periodic.crontab = cronT
+        periodic.args = regla.pin
+        periodic.save()
 
 #        if status:
 #
@@ -342,6 +354,8 @@ def add_rule(request):
 def del_rule(request):
     context = RequestContext(request)
     rule = Regla.objects.get(id = request.POST['id_r'])
+    na = rule.nombre,"_",rule.status,"_",rule.id
+    periodic = PeriodicTask.objects.get(name = na)
     rule.delete()
     rules = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rules},context)
