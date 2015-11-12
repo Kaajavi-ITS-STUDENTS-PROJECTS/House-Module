@@ -319,7 +319,8 @@ def add_rule(request):
                 regla.dom = True
                 days_t.append(0)
         regla.from_hour = hora[0]
-        print "from",str(hora[0])
+        prueba = str(hora[0])
+        print "from",prueba[3,4]
 
         regla.to_hour = hora[1]
         print "to"
