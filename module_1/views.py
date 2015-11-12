@@ -331,18 +331,27 @@ def add_rule(request):
         cron.hour = f_h[:2]
         cron.day_of_week = days_t
         cron.save()
+        print "cron save"
         regla = Regla.objects.latest('id')
         cronT = CrontabSchedule.objects.latest('id')
+        print "regla y cronT"
         periodic = PeriodicTask()
+        print "P_t"
         na = regla.nombre,"_",regla.status,"_",regla.id
+        print "na"
         periodic.name = na
+        print "name"
         if regla.status:
             periodic.task = "module_1.tasks.on"
         else:
             periodic.task = "module_1.tasks.off"
+        print "status"
         periodic.crontab = cronT
+        print "cron= p_t"
         periodic.args = regla.pin
+        print "arg"
         periodic.save()
+        print "periodic save"
 
 #        if status:
 #
