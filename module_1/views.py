@@ -113,7 +113,7 @@ def puerta(request):
                     print "time sleep"
                     time.sleep(5)
                     print "cerrar puerta"
-                    relay_functions.relay("close",puerta.pin)
+                    setPuerta(False,puerta)
                     print "guarda status"
                     puerta.status = False
                     print "save"
