@@ -67,7 +67,7 @@ def luz(request):
 
 
 def setLuz(status, luz ):
-    log=LogLuz()
+    log=Log()
     log.output=luz
     log.status=status
     if status==True:
@@ -106,7 +106,7 @@ def puerta(request):
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
 def setPuerta(status, puerta ):
-    log=LogPuerta()
+    log=Log()
     log.output=puerta
     log.status=status
     if status==True:
@@ -390,7 +390,7 @@ def get_current_user(request):
 
 def logs(request):
     context = RequestContext(request)
-    logs = LogLuz.objects.all()
+    logs = Log.objects.all()
     return render_to_response('logtable.html',{'logs':logs},context)
 
 

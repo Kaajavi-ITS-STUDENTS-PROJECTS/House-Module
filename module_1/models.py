@@ -41,7 +41,7 @@ class Puerta(Objeto):
         verbose_name = "Puerta"
         verbose_name_plural = "Puertas  "
     auto_close = models.BooleanField(u'Auto Close', default=True)
-    pin = models.IntegerField(u'Pin', default=1)
+    pin = models.IntegerField(u'Pin', default=1)ó
     def __str__(self):
         return self.nombre
 
@@ -104,13 +104,13 @@ class Mapa(models.Model):
     
     
 
-class LogLuz(models.Model):
+class Log(models.Model):
     class Meta:
         verbose_name = "Log de Luz"
         verbose_name_plural = "Logs de Luces"
     fecha = models.DateField(u"Fecha", default=timezone.now)
     hora = models.TimeField(u'Hora',auto_now=True)
-    output = models.ForeignKey(Luz)
+    output = models.ForeignKey(Objeto)
     status = models.BooleanField(u'Status', default=False)
     def __str__(self):
         if self.status==True:
@@ -119,16 +119,3 @@ class LogLuz(models.Model):
             return self.output.nombre + "set on Off"
 
 
-class LogPuerta(models.Model):
-    class Meta:
-        verbose_name = "Log de Puerta"
-        verbose_name_plural = "Logs de Puertas"
-    fecha = models.DateField(u"Fecha", default=timezone.now)
-    hora = models.TimeField(u'Hora',auto_now=True)
-    output = models.ForeignKey(Puerta)
-    status = status = models.BooleanField(u'Status', default=False)
-    def __str__(self):
-        if self.status==True:
-            return self.output.nombre + "set on On"
-        else:
-            return self.output.nombre + "set on Off"
