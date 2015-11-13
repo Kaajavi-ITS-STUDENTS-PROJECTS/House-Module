@@ -32,3 +32,13 @@
     </tbody>
 </table>
 {% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+{% endblock %}
