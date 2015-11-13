@@ -109,7 +109,7 @@ def puerta(request):
             if permitido.user.id == request.user.id:
                 if puerta.auto_close:
                     print "helper"
-                    helper = "#puerta-" + puerta.id
+                    helper = "#puerta-" + str(puerta.id)
                     print "recargar"
                     recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
                     print "time sleep"
