@@ -391,10 +391,10 @@ def get_current_user(request):
 def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
-    return render_to_response('logtable.html',{'logs':logs},context)
+    return render_to_response('logs.html',{'logs':logs},context)
 
 
-    
+
 
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
