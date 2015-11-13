@@ -90,12 +90,6 @@
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
 
-    $(document).on('change', slider.noUiSlider, function() {
-        hour = slider.noUiSlider.get()
-        $("#from_hour").setAttribute("value", hour[0])
-        $("#to_hour").setAttribute("value", hour[1])
-    });
-
     function del_rule(rule){
         console.log(rule.id);
         var data={
@@ -134,12 +128,12 @@
             }
         });
         dias += " ]";
-        var hora = slider.noUiSlider.get()
-        var hor = "["
+        var hora = slider.noUiSlider.get();
+        var hor = "[";
         for (i = 0; i < hora.length; i++) {
-            hor += " '"+hora[i]+"',"
+            hor += " '"+hora[i]+"',";
         }
-        hor += " ]"
+        hor += " ]";
         console.log(hora);
         console.log(hor);
         var e = "false";
@@ -193,6 +187,12 @@
             to: minutesToHHMM,
             from: HHMMtoMinutes
         },
+    });
+
+    $(document).on('change', slider.noUiSlider, function() {
+        hour = slider.noUiSlider.get();
+        $("#from_hour").setAttribute("value", hour[0]);
+        $("#to_hour").setAttribute("value", hour[1]);
     });
 
     function minutesToHHMM(value) {
