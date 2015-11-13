@@ -63,6 +63,14 @@ main {
     border-color: transparent #FFF #FFF transparent;
 }
 
+[type="text"] + label::before {
+    border: 2px solid #FFF;
+}
+
+[type="text"]:checked + label::before{
+    border-color: transparent #FFF #FFF transparent;
+}
+
 .check-inline{
     display:inline-block;
     padding-left: 25px;
