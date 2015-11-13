@@ -336,8 +336,8 @@ def add_rule(request):
         cronT = CrontabSchedule.objects.latest('id')
         print "regla y cronT"
         periodic = PeriodicTask()
-        print "P_t",regla.nombre,regla.status,regla.id
-        na = str(regla.nombre),"_",str(regla.status),"_",str(regla.id)
+        print "P_t"
+        na = str(regla.id)
         print "na"
         periodic.name = na
         print "name"
@@ -363,7 +363,7 @@ def add_rule(request):
 def del_rule(request):
     context = RequestContext(request)
     rule = Regla.objects.get(id = request.POST['id_r'])
-    na = rule.nombre,"_",rule.status,"_",rule.id
+    na = rule.id
     periodic = PeriodicTask.objects.get(name = na)
     rule.delete()
     rules = Regla.objects.all()
