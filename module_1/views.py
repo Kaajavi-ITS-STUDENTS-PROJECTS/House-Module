@@ -330,11 +330,9 @@ def add_rule(request):
         cron.minute = f_h[-2:]
         cron.hour = f_h[:2]
         print days_t
-        days_t = str(days_t)
-        print days_t
-        days_t.pop(len(days_t)-1)
-        print days_t
-        days_t.pop(0)
+        for i in days_t:
+            aux += i,","
+        days_t = aux
         print days_t
         cron.day_of_week = days_t
         cron.save()
