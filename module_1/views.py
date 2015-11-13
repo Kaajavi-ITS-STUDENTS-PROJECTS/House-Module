@@ -354,8 +354,8 @@ def add_rule(request):
         print "periodic save"
 
         cron = CrontabSchedule()
-        cron.minute = f_h[-2:]
-        cron.hour = f_h[:2]
+        cron.minute = t_h[-2:]
+        cron.hour = t_h[:2]
         print days_t
         aux=""
         for i in range(len(days_t)):
