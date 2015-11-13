@@ -328,7 +328,7 @@ def add_rule(request):
         print "save"
         cron = CrontabSchedule()
         cron.minute = f_h[-2:]
-        cron.hour = f_h[:2]x
+        cron.hour = f_h[:2]
         print days_t
         days_t = str(days_t)
         print days_t
