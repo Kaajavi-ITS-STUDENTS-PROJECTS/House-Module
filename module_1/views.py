@@ -331,7 +331,7 @@ def add_rule(request):
         cron.hour = f_h[:2]
         print days_t
         for i in days_t:
-            aux += i,","
+            aux += str(i)+","
         days_t = aux
         print days_t
         cron.day_of_week = days_t
