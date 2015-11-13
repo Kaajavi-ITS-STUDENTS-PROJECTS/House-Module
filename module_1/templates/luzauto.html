@@ -52,10 +52,14 @@
             {% endfor %}
         </select>
         <div class="left">
-            <input type="text" id="from_hour" value="02:00"/>
-            <label for="from_hour">Desde:</label>
-            <input type="text" id="to_hour" value="21:00"/>
-            <label for="to_hour">Hasta:</label>
+            <p class="check-inline">
+                <label for="from_hour">Desde:</label>
+                <input type="text" id="from_hour" value="02:00"/>
+            </p>
+            <p class="check-inline">
+                <label for="to_hour">Hasta:</label>
+                <input type="text" id="to_hour" value="21:00"/>
+            </p>
         </div>
         <div class="right">
             <p class="check-inline">
@@ -194,11 +198,19 @@
         $("#from_hour").attr("value", hour[0]);
         $("#to_hour").attr("value", hour[1]);
     });
-
-    $('#from_hour').addEventListener('change', function(){
+    var valueInputF = document.getElementById('from_hour');
+    var valueInputT = document.getElementById('to_hour');
+    slider.noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) {
+            valueInputT.value = values[handle];
+        } else {
+            valueInputF.value = values[handle];
+        }
+    });
+    valueInputT.addEventListener('change', function(){
         slider.noUiSlider.set([null, this.value]);
     });
-    $('#to_hour').addEventListener('change', function(){
+    valueInputF.addEventListener('change', function(){
         slider.noUiSlider.set([this.value, null]);
     });
     function minutesToHHMM(value) {
