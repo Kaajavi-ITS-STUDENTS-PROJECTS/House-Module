@@ -97,7 +97,7 @@
     }
 
     function auto_close(puerta_id){
-        setTimeout(5000);
+        setTimeout(50000);
         channel.send('puerta');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',

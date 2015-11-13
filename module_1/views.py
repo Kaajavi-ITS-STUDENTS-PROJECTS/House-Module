@@ -377,9 +377,9 @@ def add_rule(request):
         periodic.name = na
         print "name"
         if regla.status:
-            periodic.task = "module_1.tasks.on"
-        else:
             periodic.task = "module_1.tasks.off"
+        else:
+            periodic.task = "module_1.tasks.on"
         print "status"
         periodic.crontab = cronT
         print "cron= p_t"
