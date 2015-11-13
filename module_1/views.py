@@ -386,9 +386,10 @@ def add_rule(request):
 def del_rule(request):
     context = RequestContext(request)
     rule = Regla.objects.get(id = request.POST['id_r'])
-    na = rule.id
+    na = str(rule.id)
     periodic = PeriodicTask.objects.get(name = na)
     rule.delete()
+    periodic.delete()
     rules = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rules},context)
 
