@@ -63,7 +63,7 @@ main {
     border-color: transparent #FFF #FFF transparent;
 }
 
-input[type="text"]:focus{
+[type="text"]:focus{
     border-bottom: 1px solid #ffffff;
     box-shadow: 0 1px 0 0 #000000;
 }
