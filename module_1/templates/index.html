@@ -88,7 +88,6 @@
                     loader:helper,
                     data:result,
                 });
-                setTimeout(5000);
                 auto_close(puerta_id);
             },
             error: function(e){
@@ -98,6 +97,7 @@
     }
 
     function auto_close(puerta_id){
+        setTimeout(5000);
         channel.send('puerta');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
