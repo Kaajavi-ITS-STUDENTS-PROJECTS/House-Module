@@ -387,7 +387,8 @@ def get_current_user(request):
 
 def logs(request):
     context = RequestContext(request)
-    return render_to_response('logtable.html',{},context)
+    logs = LogLuz.objects.all()
+    return render_to_response('logtable.html',{'logs':logs},context)
 
 
     

@@ -8,7 +8,6 @@
 <table class="highlight">
     <thead>
         <tr>
-            <th data-field="name_regla">Regla Nº</th>
             <th data-field="name_luz">Luz</th>
             <th data-field="name_dia">Dias</th>
             <th data-field="horario">Horario</th>
@@ -16,15 +15,15 @@
         </tr>
     </thead>
     <tbody id="tabla">
-
-        <tr class="parent"><td></td>
+{% for log in logs %}
+        <tr class="parent">
+            <td>{{log.fecha}}</td>
             <td></td>
             <td></td>
-            <td></td>
-            <td><a id="{{rule.id}}" class="hidden right black-text" style="cursor:pointer;" onclick="del_rule(this)"><i class="material-icons">delete</i></a>
+            <td><a id="{{log.id}}" class="hidden right black-text" style="cursor:pointer;" onclick="del_rule(this)"><i class="material-icons">delete</i></a>
             </td>
         </tr>
-
+{% endfor %}
     </tbody>
 </table>
 {% endblock %}
