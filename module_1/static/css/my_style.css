@@ -63,12 +63,9 @@ main {
     border-color: transparent #FFF #FFF transparent;
 }
 
-input[type="text"] + label::before {
-    border: 2px solid #FFF;
-}
-
-input[type="text"]:checked + label::before{
-    border-color: transparent #FFF #FFF transparent;
+.input-field input[type=text]:focus{
+    border-bottom: 1px solid #ffffff;
+    box-shadow: 0 1px 0 0 #000000;
 }
 
 .check-inline{
