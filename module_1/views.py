@@ -47,6 +47,16 @@ def index(request):
         return render_to_response('login.html',
                               context)
 
+
+def recargar(helper, result):
+    publish(
+        'module_recargar',
+        'reload',
+        { loader : helper,
+            data:result},
+        sender='server'  # sender id of the event, can be None.
+    )
+
 def luz(request):
     context = RequestContext(request)
     id= request.POST.get('id')
@@ -98,6 +108,8 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.auto_close:
+                    helper = "#puerta-" + puerta.id
+                    recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
                     time.sleep(5)
                     relay_functions.relay("close",puerta.pin)
                     puerta.status = False
@@ -363,10 +375,6 @@ def add_rule(request):
         periodic.save()
         print "periodic save"
 
-#        if status:
-#
-#        elif status == False:
-
     rule = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rule},context)
 
@@ -392,8 +400,6 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     return render_to_response('logtable.html',{'logs':logs},context)
-
-
     
 
 """def mousemove_connection_factory(auth_class, pubsub):
