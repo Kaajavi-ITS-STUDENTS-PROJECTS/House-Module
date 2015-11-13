@@ -354,8 +354,8 @@ def add_rule(request):
         print "periodic save"
 
         cron = CrontabSchedule()
-        cron.minute = f_h[-2:]
-        cron.hour = f_h[:2]
+        cron.minute = t_h[-2:]
+        cron.hour = t_h[:2]
         print days_t
         aux=""
         for i in range(len(days_t)):
@@ -422,7 +422,6 @@ def logs(request):
     cont = 0
     for log in logs:
         fechas[cont] == log.fecha
-    fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):
