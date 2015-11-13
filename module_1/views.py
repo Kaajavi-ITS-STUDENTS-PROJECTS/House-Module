@@ -391,6 +391,8 @@ def get_current_user(request):
 def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
+    for log in logs:
+        print "anda"
     return render_to_response('logs.html',{'logs':logs},context)
 
 
