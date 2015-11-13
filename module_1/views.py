@@ -354,7 +354,8 @@ def add_rule(request):
         print "status"
         periodic.crontab = cronT
         print "cron= p_t"
-        periodic.args = "[",regla.pin,"]"
+        periodic.args = "[ " +str(regla.pin)+ " ]"
+
         print "arg"
         periodic.save()
         print "periodic save"
