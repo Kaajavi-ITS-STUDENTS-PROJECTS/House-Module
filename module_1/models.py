@@ -18,22 +18,21 @@ class Habitacion(models.Model):
         return self.nombre
 
 
-            
-class Luz(models.Model):
-    class Meta:
-        verbose_name = "Luz"
-        verbose_name_plural = "Luces"
-        permissions = (
-            ("prender_luz", "Puede prender luz"),
-        )
-    
+class Objeto(models.Model):
     nombre = models.CharField(u"Nombre",max_length=200)
     status = models.BooleanField(u'Status', default=False)
     pin = models.IntegerField(u'Pin', default=1)
     lugar = models.ForeignKey(Habitacion)
     dibujo_y = models.IntegerField(u'Posicion en mapa, y', default=0)
     dibujo_x = models.IntegerField(u'Posicion en mapa, x', default=0)
-    
+            
+class Luz(Objeto):
+    class Meta:
+        verbose_name = "Luz"
+        verbose_name_plural = "Luces"
+        permissions = (
+            ("prender_luz", "Puede prender luz"),
+        )
     def __str__(self):
         return self.nombre
 
@@ -41,14 +40,7 @@ class Puerta(models.Model):
     class Meta:
         verbose_name = "Puerta"
         verbose_name_plural = "Puertas  "
-    
-    nombre = models.CharField(u"Nombre",max_length=200)
-    status = models.BooleanField(u'Status', default=False)
-    pin = models.IntegerField(u'Pin', default=1)
     auto_close = models.BooleanField(u'Auto Close', default=True)
-    lugar = models.ForeignKey(Habitacion)
-    dibujo_y = models.IntegerField(u'Posicion en mapa, y', default=0)
-    dibujo_x = models.IntegerField(u'Posicion en mapa, x', default=0)
     
     def __str__(self):
         return self.nombre
