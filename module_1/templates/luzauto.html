@@ -189,7 +189,7 @@
         },
     });
 
-    $(document).on('change', slider.noUiSlider, function() {
+    slider.noUiSlider.on('update', function() {
         hour = slider.noUiSlider.get();
         $("#from_hour").setAttribute("value", hour[0]);
         $("#to_hour").setAttribute("value", hour[1]);
