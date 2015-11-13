@@ -378,6 +378,12 @@ def get_current_user(request):
     else:
         return render_to_response('perfil.html',{'username':""},context)
 
+def get_current_user(request):
+    context = RequestContext(request)
+    return render_to_response('logtable.html',{},context)
+
+
+    
 
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
