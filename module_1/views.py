@@ -404,7 +404,7 @@ def get_current_user(request):
 def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
-    logs = [::-1]
+    logs = logs[::-1]
 
     return render_to_response('logs.html',{'logs':logs},context)
 
