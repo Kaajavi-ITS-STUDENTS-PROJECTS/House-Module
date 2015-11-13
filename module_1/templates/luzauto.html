@@ -51,12 +51,12 @@
             <option id='{{luces.id}}'>{{luces.nombre}}</option>
             {% endfor %}
         </select>
-        <!-- {% for pin,nombre in pins.items %}
-<p class="check-inline">
-<input type="checkbox" id="{{pin}}" />
-<label for="{{pin}}">{{nombre}}</label>
-</p>
-{% endfor %}-->
+        <div class="left">
+            <input type="text" id="from_hour" value="02:00"/>
+            <label for="from_hour">Desde:</label>
+            <input type="text" id="to_hour" value="21:00"/>
+            <label for="to_hour">Hasta:</label>
+        </div>
         <div class="right">
             <p class="check-inline">
                 <input type="checkbox" id="on" />
@@ -89,6 +89,13 @@
 {% block scripts %}
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
+
+    $(document).on('change', slider.noUiSlider, function() {
+        hour = slider.noUiSlider.get()
+        $("#from_hour").setAttribute("value", hour[0])
+        $("#to_hour").setAttribute("value", hour[1])
+    });
+
     function del_rule(rule){
         console.log(rule.id);
         var data={
@@ -114,6 +121,8 @@
             }
         });
     }
+
+
 
     function add_rule(){
         var dias = "[";
