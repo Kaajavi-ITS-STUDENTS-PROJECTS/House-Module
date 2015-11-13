@@ -405,7 +405,7 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = []
+    fechas = [0]
     cont = 0
     for log in logs:
         if log.fecha!=fechas[cont]:
