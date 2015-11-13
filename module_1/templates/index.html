@@ -88,7 +88,7 @@
                     loader:helper,
                     data:result,
                 });
-                auto_close(puerta_id);
+                window.setTimeout(auto_close(puerta_id), 5000);
             },
             error: function(e){
                 console.log(e.responseText);
@@ -97,7 +97,6 @@
     }
 
     function auto_close(puerta_id){
-        setTimeout(50000);
         channel.send('puerta');
         var data={
             csrfmiddlewaretoken: '{{ csrf_token }}',
