@@ -10,6 +10,7 @@
         <tr>
             <th data-field="name_luz">Fecha</th>
             <th data-field="name_dia">Elemento</th>
+            <th data-field="lugar">Habitacion</th>
             <th data-field="horario">Horario</th>
             <th data-field="status">Status</th>
         </tr>
@@ -19,6 +20,7 @@
         <tr class="parent">
             <td>{{log.fecha}}</td>
             <td>{{log.output.nombre}}</td>
+            <td>{{log.output.lugar}}</td>
             <td>{{log.hora}}</td>
             <td>{{log.status}}</td>
             <td><a id="{{log.id}}" class="hidden right black-text" style="cursor:pointer;" onclick="del_rule(this)"><i class="material-icons">delete</i></a>
