@@ -328,7 +328,14 @@ def add_rule(request):
         print "save"
         cron = CrontabSchedule()
         cron.minute = f_h[-2:]
-        cron.hour = f_h[:2]
+        cron.hour = f_h[:2]x
+        print days_t
+        days_t = str(days_t)
+        print days_t
+        days_t.pop(len(days_t)-1)
+        print days_t
+        days_t.pop(0)
+        print days_t
         cron.day_of_week = days_t
         cron.save()
         print "cron save"
@@ -348,7 +355,7 @@ def add_rule(request):
         print "status"
         periodic.crontab = cronT
         print "cron= p_t"
-        periodic.args = regla.pin
+        periodic.args = "[",regla.pin,"]"
         print "arg"
         periodic.save()
         print "periodic save"
