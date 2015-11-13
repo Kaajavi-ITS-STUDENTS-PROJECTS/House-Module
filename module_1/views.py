@@ -52,8 +52,7 @@ def recargar(helper, result):
     publish(
         'module_recargar',
         'reload',
-        { loader : helper,
-            data:result},
+        { 'loader':helper, 'data':result},
         sender='server'  # sender id of the event, can be None.
     )
 
