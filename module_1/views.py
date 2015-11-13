@@ -421,7 +421,7 @@ def logs(request):
     fechas = [logs]
     cont = 0
     for log in logs:
-        fechas[cont] == log.fecha
+        fechas[cont] == log.fecha+""
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):
