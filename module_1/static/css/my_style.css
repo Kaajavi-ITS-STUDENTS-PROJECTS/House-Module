@@ -63,11 +63,11 @@ main {
     border-color: transparent #FFF #FFF transparent;
 }
 
-[type="text"] + label::before {
+input[type="text"] + label::before {
     border: 2px solid #FFF;
 }
 
-[type="text"]:checked + label::before{
+input[type="text"]:checked + label::before{
     border-color: transparent #FFF #FFF transparent;
 }
 
