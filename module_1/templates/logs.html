@@ -5,6 +5,17 @@
 <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
 {% endblock %}
 {% block content %}
+<div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Ver por dias</option>
+       {% for fecha in fechas %}
+
+      <option value="1">{{fecha}}</option>
+{% endfor %}
+    </select>
+    <label>Materialize Select</label>
+</div>
+
 <table class="highlight">
     <thead>
         <tr>

@@ -337,7 +337,42 @@ def add_rule(request):
         print "regla y cronT"
         periodic = PeriodicTask()
         print "P_t"
-        na = str(regla.id)
+        na = str(regla.id)+"_1"
+        print "na"
+        periodic.name = na
+        print "name"
+        if regla.status:
+            periodic.task = "module_1.tasks.on"
+        else:
+            periodic.task = "module_1.tasks.off"
+        print "status"
+        periodic.crontab = cronT
+        print "cron= p_t"
+        periodic.args = "[ " +str(regla.pin)+ " ]"
+        print "arg"
+        periodic.save()
+        print "periodic save"
+
+        cron = CrontabSchedule()
+        cron.minute = f_h[-2:]
+        cron.hour = f_h[:2]
+        print days_t
+        aux=""
+        for i in range(len(days_t)):
+            if i == len(days_t)-1:
+                aux += str(days_t[i])
+            else:
+                aux += str(days_t[i])+","
+        days_t = aux
+        print days_t
+        cron.day_of_week = days_t
+        cron.save()
+        print "cron save"
+        cronT = CrontabSchedule.objects.latest('id')
+        print "regla y cronT"
+        periodic = PeriodicTask()
+        print "P_t"
+        na = str(regla.id)+"_2"
         print "na"
         periodic.name = na
         print "name"
@@ -360,8 +395,12 @@ def add_rule(request):
 def del_rule(request):
     context = RequestContext(request)
     rule = Regla.objects.get(id = request.POST['id_r'])
-    na = rule.id
+    na = str(rule.id)+"_1"
     periodic = PeriodicTask.objects.get(name = na)
+    periodic.delete()
+    na = str(rule.id)+"_2"
+    periodic = PeriodicTask.objects.get(name = na)
+    periodic.delete()
     rule.delete()
     rules = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rules},context)
@@ -379,8 +418,14 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
+    fechas = [0]
+    cont = 0
+    for log in logs:
+        if log.fecha!=fechas[cont]:
+            fechas[cont]==log.fecha
+        cont+=1
 
-    return render_to_response('logs.html',{'logs':logs},context)
+    return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
