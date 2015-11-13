@@ -194,11 +194,12 @@
         $("#from_hour").attr("value", hour[0]);
         $("#to_hour").attr("value", hour[1]);
     });
-
-    $('#from_hour').addEventListener('change', function(){
+    var valueInputF = document.getElementById('from_hour');
+    var valueInputT = document.getElementById('to_hour');
+    valueInputT.addEventListener('change', function(){
         slider.noUiSlider.set([null, this.value]);
     });
-    $('#to_hour').addEventListener('change', function(){
+    valueInputF.addEventListener('change', function(){
         slider.noUiSlider.set([this.value, null]);
     });
     function minutesToHHMM(value) {
