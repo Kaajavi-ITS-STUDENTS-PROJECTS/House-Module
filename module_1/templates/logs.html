@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block titulo %}
-<title>Luz Auto</title>
+<title>Logs</title>
 <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
-{% endblock %}
-{% block content %}
 <div class="input-field col s12">
     <select>
       <option value="" disabled selected>Ver por dias</option>
@@ -15,6 +13,9 @@
     </select>
     <label>Materialize Select</label>
 </div>
+{% endblock %}
+{% block content %}
+
 
 <table class="highlight">
     <thead>
