@@ -108,12 +108,19 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.auto_close:
+                    print "helper"
                     helper = "#puerta-" + puerta.id
+                    print "recargar"
                     recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
+                    print "time sleep"
                     time.sleep(5)
+                    print "cerrar puerta"
                     relay_functions.relay("close",puerta.pin)
+                    print "guarda status"
                     puerta.status = False
+                    print "save"
                     puerta.save()
+    print "Fuera del if"
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
