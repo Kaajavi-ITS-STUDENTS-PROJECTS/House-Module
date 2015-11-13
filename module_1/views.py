@@ -329,6 +329,15 @@ def add_rule(request):
         cron = CrontabSchedule()
         cron.minute = f_h[-2:]
         cron.hour = f_h[:2]
+        print days_t
+        aux=""
+        for i in range(len(days_t)):
+            if i == len(days_t)-1:
+                aux += str(days_t[i])
+            else:
+                aux += str(days_t[i])+","
+        days_t = aux
+        print days_t
         cron.day_of_week = days_t
         cron.save()
         print "cron save"
@@ -348,7 +357,8 @@ def add_rule(request):
         print "status"
         periodic.crontab = cronT
         print "cron= p_t"
-        periodic.args = regla.pin
+        periodic.args = "[ " +str(regla.pin)+ " ]"
+
         print "arg"
         periodic.save()
         print "periodic save"
@@ -378,6 +388,13 @@ def get_current_user(request):
     else:
         return render_to_response('perfil.html',{'username':""},context)
 
+def logs(request):
+    context = RequestContext(request)
+    logs = LogLuz.objects.all()
+    return render_to_response('logtable.html',{'logs':logs},context)
+
+
+    
 
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
