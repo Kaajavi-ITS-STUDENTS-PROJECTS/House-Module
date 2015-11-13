@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, LogLuz, LogPuerta
+from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, Log
 from django.contrib.auth import authenticate
 import time
 from djcelery.models import PeriodicTask, CrontabSchedule
