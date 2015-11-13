@@ -46,15 +46,6 @@ def index(request):
         context = RequestContext(request)
         return render_to_response('login.html',
                               context)
-
-
-def recargar(helper, result):
-    publish(
-        'module_recargar',
-        'reload',
-        sender='server'  # sender id of the event, can be None.
-    )
-
 def luz(request):
     context = RequestContext(request)
     id= request.POST.get('id')
@@ -102,23 +93,6 @@ def puerta(request):
                     setPuerta(True, puerta)
                 puerta.save()
                 print puerta.status
-    if lista_permitidos.__str__() != "[]":
-        for permitido in lista_permitidos:
-            if permitido.user.id == request.user.id:
-                if puerta.auto_close:
-                    print "helper"
-                    helper = "#puerta-" + str(puerta.id)
-                    print "recargar"
-                    recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
-                    print "time sleep"
-                    time.sleep(5)
-                    print "cerrar puerta"
-                    setPuerta(False,puerta)
-                    print "guarda status"
-                    puerta.status = False
-                    print "save"
-                    puerta.save()
-    print "Fuera del if"
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
@@ -363,7 +337,7 @@ def add_rule(request):
         print "regla y cronT"
         periodic = PeriodicTask()
         print "P_t"
-        na = str(regla.id)
+        na = str(regla.id)+"_1"
         print "na"
         periodic.name = na
         print "name"
@@ -398,7 +372,7 @@ def add_rule(request):
         print "regla y cronT"
         periodic = PeriodicTask()
         print "P_t"
-        na = str(regla.id)
+        na = str(regla.id)+"_2"
         print "na"
         periodic.name = na
         print "name"
@@ -421,10 +395,13 @@ def add_rule(request):
 def del_rule(request):
     context = RequestContext(request)
     rule = Regla.objects.get(id = request.POST['id_r'])
-    na = str(rule.id)
+    na = str(rule.id)+"_1"
     periodic = PeriodicTask.objects.get(name = na)
-    rule.delete()
     periodic.delete()
+    na = str(rule.id)+"_2"
+    periodic = PeriodicTask.objects.get(name = na)
+    periodic.delete()
+    rule.delete()
     rules = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rules},context)
 
