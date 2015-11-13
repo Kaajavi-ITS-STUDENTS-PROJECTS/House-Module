@@ -36,7 +36,7 @@ class Luz(Objeto):
     def __str__(self):
         return self.nombre
 
-class Puerta(models.Model):
+class Puerta(Objeto):
     class Meta:
         verbose_name = "Puerta"
         verbose_name_plural = "Puertas  "
