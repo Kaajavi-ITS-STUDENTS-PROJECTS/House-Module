@@ -41,7 +41,7 @@ class Puerta(Objeto):
         verbose_name = "Puerta"
         verbose_name_plural = "Puertas  "
     auto_close = models.BooleanField(u'Auto Close', default=True)
-    pin = models.IntegerField(u'Pin', default=1)ó
+    pin = models.IntegerField(u'Pin', default=1)
     def __str__(self):
         return self.nombre
 
