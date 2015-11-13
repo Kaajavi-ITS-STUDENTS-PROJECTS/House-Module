@@ -405,6 +405,12 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
+    fechas = []
+    cont = 0
+    for log in logs:
+        if log.fecha!=fechas[cont]
+            fechas[cont]==log.fecha
+        cont+=1
 
     return render_to_response('logs.html',{'logs':logs},context)
 
