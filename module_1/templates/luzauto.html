@@ -196,6 +196,13 @@
     });
     var valueInputF = document.getElementById('from_hour');
     var valueInputT = document.getElementById('to_hour');
+    slider.noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) {
+            valueInputT.value = values[handle];
+        } else {
+            valueInputF.value = values[handle];
+        }
+    });
     valueInputT.addEventListener('change', function(){
         slider.noUiSlider.set([null, this.value]);
     });
