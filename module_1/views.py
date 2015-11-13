@@ -52,7 +52,6 @@ def recargar(helper, result):
     publish(
         'module_recargar',
         'reload',
-        { 'loader':helper, 'data':result},
         sender='server'  # sender id of the event, can be None.
     )
 
@@ -405,7 +404,9 @@ def get_current_user(request):
 def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
-    
+    for log in logs:
+        print "anda"
+
     return render_to_response('logs.html',{'logs':logs},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):
