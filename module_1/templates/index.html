@@ -88,8 +88,8 @@
                     loader:helper,
                     data:result,
                 });
-                setTimeout(
-                    auto_close(puerta_id), 5000);
+                setTimeout(5000);
+                auto_close(puerta_id);
             },
             error: function(e){
                 console.log(e.responseText);
