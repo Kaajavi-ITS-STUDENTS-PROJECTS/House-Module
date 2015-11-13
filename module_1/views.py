@@ -157,13 +157,13 @@ def habitacion(request):
                 if habitacion.status and status_l:
                     habitacion.status = False
                     for luz in luces:
-                        relay_functions.relay("close",luz.pin)
+                        setLuz(False,luz)
                         luz.status = habitacion.status
                         luz.save()
                 else:
                     habitacion.status = True
                     for luz in luces:
-                        relay_functions.relay("open",luz.pin)
+                        setLuz(True,luz)
                         luz.status = habitacion.status
                         luz.save()
     habitacion.save()
@@ -399,8 +399,8 @@ def get_current_user(request):
 def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
-    return render_to_response('logtable.html',{'logs':logs},context)
     
+    return render_to_response('logs.html',{'logs':logs},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
