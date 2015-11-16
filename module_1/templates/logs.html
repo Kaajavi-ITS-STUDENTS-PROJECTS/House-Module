@@ -7,7 +7,7 @@
     <select id="dates_selector" onChange="getFiltered()">
       <option  value="" disabled selected>Todos</option>
        {% for fecha in fechas %}
-      <option onClick="getFiltered()" value="1">{{fecha}}</option>
+      <option value="{{fecha}}">{{fecha}}</option>
         {% endfor %}
     </select>
 </div>
@@ -40,7 +40,7 @@ $(document).ready(function() {
   });
 
 function getFiltered(){
-    alert($('#dates_selector').selectedIndex);
+    alert($('#dates_selector').selectedIndex.value);
 }
 
 </script>
