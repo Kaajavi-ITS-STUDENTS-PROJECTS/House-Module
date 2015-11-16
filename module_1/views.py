@@ -42,7 +42,8 @@ def index(request):
         sanitarios = Sanitario.objects.all()
         alarmas = Alarma.objects.all()
 
-        return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+        #return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+        habitacion(request)
     else:
         context = RequestContext(request)
         return render_to_response('login.html',
@@ -60,12 +61,12 @@ def luz(request):
     context = RequestContext(request)
     id= request.POST.get('id')
     lista_permitidos = Usuario.objects.filter(permisos_luces=id)
-    perm = False
+    perm = True
     luz = Luz.objects.get(id = id)
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                perm = True
+                perm = False
                 if luz.status:
                     luz.status=False
                     setLuz(False, luz)
@@ -92,11 +93,11 @@ def puerta(request):
     id= request.POST.get('id')
     puerta = Puerta.objects.get(id = id)
     lista_permitidos = Usuario.objects.filter(permisos_puertas=id)
-    perm = False
+    perm = True
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                perm = True
+                perm = False
                 if puerta.status:
                     setLuz(False,puerta)
                     puerta.status = False
@@ -132,11 +133,11 @@ def habitacion(request):
     context = RequestContext(request)
     id= request.POST.get('id')
     lista_permitidos = Usuario.objects.filter(permisos_habitaciones=id)
-    perm = False
+    perm = True
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                perm = True
+                perm = False
                 habitacion = Habitacion.objects.get(id = id)
                 luces = Luz.objects.filter(lugar_id = id)
                 for luz in luces:
