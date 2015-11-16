@@ -12,6 +12,7 @@ import time
 from djcelery.models import PeriodicTask, CrontabSchedule
 from omnibus.factories import websocket_connection_factory
 from omnibus.api import publish
+from django.template.loader import get_template
 # Create your views here.
 
 def index(request):
@@ -105,8 +106,11 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.auto_close:
-                    helper = "#puerta-" + puerta.id
-                    recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
+                    helper = "#puerta-" + str(puerta.id)
+                    template = get_template('puertas.html')
+                    context['puerta']=puerta
+                    html = template.render(context)
+                    recargar(helper, html)
                     time.sleep(5)
                     setPuerta(False, puerta)
                     puerta.status = False
@@ -435,10 +439,11 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = [logs.count()]
+    fechas = [len(logs)]
     cont = 0
+    print len(logs)
     for log in logs:
-        fechas[cont] == log.fecha
+        fechas.append(cont) = cont
         cont+=1
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
