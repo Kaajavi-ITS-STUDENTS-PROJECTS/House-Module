@@ -71,7 +71,8 @@ def luz(request):
                     luz.status=True
                     setLuz(True, luz)
                 luz.save()
-    return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
+                return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
+    return HttpResponse(status=202)
 
 
 def setLuz(status, obj ):
@@ -111,7 +112,8 @@ def puerta(request):
                     time.sleep(5)
                     setLuz(False, puerta)
                     puerta.status = False
-    return render_to_response('puertas.html',{'puerta':puerta, 'perm':perm }, context)
+                return render_to_response('puertas.html',{'puerta':puerta, 'perm':perm }, context)
+    return HttpResponse(status=202)
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
@@ -152,11 +154,12 @@ def habitacion(request):
                         setLuz(True,luz)
                         luz.status = habitacion.status
                         luz.save()
-    habitacion.save()
-    habitaciones = Habitacion.objects.all()
-    luces = Luz.objects.all()
-    puertas = Puerta.objects.all()
-    return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones, 'perm':perm }, context)
+                habitacion.save()
+                habitaciones = Habitacion.objects.all()
+                luces = Luz.objects.all()
+                puertas = Puerta.objects.all()
+                return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones, 'perm':perm }, context)
+    return HttpResponse(status=202)
 
 def hab_get(request):
     context = RequestContext(request)
