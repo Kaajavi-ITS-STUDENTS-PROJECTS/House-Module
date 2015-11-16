@@ -443,7 +443,7 @@ def logs(request):
     cont = 0
     print len(logs)
     for log in logs:
-        fechas.append(cont) = cont.fecha
+        fechas.append(cont) = logs.fecha
         cont+=1
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
