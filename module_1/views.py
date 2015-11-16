@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, render, redirect
 from django.template import RequestContext
 from django.views.decorators.csrf import requires_csrf_token
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
@@ -112,7 +112,7 @@ def puerta(request):
                     html = template.render(context)
                     recargar(helper, html)
                     time.sleep(5)
-                    setPuerta()
+                    setPuerta(False, puerta)
                     puerta.status = False
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
