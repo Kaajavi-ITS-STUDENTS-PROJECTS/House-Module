@@ -7,7 +7,7 @@
     <select id="dates_selector" onChange="getFiltered()">
       <option  value="" disabled selected>Todos</option>
        {% for fecha in fechas %}
-      <option value="{{fecha}}">{{fecha}}</option>
+      <option value="{{fecha}}" onClick="getFiltered()">{{fecha}}</option>
         {% endfor %}
     </select>
 </div>
@@ -36,11 +36,11 @@
 <script type="text/javascript" src="{% static 'js/nouislider.min.js' %}"></script>
 <script>
 $(document).ready(function() {
-    $('select').material_select();
+    $('#dates_selector').material_select();
   });
 
 function getFiltered(){
-    alert($('#dates_selector').selectedIndex.value);
+    alert($('#dates_selector').value);
 }
 
 </script>
