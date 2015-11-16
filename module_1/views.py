@@ -470,9 +470,9 @@ def vacaciones(request):
 
 def filterlog(request):
     context = RequestContext(request)
-    logs = Log.objects.filter(fecha=request.GET['day'])
+    dia = request.GET['day']
+    logs = Log.objects.filter(fecha = "Nov. 16, 2015")
     logs = logs[::-1]
-    print logs
     return render_to_response('logtable.html',{'logs':logs},context)
 
 
