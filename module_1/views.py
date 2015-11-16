@@ -73,6 +73,7 @@ def luz(request):
                     luz.status=True
                     setLuz(True, luz)
                 luz.save()
+    luces = Luz.objects.all()
     return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
 
 
