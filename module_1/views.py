@@ -415,12 +415,12 @@ def add_rule(request):
 
 def del_rule(request):
     context = RequestContext(request)
-    id= request.POST.get('id')
+    id= request.POST.get('id_r')
     lista_permitidos = Usuario.objects.filter(permisos_luces=id)
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                rule = Regla.objects.get(id = request.POST['id_r'])
+                rule = Regla.objects.get(id = id
                 na = str(rule.id)+"_1"
                 periodic = PeriodicTask.objects.get(name = na)
                 periodic.delete()
