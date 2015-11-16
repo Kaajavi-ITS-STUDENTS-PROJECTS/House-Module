@@ -444,6 +444,16 @@ def logs(request):
     fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
+def vacaciones(request):
+    logs = Log.objects.all()
+    aux="32:90"
+    repetido = []
+    for log in range(len(logs)):
+        if logs[log].hora == aux:
+            repetido.append(logs[log])
+        aux = logs[log].hora
+    print repetido
+
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
     # factory (we have to pass an auth class - provided by the server and a
