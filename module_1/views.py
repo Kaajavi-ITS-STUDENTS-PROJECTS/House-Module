@@ -452,7 +452,7 @@ def logs(request):
     cont = 0
     print len(logs)
     for log in logs:
-        fechas[cont] = log.fecha
+        fechas[cont] = log.fecha.__str__()
         cont+=1
 
     fechas = sorted(set(fechas))
