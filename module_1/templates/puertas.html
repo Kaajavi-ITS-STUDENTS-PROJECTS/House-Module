@@ -3,7 +3,7 @@
 <p class="col m6 s12 valign">{{puerta.nombre}}</p>
 <div class="switch col m6 s12">
     <label>
-        Off
+        Off {{perm}}
         <input {% if perm %}disabled{% endif %} type="checkbox" id="{{puerta.id}}" onclick="puerta(this.id)" checked="checked">
         <span class="lever"></span>
         On
@@ -14,7 +14,7 @@
 <p class="col m6 s12 valign">{{puerta.nombre}}</p>
 <div class="switch col m6 s12">
     <label>
-        Off
+        Off {{perm}}
         <input {% if perm %}disabled{% endif %} type="checkbox" id="{{puerta.id}}" onclick="puerta(this.id)">
         <span class="lever"></span>
         On
