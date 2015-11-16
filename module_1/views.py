@@ -406,8 +406,12 @@ def add_rule(request):
                     periodic.save()
                     print "periodic save"
 
+                    rule = Regla.objects.all()
+                    return render_to_response('tab.html',{'rules':rule},context)
     rule = Regla.objects.all()
-    return render_to_response('tab.html',{'rules':rule},context)
+    response = render_to_response('tab.html',{'rules':rule},context)
+    response.status_code = 202
+    return response
 
 def del_rule(request):
     context = RequestContext(request)
@@ -424,8 +428,12 @@ def del_rule(request):
                 periodic = PeriodicTask.objects.get(name = na)
                 periodic.delete()
                 rule.delete()
-    rules = Regla.objects.all()
-    return render_to_response('tab.html',{'rules':rules},context)
+            rules = Regla.objects.all()
+            return render_to_response('tab.html',{'rules':rules},context)
+    rule = Regla.objects.all()
+    response = render_to_response('tab.html',{'rules':rule},context)
+    response.status_code = 202
+    return response
 
 def get_current_user(request):
     context = RequestContext(request)
@@ -463,7 +471,7 @@ def vacaciones(request):
 def filterlog(request):
     context = RequestContext(request)
     dia = request.GET['day']
-    logs = Log.objects.filter(fecha = dia)
+    logs = Log.objects.filter(fecha.__str__() = "Nov. 16, 2015")
     logs = logs[::-1]
     return render_to_response('logtable.html',{'logs':logs},context)
 
