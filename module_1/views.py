@@ -72,7 +72,9 @@ def luz(request):
                     setLuz(True, luz)
                 luz.save()
                 return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
-    return HttpResponse(status=202)
+    response = render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
+    response.status_code = 202
+    return response
 
 
 def setLuz(status, obj ):
