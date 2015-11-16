@@ -420,7 +420,7 @@ def del_rule(request):
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                rule = Regla.objects.get(id = id_r
+                rule = Regla.objects.get(id = id_r)
                 na = str(rule.id)+"_1"
                 periodic = PeriodicTask.objects.get(name = na)
                 periodic.delete()
