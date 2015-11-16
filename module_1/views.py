@@ -71,8 +71,8 @@ def luz(request):
                     luz.status=True
                     setLuz(True, luz)
                 luz.save()
-                return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
-    response = render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
+                return render_to_response('luces.html',{'luz':luz }, context)
+    response = render_to_response('luces.html',{'luz':luz }, context)
     response.status_code = 202
     return response
 
@@ -114,7 +114,7 @@ def puerta(request):
                     time.sleep(5)
                     setLuz(False, puerta)
                     puerta.status = False
-                return render_to_response('puertas.html',{'puerta':puerta, 'perm':perm }, context)
+                return render_to_response('puertas.html',{'puerta':puerta }, context)
     return HttpResponse(status=202)
 
 def sanitario(request, id_sanitario):
@@ -160,7 +160,7 @@ def habitacion(request):
                 habitaciones = Habitacion.objects.all()
                 luces = Luz.objects.all()
                 puertas = Puerta.objects.all()
-                return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones, 'perm':perm }, context)
+                return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones},  context)
     return HttpResponse(status=202)
 
 def hab_get(request):
