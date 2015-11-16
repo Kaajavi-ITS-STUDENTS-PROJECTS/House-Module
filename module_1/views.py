@@ -448,6 +448,7 @@ def filterlog(request):
     context = RequestContext(request)
     logs = Log.objects.filter(fecha=request.GET['day'])
     logs = logs[::-1]
+    print logs
     return render_to_response('logtable.html',{'logs':logs},context)
 
 
