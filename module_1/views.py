@@ -108,7 +108,7 @@ def puerta(request):
                     helper = "#puerta-" + puerta.id
                     recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
                     time.sleep(5)
-                    relay_functions.relay("close",puerta.pin)
+                    setPuerta()
                     puerta.status = False
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
