@@ -12,6 +12,7 @@ import time
 from djcelery.models import PeriodicTask, CrontabSchedule
 from omnibus.factories import websocket_connection_factory
 from omnibus.api import publish
+from django.template.loader import get_template
 # Create your views here.
 
 def index(request):
@@ -106,7 +107,10 @@ def puerta(request):
             if permitido.user.id == request.user.id:
                 if puerta.auto_close:
                     helper = "#puerta-" + str(puerta.id)
-                    recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
+                    template = get_template('puertas.html')
+                    context['puerta']=puerta
+                    html = template.render(context)
+                    recargar(helper, html)
                     time.sleep(5)
                     setPuerta()
                     puerta.status = False
