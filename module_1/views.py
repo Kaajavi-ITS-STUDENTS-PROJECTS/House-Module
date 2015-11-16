@@ -439,12 +439,14 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = [len(logs)]
+    fechas = list(range(len(logs)))
     cont = 0
     print len(logs)
     for log in logs:
-        fechas.append(cont) = cont
+        fechas[cont] = log.fecha
         cont+=1
+
+    fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):

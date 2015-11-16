@@ -5,11 +5,10 @@
 <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
 <div class="input-field col s12">
     <select>
-      <option value="" disabled selected>Ver por dias</option>
+      <option onChange="getFiltered(this)" value="" disabled selected>Ver por dias</option>
        {% for fecha in fechas %}
-
       <option value="1">{{fecha}}</option>
-{% endfor %}
+        {% endfor %}
     </select>
 </div>
 {% endblock %}
@@ -39,5 +38,10 @@
 $(document).ready(function() {
     $('select').material_select();
   });
+
+function getFiltered(){
+    alert($(".select").val());
+}
+
 </script>
 {% endblock %}
