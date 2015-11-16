@@ -450,11 +450,21 @@ def logs(request):
     fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
+def vacaciones(request):
+    logs = Log.objects.all()
+    aux="32:90"
+    repetido = []
+    for log in range(len(logs)):
+        if logs[log].hora == aux:
+            repetido.append(logs[log])
+        aux = logs[log].hora
+    print repetido
+
 def filterlog(request):
     context = RequestContext(request)
-    print request.GET['day']
     logs = Log.objects.filter(fecha=request.GET['day'])
     logs = logs[::-1]
+    print logs
     return render_to_response('logtable.html',{'logs':logs},context)
 
 

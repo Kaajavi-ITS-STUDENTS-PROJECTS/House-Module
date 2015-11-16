@@ -110,31 +110,28 @@
         });
     }
 
-    window.onload = function() {
         var canvas = document.getElementById("id_canvas");
         var ctx = canvas.getContext("2d");
         var img = document.getElementById("map-img");
 
         ctx.drawImage(img, 10, 10);
 
-        {% for luces in luz %}
-        {% if luces.status %}
+        {% for luz in luces %}
+        {% if luz.status %}
         ctx.fillStyle = "00CC00";
         {% else %}
         ctx.fillStyle = "#FF0000";
         {% endif %}
-        ctx.fillRect(luces.dibujo_x,luces.dibujo_y,30,30);
+        ctx.fillRect(0,0,30,30);
         {% endfor %}
 
-        {% for puertas in puerta %}
-        {% if puertas.status %}
+        {% for puerta in puertas %}
+        {% if puerta.status %}
         ctx.fillStyle = "#00CC00";
         {% else %}
         ctx.fillStyle = "#FF0000";
         {% endif %}
-        ctx.fillRect(puertas.dibujo_x,puertas.dibujo_y,30,30);
+        ctx.fillRect(puerta.dibujo_x,puerta.dibujo_y,30,30);
         {% endfor %}
-
-        }
 </script>
 {% endblock %}
