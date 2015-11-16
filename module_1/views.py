@@ -60,9 +60,11 @@ def luz(request):
     context = RequestContext(request)
     id= request.POST.get('id')
     lista_permitidos = Usuario.objects.filter(permisos_luces=id)
+    perm = False
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
+                perm = True
                 luz = Luz.objects.get(id = id)
                 if luz.status:
                     luz.status=False
@@ -71,8 +73,7 @@ def luz(request):
                     luz.status=True
                     setLuz(True, luz)
                 luz.save()
-    luces = Luz.objects.all()
-    return render_to_response('luces.html',{'luz':luz}, context)
+    return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
 
 
 def setLuz(status, luz ):
