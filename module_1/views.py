@@ -445,6 +445,8 @@ def logs(request):
     for log in logs:
         fechas[cont] = log.fecha
         cont+=1
+
+    fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
 """def mousemove_connection_factory(auth_class, pubsub):
