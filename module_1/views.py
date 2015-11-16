@@ -271,153 +271,159 @@ def auto_luz(request):
 
 def add_rule(request):
     context = RequestContext(request)
-    print "aca estoy"
-    #periodic = PeriodicTask.objects.all()
-    #cron = CrontabSchedule.objects.all()
-    if request.method=='POST':
-        print "hola"
-        luz = Luz.objects.get(id = request.POST['id'])
-        dias = eval(request.POST['days'])
-        print "0"
-        print dias,"-",request.POST['days']
-        hora = eval(request.POST['hours'])
-        print "1"
-        regla = Regla()
-        print "2"
-        regla.relacion = luz
-        print "3"
-        regla.pin = luz.pin
-        print "4"
-        if request.POST['status'] == "false":
-            regla.status=False
-            print request.POST['status']
-        else:
-            regla.status=True
-            print "true"
-        print "4"
-        days_t = []
-        for i in dias:
-            if i=="Lunes":
-                print "Lun"
-                regla.lun = True
-                days_t.append(1)
-            elif i=="Martes":
-                print "Mar"
-                regla.mar = True
-                days_t.append(2)
-            elif i=="Miercoles":
-                print "Mie"
-                regla.mie = True
-                days_t.append(3)
-            elif i=="Jueves":
-                print "Jue"
-                regla.jue = True
-                days_t.append(4)
-            elif i=="Viernes":
-                print "Vie"
-                regla.vie = True
-                days_t.append(5)
-            elif i=="Sabado":
-                print "Sab"
-                regla.sab = True
-                days_t.append(6)
-            elif i=="Domingo":
-                print "Dom"
-                regla.dom = True
-                days_t.append(0)
-        regla.from_hour = hora[0]
-        f_h = str(hora[0])
-        print "from"
-        regla.to_hour = hora[1]
-        t_h = str(hora[1])
-        print "to"
-        regla.save()
-        print "save"
-        cron = CrontabSchedule()
-        cron.minute = f_h[-2:]
-        cron.hour = f_h[:2]
-        print days_t
-        aux=""
-        for i in range(len(days_t)):
-            if i == len(days_t)-1:
-                aux += str(days_t[i])
-            else:
-                aux += str(days_t[i])+","
-        days_t = aux
-        print days_t
-        cron.day_of_week = days_t
-        cron.save()
-        print "cron save"
-        regla = Regla.objects.latest('id')
-        cronT = CrontabSchedule.objects.latest('id')
-        print "regla y cronT"
-        periodic = PeriodicTask()
-        print "P_t"
-        na = str(regla.id)+"_1"
-        print "na"
-        periodic.name = na
-        print "name"
-        if regla.status:
-            periodic.task = "module_1.tasks.on"
-        else:
-            periodic.task = "module_1.tasks.off"
-        print "status"
-        periodic.crontab = cronT
-        print "cron= p_t"
-        periodic.args = "[ " +str(regla.pin)+ " ]"
-        print "arg"
-        periodic.save()
-        print "periodic save"
+    id= request.POST.get('id')
+    lista_permitidos = Usuario.objects.filter(permisos_luces=id)
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                if request.method=='POST':
+                    print "hola"
+                    luz = Luz.objects.get(id = request.POST['id'])
+                    dias = eval(request.POST['days'])
+                    print "0"
+                    print dias,"-",request.POST['days']
+                    hora = eval(request.POST['hours'])
+                    print "1"
+                    regla = Regla()
+                    print "2"
+                    regla.relacion = luz
+                    print "3"
+                    regla.pin = luz.pin
+                    print "4"
+                    if request.POST['status'] == "false":
+                        regla.status=False
+                        print request.POST['status']
+                    else:
+                        regla.status=True
+                        print "true"
+                    print "4"
+                    days_t = []
+                    for i in dias:
+                        if i=="Lunes":
+                            print "Lun"
+                            regla.lun = True
+                            days_t.append(1)
+                        elif i=="Martes":
+                            print "Mar"
+                            regla.mar = True
+                            days_t.append(2)
+                        elif i=="Miercoles":
+                            print "Mie"
+                            regla.mie = True
+                            days_t.append(3)
+                        elif i=="Jueves":
+                            print "Jue"
+                            regla.jue = True
+                            days_t.append(4)
+                        elif i=="Viernes":
+                            print "Vie"
+                            regla.vie = True
+                            days_t.append(5)
+                        elif i=="Sabado":
+                            print "Sab"
+                            regla.sab = True
+                            days_t.append(6)
+                        elif i=="Domingo":
+                            print "Dom"
+                            regla.dom = True
+                            days_t.append(0)
+                    regla.from_hour = hora[0]
+                    f_h = str(hora[0])
+                    print "from"
+                    regla.to_hour = hora[1]
+                    t_h = str(hora[1])
+                    print "to"
+                    regla.save()
+                    print "save"
+                    cron = CrontabSchedule()
+                    cron.minute = f_h[-2:]
+                    cron.hour = f_h[:2]
+                    print days_t
+                    aux=""
+                    for i in range(len(days_t)):
+                        if i == len(days_t)-1:
+                            aux += str(days_t[i])
+                        else:
+                            aux += str(days_t[i])+","
+                    days_t = aux
+                    print days_t
+                    cron.day_of_week = days_t
+                    cron.save()
+                    print "cron save"
+                    regla = Regla.objects.latest('id')
+                    cronT = CrontabSchedule.objects.latest('id')
+                    print "regla y cronT"
+                    periodic = PeriodicTask()
+                    print "P_t"
+                    na = str(regla.id)+"_1"
+                    print "na"
+                    periodic.name = na
+                    print "name"
+                    if regla.status:
+                        periodic.task = "module_1.tasks.on"
+                    else:
+                        periodic.task = "module_1.tasks.off"
+                    print "status"
+                    periodic.crontab = cronT
+                    print "cron= p_t"
+                    periodic.args = "[ " +str(regla.pin)+ " ]"
+                    print "arg"
+                    periodic.save()
+                    print "periodic save"
+                    cron = CrontabSchedule()
+                    cron.minute = t_h[-2:]
+                    cron.hour = t_h[:2]
+                    print days_t
+                    aux=""
+                    for i in range(len(days_t)):
+                        if i == len(days_t)-1:
+                            aux += str(days_t[i])
+                        else:
+                            aux += str(days_t[i])+","
+                    days_t = aux
+                    print days_t
+                    cron.day_of_week = days_t
+                    cron.save()
+                    print "cron save"
+                    cronT = CrontabSchedule.objects.latest('id')
+                    print "regla y cronT"
+                    periodic = PeriodicTask()
+                    print "P_t"
+                    na = str(regla.id)+"_2"
+                    print "na"
+                    periodic.name = na
+                    print "name"
+                    if regla.status:
+                        periodic.task = "module_1.tasks.off"
+                    else:
+                        periodic.task = "module_1.tasks.on"
+                    print "status"
+                    periodic.crontab = cronT
+                    print "cron= p_t"
+                    periodic.args = "[ " +str(regla.pin)+ " ]"
 
-        cron = CrontabSchedule()
-        cron.minute = t_h[-2:]
-        cron.hour = t_h[:2]
-        print days_t
-        aux=""
-        for i in range(len(days_t)):
-            if i == len(days_t)-1:
-                aux += str(days_t[i])
-            else:
-                aux += str(days_t[i])+","
-        days_t = aux
-        print days_t
-        cron.day_of_week = days_t
-        cron.save()
-        print "cron save"
-        cronT = CrontabSchedule.objects.latest('id')
-        print "regla y cronT"
-        periodic = PeriodicTask()
-        print "P_t"
-        na = str(regla.id)+"_2"
-        print "na"
-        periodic.name = na
-        print "name"
-        if regla.status:
-            periodic.task = "module_1.tasks.off"
-        else:
-            periodic.task = "module_1.tasks.on"
-        print "status"
-        periodic.crontab = cronT
-        print "cron= p_t"
-        periodic.args = "[ " +str(regla.pin)+ " ]"
-
-        print "arg"
-        periodic.save()
-        print "periodic save"
+                    print "arg"
+                    periodic.save()
+                    print "periodic save"
 
     rule = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rule},context)
 
 def del_rule(request):
     context = RequestContext(request)
-    rule = Regla.objects.get(id = request.POST['id_r'])
-    na = str(rule.id)+"_1"
-    periodic = PeriodicTask.objects.get(name = na)
-    periodic.delete()
-    na = str(rule.id)+"_2"
-    periodic = PeriodicTask.objects.get(name = na)
-    periodic.delete()
-    rule.delete()
+    id= request.POST.get('id')
+    lista_permitidos = Usuario.objects.filter(permisos_luces=id)
+    if lista_permitidos.__str__() != "[]":
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                rule = Regla.objects.get(id = request.POST['id_r'])
+                na = str(rule.id)+"_1"
+                periodic = PeriodicTask.objects.get(name = na)
+                periodic.delete()
+                na = str(rule.id)+"_2"
+                periodic = PeriodicTask.objects.get(name = na)
+                periodic.delete()
+                rule.delete()
     rules = Regla.objects.all()
     return render_to_response('tab.html',{'rules':rules},context)
 
@@ -444,11 +450,21 @@ def logs(request):
     fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
+def vacaciones(request):
+    logs = Log.objects.all()
+    aux="32:90"
+    repetido = []
+    for log in range(len(logs)):
+        if logs[log].hora == aux:
+            repetido.append(logs[log])
+        aux = logs[log].hora
+    print repetido
+
 def filterlog(request):
     context = RequestContext(request)
-    logs = Log.objects.filter(fecha=request.GET['day'])
+    dia = request.GET['day']
+    logs = Log.objects.filter(fecha = dia)
     logs = logs[::-1]
-    print logs
     return render_to_response('logtable.html',{'logs':logs},context)
 
 

@@ -40,10 +40,6 @@ $(document).ready(function() {
   });
 
 function getFiltered(element){
-    element.value;
-    alert(element.value);
-    origin/master
-    alert(element.value);
     var response = '';
     $.ajax({ type: "GET",
              url: "{% url 'module_1:filterlog' %}",
