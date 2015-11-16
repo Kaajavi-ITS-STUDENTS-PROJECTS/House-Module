@@ -437,6 +437,7 @@ def logs(request):
     logs = logs[::-1]
     fechas = [len(logs)]
     cont = 0
+    print len(logs)
     for log in logs:
         fechas[cont] == log.fecha
         cont+=1
