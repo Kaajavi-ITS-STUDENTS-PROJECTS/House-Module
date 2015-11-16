@@ -42,8 +42,7 @@ def index(request):
         sanitarios = Sanitario.objects.all()
         alarmas = Alarma.objects.all()
 
-        #return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
-        habitacion(request)
+        return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
     else:
         context = RequestContext(request)
         return render_to_response('login.html',
