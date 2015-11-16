@@ -46,6 +46,15 @@ def index(request):
         context = RequestContext(request)
         return render_to_response('login.html',
                               context)
+def recargar(helper, result):
+    publish(
+        'module_recargar',
+        'reload',
+        { 'loader' : helper,
+            'data' : result},
+        sender='server'  # sender id of the event, can be None.
+    )
+
 def luz(request):
     context = RequestContext(request)
     id= request.POST.get('id')
@@ -93,6 +102,14 @@ def puerta(request):
                     setPuerta(True, puerta)
                 puerta.save()
                 print puerta.status
+        for permitido in lista_permitidos:
+            if permitido.user.id == request.user.id:
+                if puerta.auto_close:
+                    helper = "#puerta-" + puerta.id
+                    recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
+                    time.sleep(5)
+                    relay_functions.relay("close",puerta.pin)
+                    puerta.status = False
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
 
