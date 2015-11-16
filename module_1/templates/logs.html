@@ -4,10 +4,10 @@
 <title>Logs</title>
 <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
 <div class="input-field col s12">
-    <select id="dates_selector" onChange="getFiltered()">
+    <select id="dates_selector" onChange="getFiltered(this)">
       <option  value="" disabled selected>Todos</option>
        {% for fecha in fechas %}
-      <option value="{{fecha}}" onClick="getFiltered()">{{fecha}}</option>
+      <option value="{{fecha}}" onClick="getFiltered(this)">{{fecha}}</option>
         {% endfor %}
     </select>
 </div>
@@ -39,8 +39,8 @@ $(document).ready(function() {
     $('#dates_selector').material_select();
   });
 
-function getFiltered(){
-    alert($('dates_selector').selectedIndex);
+function getFiltered(element){
+    element.value;
 }
 
 </script>

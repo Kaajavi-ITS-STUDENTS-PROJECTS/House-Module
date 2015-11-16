@@ -120,21 +120,21 @@
         {% for luces in luz %}
         {% if luces.status %}
         ctx.fillStyle = "00CC00";
-         {% else %}
-         ctx.fillStyle = "#FF0000";
-          {% endif %}
-          ctx.fillRect(luces.dibjo_x,luces.dibujo_y,30,30);
-           {% endfor %}
+        {% else %}
+        ctx.fillStyle = "#FF0000";
+        {% endif %}
+        ctx.fillRect(luces.dibujo_x,luces.dibujo_y,30,30);
+        {% endfor %}
 
-           {% for puertas in puerta %}
-           {% if puertas.status %}
-           ctx.fillStyle = "#00CC00";
-            {% else %}
-            ctx.fillStyle = "#FF0000";
-             {% endif %}
-             ctx.fillRect(puertas.dibujo_x,puertas.dibujo_y,30,30);
-              {% endfor %}
+        {% for puertas in puerta %}
+        {% if puertas.status %}
+        ctx.fillStyle = "#00CC00";
+        {% else %}
+        ctx.fillStyle = "#FF0000";
+        {% endif %}
+        ctx.fillRect(puertas.dibujo_x,puertas.dibujo_y,30,30);
+        {% endfor %}
 
-              }
+        }
 </script>
 {% endblock %}
