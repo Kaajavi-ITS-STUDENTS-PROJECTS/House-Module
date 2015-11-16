@@ -439,10 +439,11 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = [logs.count()]
+    fechas = [len(logs)]
     cont = 0
+    print len(logs)
     for log in logs:
-        fechas[cont] == log.fecha
+        fechas[cont] = cont
         cont+=1
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
