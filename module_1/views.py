@@ -454,6 +454,14 @@ def vacaciones(request):
         aux = logs[log].hora
     print repetido
 
+def filterlog(request):
+    context = RequestContext(request)
+    logs = Log.objects.filter(fecha=request.GET['day'])
+    logs = logs[::-1]
+    print logs
+    return render_to_response('logtable.html',{'logs':logs},context)
+
+
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
     # factory (we have to pass an auth class - provided by the server and a

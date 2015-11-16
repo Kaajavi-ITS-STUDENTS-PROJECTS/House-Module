@@ -14,4 +14,5 @@ urlpatterns = patterns('',
                        url(r'add_rule/', 'module_1.views.add_rule', name='add_rule'),
                        url(r'del_rule/', 'module_1.views.del_rule', name='del_rule'),
                        url(r'logs/', 'module_1.views.logs', name='logs'),
+                       url(r'filterlog/', 'module_1.views.filterlog', name='filterlog'),
                       )
