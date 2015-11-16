@@ -439,7 +439,7 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = range.(len(logs))
+    fechas = list(range(len(logs)))
     cont = 0
     print len(logs)
     for log in logs:
