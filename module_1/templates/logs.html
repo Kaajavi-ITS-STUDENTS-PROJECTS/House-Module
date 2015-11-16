@@ -44,6 +44,16 @@ function getFiltered(element){
     alert(element.value);
     origin/master
     alert(element.value);
+    var response = '';
+    $.ajax({ type: "GET",
+             url: "{% url 'module_1:filterlog' %}",
+             async: false,
+             data: {"day":element.value},
+             success : function(text)
+             {
+                 $("#logs").html(text);
+             }
+    });
 }
 
 </script>

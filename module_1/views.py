@@ -115,7 +115,9 @@ def puerta(request):
                     setLuz(False, puerta)
                     puerta.status = False
                 return render_to_response('puertas.html',{'puerta':puerta }, context)
-    return HttpResponse(status=202)
+    response = render_to_response('puertas.html',{'puerta':puerta }, context)
+    response.status_code = 202
+    return response
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
@@ -161,7 +163,9 @@ def habitacion(request):
                 luces = Luz.objects.all()
                 puertas = Puerta.objects.all()
                 return render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones},  context)
-    return HttpResponse(status=202)
+    response = render_to_response('habitaciones.html',{'luces':luces,'puertas':puertas,'habitaciones':habitaciones},  context)
+    response.status_code = 202
+    return response
 
 def hab_get(request):
     context = RequestContext(request)
@@ -439,6 +443,13 @@ def logs(request):
 
     fechas = sorted(set(fechas))
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
+
+def filterlog(request):
+    context = RequestContext(request)
+    logs = Log.objects.filter(fecha=request.GET['day'])
+    logs = logs[::-1]
+    return render_to_response('logtable.html',{'logs':logs},context)
+
 
 """def mousemove_connection_factory(auth_class, pubsub):
     # Generate a new connection class using the default websocket connection
