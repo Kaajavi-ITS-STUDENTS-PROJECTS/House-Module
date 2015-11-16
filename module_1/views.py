@@ -108,7 +108,7 @@ def puerta(request):
                     helper = "#puerta-" + str(puerta.id)
                     recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
                     time.sleep(5)
-                    relay_functions.relay("close",puerta.pin)
+                    setPuerta()
                     puerta.status = False
     puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta}, context)
@@ -435,7 +435,7 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = [logs.len()]
+    fechas = [logs.count()]
     cont = 0
     for log in logs:
         fechas[cont] == log.fecha
