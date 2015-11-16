@@ -116,7 +116,12 @@
             error: function(e){
                 console.log(e.responseText);
                 Materialize.toast('Error al destruir la regla!', 4000);
-            }
+            },
+            statusCode:{
+                202:function(){
+                     Materialize.toast('No tiene permiso!', 4000);
+                }
+            },
         });
     }
 
@@ -168,7 +173,12 @@
             error: function(e){
                 console.log(e.responseText);
                 Materialize.toast('No se agrego la regla!', 4000);
-            }
+            },
+            statusCode:{
+                202:function(){
+                     Materialize.toast('No tiene permiso!', 4000);
+                }
+            },
         });
     }
     $(document).ready(function() {

@@ -406,8 +406,12 @@ def add_rule(request):
                     periodic.save()
                     print "periodic save"
 
+                    rule = Regla.objects.all()
+                    return render_to_response('tab.html',{'rules':rule},context)
     rule = Regla.objects.all()
-    return render_to_response('tab.html',{'rules':rule},context)
+    response = render_to_response('tab.html',{'rules':rule},context)
+    response.status_code = 202
+    return response
 
 def del_rule(request):
     context = RequestContext(request)
