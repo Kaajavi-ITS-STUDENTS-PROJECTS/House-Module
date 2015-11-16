@@ -88,7 +88,6 @@
                     loader:helper,
                     data:result,
                 });
-                window.setTimeout(auto_close(puerta_id), 5000);
             },
             error: function(e){
                 console.log(e.responseText);
@@ -96,28 +95,6 @@
         });
     }
 
-    function auto_close(puerta_id){
-        channel.send('puerta');
-        var data={
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            id:puerta_id,
-        }
-        $.ajax({
-            method: "POST",
-            url: "{% url 'module_1:puerta' %}",
-            data: data,
-            success:function(result){
-                var helper="#puerta-"+puerta_id;
-                $(helper).html(result);
-                channel.send('reload',{
-                    loader:helper,
-                    data:result,
-                });            },
-            error: function(e){
-                console.log(e.responseText);
-            }
-        });
-    }
     window.onload = function() {
         var canvas = document.getElementById("id_canvas");
         var ctx = canvas.getContext("2d");
