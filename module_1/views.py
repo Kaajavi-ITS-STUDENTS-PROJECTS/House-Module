@@ -105,7 +105,7 @@ def puerta(request):
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 if puerta.auto_close:
-                    helper = "#puerta-" + puerta.id
+                    helper = "#puerta-" + str(puerta.id)
                     recargar(helper, render_to_response('puertas.html',{'puerta':puerta}, context))
                     time.sleep(5)
                     relay_functions.relay("close",puerta.pin)
