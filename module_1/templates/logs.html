@@ -7,7 +7,7 @@
     <select>
       <option onChange="getFiltered(this)" value="" disabled selected>Ver por dias</option>
        {% for fecha in fechas %}
-      <option value="1">{{fecha}}</option>
+      <option onClick="getFiltered()" value="1">{{fecha}}</option>
         {% endfor %}
     </select>
 </div>
@@ -40,7 +40,7 @@ $(document).ready(function() {
   });
 
 function getFiltered(){
-    alert($(".select").val());
+    alert(document.getElementById("mySelect").selectedIndex);
 }
 
 </script>
