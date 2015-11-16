@@ -435,7 +435,7 @@ def logs(request):
     context = RequestContext(request)
     logs = Log.objects.all()
     logs = logs[::-1]
-    fechas = logs
+    fechas = [logs.len()]
     cont = 0
     for log in logs:
         fechas[cont] == log.fecha
