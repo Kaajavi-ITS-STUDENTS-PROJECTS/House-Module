@@ -102,22 +102,22 @@
 
         ctx.drawImage(img, 10, 10);
         
-        {% for luz in luces %}
-        {% if luz.status %}
+        {% for luces in luz %}
+        {% if luces.status %}
         ctx.fillStyle = "00CC00";
         {% else %}
         ctx.fillStyle = "#FF0000";
         {% endif %}
-        ctx.fillRect(luz.dibjo_x,luz.dibujo_y,30,30);
+        ctx.fillRect(luces.dibjo_x,luces.dibujo_y,30,30);
         {% endfor %}
         
-        {% for puerta in puertas %}
-        {% if puerta.status %}
+        {% for puertas in puerta %}
+        {% if puertas.status %}
         ctx.fillStyle = "#00CC00";
         {% else %}
         ctx.fillStyle = "#FF0000";
         {% endif %}
-        ctx.fillRect(luz.dibujo_x,luz.dibujo_y,30,30);
+        ctx.fillRect(puertas.dibujo_x,puertas.dibujo_y,30,30);
         {% endfor %}
         
         }

@@ -61,11 +61,11 @@ def luz(request):
     id= request.POST.get('id')
     lista_permitidos = Usuario.objects.filter(permisos_luces=id)
     perm = False
+    luz = Luz.objects.get(id = id)
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
                 perm = True
-                luz = Luz.objects.get(id = id)
                 if luz.status:
                     luz.status=False
                     setLuz(False, luz)
@@ -73,18 +73,17 @@ def luz(request):
                     luz.status=True
                     setLuz(True, luz)
                 luz.save()
-    luces = Luz.objects.all()
     return render_to_response('luces.html',{'luz':luz, 'perm':perm }, context)
 
 
-def setLuz(status, luz ):
+def setLuz(status, obj ):
     log=Log()
-    log.output=luz
+    log.output=obj
     log.status=status
     if status==True:
-        relay_functions.relay("open",luz.pin)
+        relay_functions.relay("open",obj.pin)
     else:
-        relay_functions.relay("close",luz.pin)
+        relay_functions.relay("close",obj.pin)
     log.save()
 
 
@@ -99,16 +98,14 @@ def puerta(request):
             if permitido.user.id == request.user.id:
                 perm = True
                 if puerta.status:
-                    setPuerta(False,puerta)
+                    setLuz(False,puerta)
                     puerta.status = False
                     print puerta.status
                 else:
                     puerta.status = True
-                    setPuerta(True, puerta)
+                    setLuz(True, puerta)
                 puerta.save()
                 print puerta.status
-        for permitido in lista_permitidos:
-            if permitido.user.id == request.user.id:
                 if puerta.auto_close:
                     helper = "#puerta-" + str(puerta.id)
                     template = get_template('puertas.html')
@@ -116,20 +113,9 @@ def puerta(request):
                     html = template.render(context)
                     recargar(helper, html)
                     time.sleep(5)
-                    setPuerta(False, puerta)
+                    setLuz(False, puerta)
                     puerta.status = False
-    puertas = Puerta.objects.all()
     return render_to_response('puertas.html',{'puerta':puerta, 'perm':perm }, context)
-
-def setPuerta(status, puerta ):
-    log=Log()
-    log.output=puerta
-    log.status=status
-    if status==True:
-        relay_functions.relay("open",puerta.pin)
-    else:
-        relay_functions.relay("close",puerta.pin)
-    log.save()
 
 def sanitario(request, id_sanitario):
     context = RequestContext(request)
