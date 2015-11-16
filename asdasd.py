@@ -82,6 +82,75 @@ try:
     print "FOUR"
     time.sleep(SleepTimeL);
     GPIO.output(10,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(22,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10,OFF)
     GPIO.cleanup()
     print "Good bye!"
     # End program cleanly with keyboard
