@@ -4,7 +4,7 @@
 <div class="switch col m6 s12">
     <label>
         Off
-        <input type="checkbox" onclick="luz({{luz.id}})" checked="checked">
+        <input {% if perm %}disabled{% endif %} type="checkbox" onclick="luz({{luz.id}})" checked="checked">
         <span class="lever"></span>
         On
     </label>
@@ -16,7 +16,7 @@
 <div class="switch col m6 s12">
     <label>
         Off
-        <input type="checkbox" onclick="luz({{luz.id}})">
+        <input {% if perm %}disabled{% endif %} type="checkbox" onclick="luz({{luz.id}})">
         <span class="lever"></span>
         On
     </label>
