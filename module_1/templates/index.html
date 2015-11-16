@@ -45,7 +45,12 @@
             },
             error: function(e){
                 console.log(e.responseText);
-            }
+            },
+            statusCode:{
+                202:function(){
+                    Materialize.toast('Usted no tiene permisos', 2000)
+                }
+            },
         });
     }
     function luz(luz_id){
@@ -68,7 +73,12 @@
             },
             error: function(e){
                 console.log(e.responseText);
-            }
+            },
+            statusCode:{
+                202:function(){
+                    Materialize.toast('Usted no tiene permisos', 2000)
+                }
+            },
         });
     }
     function puerta(puerta_id){
@@ -91,7 +101,12 @@
             },
             error: function(e){
                 console.log(e.responseText);
-            }
+            },
+            statusCode:{
+                202:function(){
+                    Materialize.toast('Usted no tiene permisos', 2000)
+                }
+            },
         });
     }
 
@@ -119,7 +134,6 @@
         {% endif %}
         ctx.fillRect(puerta.dibujo_x,puerta.dibujo_y,30,30);
         {% endfor %}
-        
         }
 </script>
 {% endblock %}
