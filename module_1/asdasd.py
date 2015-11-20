@@ -1,18 +1,20 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
-ON = GPIO.LOW
-OFF = GPIO.HIGH
-GPIO.setmode(GPIO.BCM)
-# init list with pin numbers
-pinList = [15, 22, 9, 10]
-# loop through pins and set mode and state to 'low'
-for i in pinList:
-    GPIO.setup(i, GPIO.OUT)
-    GPIO.output(i, OFF)
-SleepTimeL = 0.2
+
 # main loop
 def dance():
+    ON = GPIO.LOW
+    OFF = GPIO.HIGH
+    GPIO.setmode(GPIO.BCM)
+    # init list with pin numbers
+    pinList = [15, 22, 9, 10]
+    # loop through pins and set mode and state to 'low'
+    for i in pinList:
+        GPIO.setup(i, GPIO.OUT)
+        GPIO.output(i, OFF)
+    SleepTimeL = 0.2
+
     try:
         time.sleep(SleepTimeL);
         GPIO.output(15, ON)
