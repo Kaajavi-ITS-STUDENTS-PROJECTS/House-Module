@@ -14,7 +14,8 @@
     {% endif %}
     {% endfor %}
 </li>
-<li><a class="modal-trigger" href="{% url 'module_1:autoluz'%}">Reglas</a></li>
+<li><a href="{% url 'module_1:autoluz'%}">Reglas</a></li>
+<li><a href="{% url 'module_1:logs'%}">Logs</a></li>
 {% endblock %}
 {% block content %}
 <div class="row">
