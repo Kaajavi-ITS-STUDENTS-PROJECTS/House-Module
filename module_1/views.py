@@ -464,13 +464,13 @@ def vacaciones(request):
                 if logs_obj[i].hora.hour == logs_obj[j].hora.hour and logs_obj[i].status == logs_obj[j].status and j != i:
                     if logs_obj[i].status:
                         for t in horas_par_t:
-                            if t == logs_obj[i]:
+                            if t.hora.hour == logs_obj[i].hora.hour:
                                 ta = False
                         if ta:
                             horas_par_t.append(logs_obj[i])
                     else:
                         for f in horas_par_f:
-                            if f == logs_obj[i]:
+                            if f.hora.hour == logs_obj[i].hora.hour:
                                 ta = False
                         if ta:
                             horas_par_f.append(logs_obj[i])
