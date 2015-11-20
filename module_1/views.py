@@ -480,7 +480,7 @@ def vacaciones(request):
     print id_obj_f
     context = RequestContext(request)
     for i in id_obj_t:
-        for j in id_obj_t[i]:
+        for j in range(len(id_obj_t[i])):
             vaca_cron = CrontabSchedule()
             vaca_cron.minute = id_obj_f[i][j].hora.minute
             vaca_cron.hour = id_obj_f[i][j].hora.hour
@@ -492,7 +492,7 @@ def vacaciones(request):
             vaca_periodic.args = "[ " +str(id_obj_f[i][j].output.pin)+ " ]"
             vaca_periodic.save()
     for i in id_obj_f:
-        for j in id_obj_f[i]:
+        for j in range(len(id_obj_f[i])):
             vaca_cron = CrontabSchedule()
             vaca_cron.minute = id_obj_f[i][j].hora.minute
             vaca_cron.hour = id_obj_f[i][j].hora.hour
