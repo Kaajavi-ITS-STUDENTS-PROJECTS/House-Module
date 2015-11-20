@@ -474,8 +474,8 @@ def vacaciones(request):
                                 ta = False
                         if ta:
                             horas_par_f.append(logs_obj[i])
-        id_obj_t.update(objeto.id:horas_par_t)
-        id_obj_f.update(objeto.id:horas_par_f)
+        id_obj_t.update({objeto.id:horas_par_t})
+        id_obj_f.update({objeto.id:horas_par_f})
     print id_obj_t
     print id_obj_f
     context = RequestContext(request)
