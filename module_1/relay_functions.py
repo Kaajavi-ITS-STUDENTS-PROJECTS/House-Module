@@ -27,3 +27,145 @@ def getStatus(pin):
         return False
     else:
         return True
+
+def dance():
+    SleepTimeL = 0.2
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(22,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(22,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(SleepTimeL);
+    GPIO.output(10,OFF)
+    time.sleep(SleepTimeL);
+    GPIO.output(15, ON)
+    print "ONE"
+    time.sleep(SleepTimeL);
+    GPIO.output(22, ON)
+    print "TWO"
+    time.sleep(SleepTimeL);
+    GPIO.output(9, ON)
+    print "THREE"
+    time.sleep(SleepTimeL);
+    GPIO.output(10, ON)
+    print "FOUR"
+    time.sleep(0.1);
+    GPIO.output(15, OFF)
+    print "ONE"
+    time.sleep(0.1);
+    GPIO.output(22, OFF)
+    print "FOUR"
+    time.sleep(0.1);
+    GPIO.output(9,OFF)
+    print "FOUR"
+    time.sleep(0.1);
+    GPIO.output(10,OFF)
+    print "Good bye!"
