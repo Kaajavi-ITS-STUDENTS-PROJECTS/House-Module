@@ -455,7 +455,7 @@ def vacaciones(request):
     id_obj_t = {}
     id_obj_f = {}
     for objeto in obj:
-        logs_obj = Log.objects.filter(output.id = objeto.id)
+        logs_obj = Log.objects.filter(output = objeto)
         horas_par_t = []
         horas_par_f = []
         for i in range(len(logs_obj)):
