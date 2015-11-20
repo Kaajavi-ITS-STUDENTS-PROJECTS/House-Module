@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
+import time
+
 # reinvertir la programacion
 ON = GPIO.LOW
 OFF = GPIO.HIGH
