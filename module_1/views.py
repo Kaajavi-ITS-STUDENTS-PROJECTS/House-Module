@@ -479,6 +479,21 @@ def vacaciones(request):
     print id_obj_t
     print id_obj_f
     context = RequestContext(request)
+    for i in id_obj_t:
+        for j in id_obj_t[i]:
+            vaca_cron = CrontabSchedule()
+            vaca_cron.minute = i[j].hora.minute
+            vaca_cron.hour = i[j].hora.hour
+            vaca_cron.save()
+            vaca_periodic = PeriodicTask()
+            vaca_periodic.name = 'Vacaciones ' + str(i[j].output.id)
+            if regla.status:
+                vaca_periodic.task = "module_1.tasks.off"
+            else:
+                vaca_periodic.task = "module_1.tasks.on"
+            vaca_periodic.crontab = vaca_cron
+            vaca_periodic.args = "[ " +str(i[j].output.pin)+ " ]"
+            vaca_periodic.save()
     luces = Luz.objects.all()
     rule = Regla.objects.all()
 
