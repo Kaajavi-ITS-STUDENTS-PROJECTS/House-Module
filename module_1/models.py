@@ -45,16 +45,6 @@ class Puerta(Objeto):
     def __str__(self):
         return self.nombre
 
-class Sanitario(Habitacion):
-    class Meta:
-        verbose_name = "Sanitario"
-        verbose_name_plural = "Sanitarios"
-    
-    ocupado = models.BooleanField(u'Ocupado', default=False)
-    
-    def __str__(self):
-        return self.nombre
-
 class Alarma(models.Model):
     class Meta:
         verbose_name = "Alarma"
