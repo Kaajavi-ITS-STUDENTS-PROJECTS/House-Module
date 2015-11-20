@@ -487,10 +487,19 @@ def vacaciones(request):
             vaca_cron.save()
             vaca_periodic = PeriodicTask()
             vaca_periodic.name = 'Vacaciones ' + str(i[j].output.id)
-            if regla.status:
-                vaca_periodic.task = "module_1.tasks.off"
-            else:
-                vaca_periodic.task = "module_1.tasks.on"
+            vaca_periodic.task = "module_1.tasks.on"
+            vaca_periodic.crontab = vaca_cron
+            vaca_periodic.args = "[ " +str(i[j].output.pin)+ " ]"
+            vaca_periodic.save()
+    for i in id_obj_f:
+        for j in id_obj_f[i]:
+            vaca_cron = CrontabSchedule()
+            vaca_cron.minute = i[j].hora.minute
+            vaca_cron.hour = i[j].hora.hour
+            vaca_cron.save()
+            vaca_periodic = PeriodicTask()
+            vaca_periodic.name = 'Vacaciones ' + str(i[j].output.id)
+            vaca_periodic.task = "module_1.tasks.off"
             vaca_periodic.crontab = vaca_cron
             vaca_periodic.args = "[ " +str(i[j].output.pin)+ " ]"
             vaca_periodic.save()

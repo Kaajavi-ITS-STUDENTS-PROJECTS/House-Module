@@ -3,6 +3,9 @@
 {% block titulo %}
 <title>Logs</title>
 <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
+{% endblock %}
+{% block content %}
+
 <div class="input-field col s12">
     <select id="dates_selector" onChange="getFiltered(this)">
       <option  value="Todos" selected>Todos</option>
@@ -11,10 +14,7 @@
         {% endfor %}
     </select>
 </div>
-{% endblock %}
-{% block content %}
-
-
+<hr>
 <table class="highlight">
     <thead>
         <tr>
