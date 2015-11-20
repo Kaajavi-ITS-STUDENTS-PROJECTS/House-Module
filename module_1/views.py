@@ -459,14 +459,39 @@ def logs(request):
     return render_to_response('logs.html',{'logs':logs,'fechas':fechas},context)
 
 def vacaciones(request):
-    logs = Log.objects.all()
-    aux="32:90"
-    repetido = []
-    for log in range(len(logs)):
-        if logs[log].hora == aux:
-            repetido.append(logs[log])
-        aux = logs[log].hora
-    print repetido
+    obj = Objeto.objects.all()
+    id_obj_t = {}
+    id_obj_f = {}
+    for objeto in obj:
+        logs_obj = Log.objects.filter(output.id = objeto.id)
+        horas_par_t = []
+        horas_par_f = []
+        for i in range(len(logs_obj)):
+            for j in range(len(logs_obj)):
+                ta = True
+                if logs_obj[i].hora.hour == logs_obj[j].hora.hour and logs_obj[i].status == logs_obj[j].status and j != i:
+                    if logs_obj[i].status:
+                        for t in horas_par_t:
+                            if t == logs_obj[i]:
+                                ta = False
+                        if ta:
+                            horas_par_t.append(logs_obj[i])
+                    else:
+                        for f in horas_par_f:
+                            if f == logs_obj[i]:
+                                ta = False
+                        if ta:
+                            horas_par_f.append(logs_obj[i])
+        id_obj_t.update(objeto.id:horas_par_t)
+        id_obj_f.update(objeto.id:horas_par_f)
+    print id_obj_t
+    print id_obj_f
+    context = RequestContext(request)
+    luces = Luz.objects.all()
+    rule = Regla.objects.all()
+
+    return render_to_response('luzauto.html',{'luz':luces, 'rules':rule},context)
+
 
 def filterlog(request):
     context = RequestContext(request)

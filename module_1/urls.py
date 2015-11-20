@@ -15,4 +15,5 @@ urlpatterns = patterns('',
                        url(r'del_rule/', 'module_1.views.del_rule', name='del_rule'),
                        url(r'logs/', 'module_1.views.logs', name='logs'),
                        url(r'filterlog/', 'module_1.views.filterlog', name='filterlog'),
+                       url(r'vacacione/', 'module_1.views.vacaciones', name='vacaciones'),
                       )
