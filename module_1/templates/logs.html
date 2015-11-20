@@ -44,7 +44,7 @@ function getFiltered(element){
     $.ajax({ type: "GET",
              url: "{% url 'module_1:filterlog' %}",
              async: false,
-             data: {"day":element.value},
+             data: {'day':element.value},
              success : function(text)
              {
                  $("#logs").html(text);

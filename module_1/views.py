@@ -401,17 +401,21 @@ def add_rule(request):
                     periodic.save()
                     print "periodic save"
 
+                    rule = Regla.objects.all()
+                    return render_to_response('tab.html',{'rules':rule},context)
     rule = Regla.objects.all()
-    return render_to_response('tab.html',{'rules':rule},context)
+    response = render_to_response('tab.html',{'rules':rule},context)
+    response.status_code = 202
+    return response
 
 def del_rule(request):
     context = RequestContext(request)
-    id= request.POST.get('id')
-    lista_permitidos = Usuario.objects.filter(permisos_luces=id)
+    id_r= request.POST.get('id_r')
+    lista_permitidos = Usuario.objects.filter(permisos_luces=id_r)
     if lista_permitidos.__str__() != "[]":
         for permitido in lista_permitidos:
             if permitido.user.id == request.user.id:
-                rule = Regla.objects.get(id = request.POST['id_r'])
+                rule = Regla.objects.get(id = id_r)
                 na = str(rule.id)+"_1"
                 periodic = PeriodicTask.objects.get(name = na)
                 periodic.delete()
@@ -419,8 +423,12 @@ def del_rule(request):
                 periodic = PeriodicTask.objects.get(name = na)
                 periodic.delete()
                 rule.delete()
-    rules = Regla.objects.all()
-    return render_to_response('tab.html',{'rules':rules},context)
+            rules = Regla.objects.all()
+            return render_to_response('tab.html',{'rules':rules},context)
+    rule = Regla.objects.all()
+    response = render_to_response('tab.html',{'rules':rule},context)
+    response.status_code = 202
+    return response
 
 def get_current_user(request):
     context = RequestContext(request)
@@ -439,7 +447,7 @@ def logs(request):
     cont = 0
     print len(logs)
     for log in logs:
-        fechas[cont] = log.fecha
+        fechas[cont] = log.fecha.__str__()
         cont+=1
 
     fechas = sorted(set(fechas))
@@ -457,9 +465,9 @@ def vacaciones(request):
 
 def filterlog(request):
     context = RequestContext(request)
-    logs = Log.objects.filter(fecha=request.GET['day'])
+    dia = request.GET['day']
+    logs = Log.objects.get(fecha = dia)
     logs = logs[::-1]
-    print logs
     return render_to_response('logtable.html',{'logs':logs},context)
 
 

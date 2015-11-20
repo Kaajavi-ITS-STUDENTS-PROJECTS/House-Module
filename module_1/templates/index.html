@@ -109,7 +109,7 @@
             },
         });
     }
-
+ 
         var canvas = document.getElementById("id_canvas");
         var ctx = canvas.getContext("2d");
         var img = document.getElementById("map-img");
@@ -122,7 +122,8 @@
         {% else %}
         ctx.fillStyle = "#FF0000";
         {% endif %}
-        ctx.fillRect(0,0,30,30);
+        ctx.fillRect(luz.dibujo_y,0,30,30);
+        console.log(luz.dibujo_y + "tu madre")
         {% endfor %}
 
         {% for puerta in puertas %}
