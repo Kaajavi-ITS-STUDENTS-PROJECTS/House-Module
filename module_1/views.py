@@ -489,7 +489,7 @@ def filterlog(request):
     context = RequestContext(request)
     dia = request.GET['day']
     if dia == "Todos":
-        logs = Log.object.all()
+        logs = Log.objects.all()
     else:
         logs = Log.objects.filter(fecha = dia)
     logs = logs[::-1]
