@@ -119,15 +119,9 @@ def puerta(request):
     response.status_code = 202
     return response
 
-def sanitario(request, id_sanitario):
-    context = RequestContext(request)
-    sanitario = Sanitario.objects.get(id = id_sanitario)
-    if sanitario.ocupado:
-        sanitario.ocupado = False
-    else:
-        sanitario.ocupado = True
-    sanitario.save()
-    return redirect('/')
+def superSecret(request):
+    relay_functions.dance()
+    return "DANCE!!"
 
 
 def habitacion(request):
