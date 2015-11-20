@@ -489,6 +489,8 @@ def filterlog(request):
     context = RequestContext(request)
     dia = request.GET['day']
     logs = Log.objects.filter(fecha = dia)
+    if dia == "Todos":
+        logs = Log.object.all()
     logs = logs[::-1]
     return render_to_response('logtable.html',{'logs':logs},context)
 
