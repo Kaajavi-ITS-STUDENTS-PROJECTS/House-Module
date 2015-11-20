@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
-from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, Log
+from module_1.models import Luz, Puerta, Habitacion, Alarma, Usuario, Regla, Log
 from django.contrib.auth import authenticate
 import time
 from djcelery.models import PeriodicTask, CrontabSchedule
@@ -21,7 +21,6 @@ def index(request):
         luces = Luz.objects.all()
         puertas = Puerta.objects.all()
         habitaciones = Habitacion.objects.all()
-        sanitarios = Sanitario.objects.all()
         alarmas = Alarma.objects.all()
         for luz in luces:
             luz_aux= Luz.objects.get(id = luz.id)
@@ -39,10 +38,9 @@ def index(request):
         luces = Luz.objects.all()
         puertas = Puerta.objects.all()
         habitaciones = Habitacion.objects.all()
-        sanitarios = Sanitario.objects.all()
         alarmas = Alarma.objects.all()
 
-        return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones, 'sanitarios':sanitarios,'alarmas':alarmas},context)
+        return render_to_response('index.html',{'luces':luces,'puertas':puertas, 'habitaciones':habitaciones,'alarmas':alarmas},context)
     else:
         context = RequestContext(request)
         return render_to_response('login.html',
