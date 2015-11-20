@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 import relay_functions
+import asdasd.py
 from module_1.models import Luz, Puerta, Habitacion, Sanitario, Alarma, Usuario, Regla, Log
 from django.contrib.auth import authenticate
 import time
@@ -119,15 +120,9 @@ def puerta(request):
     response.status_code = 202
     return response
 
-def sanitario(request, id_sanitario):
-    context = RequestContext(request)
-    sanitario = Sanitario.objects.get(id = id_sanitario)
-    if sanitario.ocupado:
-        sanitario.ocupado = False
-    else:
-        sanitario.ocupado = True
-    sanitario.save()
-    return redirect('/')
+def superSecret(request):
+    asdasd.dance()
+    return "DANCE!!"
 
 
 def habitacion(request):
